@@ -74,7 +74,7 @@ node benchmark.mjs --mode cli --engine shell --rounds 10
 | Linux | Official Chrome for Testing Linux x64 builds; glibc/system libraries required | glibc x64 and arm64 |
 | Windows | Official Chrome for Testing Windows builds; native agent-browser selection | Run the entire lab in WSL2; no native Lightpanda binary |
 
-The installer reports an error if the pinned upstream Chrome build is unavailable for the detected architecture. In particular, do not assume native Linux ARM64 Chrome for Testing support. Only the macOS ARM64 run has been validated locally; the supplied CI workflow provides independent host measurements.
+The installer reports an error if the pinned upstream Chrome build is unavailable for the detected architecture. In particular, do not assume native Linux ARM64 Chrome for Testing support. Local validation used macOS ARM64. The supplied workflow has also passed on Linux x64, macOS ARM64, and Windows x64 for Headless Shell; see the runner scores below.
 
 On minimal Debian/Ubuntu hosts, install browser system libraries using the installer with root privileges (uses upstream dependency metadata):
 
@@ -137,6 +137,18 @@ The launcher uses the explicit empty config and dedicated `startup-lab-use` name
 ## Run the OS matrix on GitHub
 
 In **Actions → Cross-platform browser benchmark → Run workflow**, launch the manual workflow. It installs the pinned dependencies and browser, then measures ten direct and ten CLI Headless Shell cold starts on **Ubuntu 22.04, macOS, and Windows**. No browser warmup is performed; the first trial retains first-use costs. JSON and screenshots are uploaded as per-OS artifacts even if a job fails. Hosted-runner scores are not directly comparable to the M1 laptop scores. The workflow is manual so pushing commits does not silently start benchmark jobs.
+
+### Verified GitHub runner scores
+
+[Workflow run 45855919068](https://github.com/wolvever/browser-startup-lab/actions/runs/45855919068) passed all three jobs. Each path below has ten process-cold trials, no discarded warmup, and the CLI advisory disabled. Form interaction and cleanup passed on every OS. Passing CI establishes that the experiment runs; it does not enforce a 1.5-second threshold.
+
+| Runner | Direct median / max | CLI median / max | CLI below 1.5 s |
+| --- | ---: | ---: | ---: |
+| Ubuntu 22.04 x64 | 229 / 457 ms | 313 / 1,882 ms | 9/10 |
+| macOS ARM64, virtual M2 Pro | 150 / 262 ms | 339 / 388 ms | 10/10 |
+| Windows x64 | 408 / 1,500 ms | 1,116 / 1,171 ms | 10/10 |
+
+All values are rounded to milliseconds; the Windows direct path had 9/10 samples strictly below 1,500 ms. [Committed raw runner results and screenshots](results/validation/github-run-45855919068) retain the complete distributions and first trials. The Linux CLI outlier and Windows direct first-use cost remain included.
 
 ## Files and research
 

@@ -5,6 +5,8 @@
   "scripts": {
     "setup": "node setup.mjs",
     "benchmark": "node benchmark.mjs",
+    "compare": "node compare.mjs",
+    "optimize": "node optimize.mjs",
     "agent": "node agent.mjs"
   },
   "dependencies": {

@@ -1,0 +1,250 @@
+{
+  "date": "2026-11-26T09:50:03.471Z",
+  "platform": "darwin",
+  "arch": "arm64",
+  "chrome": "/Users/jucheng/work/browser-startup-lab/browsers/chrome/mac_arm-158.0.8127.88/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing",
+  "shell": "/Users/jucheng/work/browser-startup-lab/browsers/chrome-headless-shell/mac_arm-158.0.8127.88/chrome-headless-shell-mac-arm64/chrome-headless-shell",
+  "rounds": 10,
+  "records": [
+    {
+      "name": "direct-chrome-baseline",
+      "trial": 1,
+      "ready_ms": 530.4664160000001,
+      "form": true
+    },
+    {
+      "name": "direct-chrome-baseline",
+      "trial": 2,
+      "ready_ms": 491.269667,
+      "form": true
+    },
+    {
+      "name": "direct-chrome-baseline",
+      "trial": 3,
+      "ready_ms": 623.375792,
+      "form": true
+    },
+    {
+      "name": "direct-chrome-baseline",
+      "trial": 4,
+      "ready_ms": 714.8519999999999,
+      "form": true
+    },
+    {
+      "name": "direct-chrome-baseline",
+      "trial": 5,
+      "ready_ms": 522.783625,
+      "form": true
+    },
+    {
+      "name": "direct-chrome-baseline",
+      "trial": 6,
+      "ready_ms": 559.227292,
+      "form": true
+    },
+    {
+      "name": "direct-chrome-baseline",
+      "trial": 7,
+      "ready_ms": 533.3557920000003,
+      "form": true
+    },
+    {
+      "name": "direct-chrome-baseline",
+      "trial": 8,
+      "ready_ms": 492.3724579999998,
+      "form": true
+    },
+    {
+      "name": "direct-chrome-baseline",
+      "trial": 9,
+      "ready_ms": 544.8804999999993,
+      "form": true
+    },
+    {
+      "name": "direct-chrome-baseline",
+      "trial": 10,
+      "ready_ms": 591.4745000000003,
+      "form": true
+    },
+    {
+      "name": "direct-chrome-optimized",
+      "trial": 1,
+      "ready_ms": 546.0057500000003,
+      "form": true
+    },
+    {
+      "name": "direct-chrome-optimized",
+      "trial": 2,
+      "ready_ms": 485.8387499999999,
+      "form": true
+    },
+    {
+      "name": "direct-chrome-optimized",
+      "trial": 3,
+      "ready_ms": 670.5745000000006,
+      "form": true
+    },
+    {
+      "name": "direct-chrome-optimized",
+      "trial": 4,
+      "ready_ms": 521.9458329999998,
+      "form": true
+    },
+    {
+      "name": "direct-chrome-optimized",
+      "trial": 5,
+      "ready_ms": 486.019416000001,
+      "form": true
+    },
+    {
+      "name": "direct-chrome-optimized",
+      "trial": 6,
+      "ready_ms": 469.09029199999895,
+      "form": true
+    },
+    {
+      "name": "direct-chrome-optimized",
+      "trial": 7,
+      "ready_ms": 478.89529199999924,
+      "form": true
+    },
+    {
+      "name": "direct-chrome-optimized",
+      "trial": 8,
+      "ready_ms": 473.916792,
+      "form": true
+    },
+    {
+      "name": "direct-chrome-optimized",
+      "trial": 9,
+      "ready_ms": 519.7482919999984,
+      "form": true
+    },
+    {
+      "name": "direct-chrome-optimized",
+      "trial": 10,
+      "ready_ms": 476.8441670000011,
+      "form": true
+    },
+    {
+      "name": "direct-shell-optimized",
+      "trial": 1,
+      "ready_ms": 425.14895799999977,
+      "form": true
+    },
+    {
+      "name": "direct-shell-optimized",
+      "trial": 2,
+      "ready_ms": 161.50575000000026,
+      "form": true
+    },
+    {
+      "name": "direct-shell-optimized",
+      "trial": 3,
+      "ready_ms": 159.16612500000156,
+      "form": true
+    },
+    {
+      "name": "direct-shell-optimized",
+      "trial": 4,
+      "ready_ms": 160.28616599999987,
+      "form": true
+    },
+    {
+      "name": "direct-shell-optimized",
+      "trial": 5,
+      "ready_ms": 160.68533300000126,
+      "form": true
+    },
+    {
+      "name": "direct-shell-optimized",
+      "trial": 6,
+      "ready_ms": 160.62654099999963,
+      "form": true
+    },
+    {
+      "name": "direct-shell-optimized",
+      "trial": 7,
+      "ready_ms": 161.9454999999998,
+      "form": true
+    },
+    {
+      "name": "direct-shell-optimized",
+      "trial": 8,
+      "ready_ms": 157.17891600000075,
+      "form": true
+    },
+    {
+      "name": "direct-shell-optimized",
+      "trial": 9,
+      "ready_ms": 159.92062500000065,
+      "form": true
+    },
+    {
+      "name": "direct-shell-optimized",
+      "trial": 10,
+      "ready_ms": 159.4925830000011,
+      "form": true
+    },
+    {
+      "name": "direct-lightpanda-optimized",
+      "trial": 1,
+      "ready_ms": 134.63708299999962,
+      "form": true
+    },
+    {
+      "name": "direct-lightpanda-optimized",
+      "trial": 2,
+      "ready_ms": 39.60370800000055,
+      "form": true
+    },
+    {
+      "name": "direct-lightpanda-optimized",
+      "trial": 3,
+      "ready_ms": 32.669958999998926,
+      "form": true
+    },
+    {
+      "name": "direct-lightpanda-optimized",
+      "trial": 4,
+      "ready_ms": 33.16487500000039,
+      "form": true
+    },
+    {
+      "name": "direct-lightpanda-optimized",
+      "trial": 5,
+      "ready_ms": 32.74254199999996,
+      "form": true
+    },
+    {
+      "name": "direct-lightpanda-optimized",
+      "trial": 6,
+      "ready_ms": 33.432708000000275,
+      "form": true
+    },
+    {
+      "name": "direct-lightpanda-optimized",
+      "trial": 7,
+      "ready_ms": 33.60504200000105,
+      "form": true
+    },
+    {
+      "name": "direct-lightpanda-optimized",
+      "trial": 8,
+      "ready_ms": 33.41529100000116,
+      "form": true
+    },
+    {
+      "name": "direct-lightpanda-optimized",
+      "trial": 9,
+      "ready_ms": 30.402374999999665,
+      "form": true
+    },
+    {
+      "name": "direct-lightpanda-optimized",
+      "trial": 10,
+      "ready_ms": 33.27862499999901,
+      "form": true
+    }
+  ]
+}

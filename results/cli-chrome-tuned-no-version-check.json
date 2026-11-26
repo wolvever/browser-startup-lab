@@ -1,0 +1,73 @@
+{
+  "date": "2026-11-26T09:49:47.618Z",
+  "platform": "darwin",
+  "arch": "arm64",
+  "chrome": "/Users/jucheng/work/browser-startup-lab/browsers/chrome/mac_arm-158.0.8127.88/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing",
+  "shell": "/Users/jucheng/work/browser-startup-lab/browsers/chrome-headless-shell/mac_arm-158.0.8127.88/chrome-headless-shell-mac-arm64/chrome-headless-shell",
+  "rounds": 10,
+  "records": [
+    {
+      "name": "cli-chrome-tuned",
+      "trial": 1,
+      "open_ms": 1077.6261670000001,
+      "ready_ms": 1103.727375,
+      "form": true,
+      "screenshot": true,
+      "warm_snapshot_ms": 7.858207999999877
+    },
+    {
+      "name": "cli-chrome-tuned",
+      "trial": 2,
+      "open_ms": 609.383458,
+      "ready_ms": 622.9909169999999
+    },
+    {
+      "name": "cli-chrome-tuned",
+      "trial": 3,
+      "open_ms": 618.7222079999997,
+      "ready_ms": 628.206792
+    },
+    {
+      "name": "cli-chrome-tuned",
+      "trial": 4,
+      "open_ms": 615.3132089999999,
+      "ready_ms": 624.1970000000001
+    },
+    {
+      "name": "cli-chrome-tuned",
+      "trial": 5,
+      "open_ms": 668.2413339999998,
+      "ready_ms": 678.1353750000003
+    },
+    {
+      "name": "cli-chrome-tuned",
+      "trial": 6,
+      "open_ms": 603.929333,
+      "ready_ms": 613.6285420000004
+    },
+    {
+      "name": "cli-chrome-tuned",
+      "trial": 7,
+      "open_ms": 617.5754580000003,
+      "ready_ms": 628.2752499999997
+    },
+    {
+      "name": "cli-chrome-tuned",
+      "trial": 8,
+      "open_ms": 633.8117499999998,
+      "ready_ms": 646.6074579999995
+    },
+    {
+      "name": "cli-chrome-tuned",
+      "trial": 9,
+      "open_ms": 581.4051250000002,
+      "ready_ms": 589.875583
+    },
+    {
+      "name": "cli-chrome-tuned",
+      "trial": 10,
+      "open_ms": 626.1074589999998,
+      "ready_ms": 636.5052919999989
+    }
+  ]
+}

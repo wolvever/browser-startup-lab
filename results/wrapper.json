@@ -1,0 +1,52 @@
+[
+  {
+    "engine": "shell",
+    "trial": 1,
+    "ready_ms": 472.308709
+  },
+  {
+    "engine": "shell",
+    "trial": 2,
+    "ready_ms": 413.67829099999994
+  },
+  {
+    "engine": "shell",
+    "trial": 3,
+    "ready_ms": 394.47454100000004
+  },
+  {
+    "engine": "shell",
+    "trial": 4,
+    "ready_ms": 407.52125
+  },
+  {
+    "engine": "shell",
+    "trial": 5,
+    "ready_ms": 408.16729099999975
+  },
+  {
+    "engine": "chrome",
+    "trial": 1,
+    "ready_ms": 946.771166
+  },
+  {
+    "engine": "chrome",
+    "trial": 2,
+    "ready_ms": 702.7240409999999
+  },
+  {
+    "engine": "chrome",
+    "trial": 3,
+    "ready_ms": 709.7465000000002
+  },
+  {
+    "engine": "chrome",
+    "trial": 4,
+    "ready_ms": 738.096458
+  },
+  {
+    "engine": "chrome",
+    "trial": 5,
+    "ready_ms": 793.8190830000003
+  }
+]

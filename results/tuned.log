@@ -1,0 +1,11 @@
+{"name":"cli-chrome-tuned","trial":1,"open_ms":3691.671125,"ready_ms":3717.358292,"form":true,"screenshot":true,"warm_snapshot_ms":10.329416999999921}
+{"name":"cli-chrome-tuned","trial":2,"open_ms":3693.4110840000003,"ready_ms":3710.777459}
+{"name":"cli-chrome-tuned","trial":3,"open_ms":3690.352083999999,"ready_ms":3714.2839999999987}
+{"name":"cli-chrome-tuned","trial":4,"open_ms":3649.405084,"ready_ms":3666.164917}
+{"name":"cli-chrome-tuned","trial":5,"open_ms":3662.3216250000005,"ready_ms":3684.1582500000004}
+{"name":"cli-chrome-tuned","trial":6,"open_ms":3612.3189999999995,"ready_ms":3629.054583000001}
+{"name":"cli-chrome-tuned","trial":7,"open_ms":3637.8384159999987,"ready_ms":3661.4135410000017}
+{"name":"cli-chrome-tuned","trial":8,"open_ms":3615.488624999998,"ready_ms":3639.4058330000007}
+{"name":"cli-chrome-tuned","trial":9,"open_ms":3604.019875000002,"ready_ms":3628.6348749999997}
+{"name":"cli-chrome-tuned","trial":10,"open_ms":3619.6768749999974,"ready_ms":3643.0625}
+cli-chrome-tuned {"n":10,"median_ms":3664,"p95_ms":3717,"max_ms":3717,"under_1500":0}

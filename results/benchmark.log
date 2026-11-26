@@ -1,0 +1,28 @@
+direct-chrome-baseline {"n":10,"median_ms":498,"p95_ms":4878,"max_ms":4878,"under_1500":9}
+direct-chrome-optimized {"n":10,"median_ms":490,"p95_ms":648,"max_ms":648,"under_1500":10}
+direct-shell-optimized {"n":10,"median_ms":165,"p95_ms":6116,"max_ms":6116,"under_1500":9}
+direct-lightpanda-optimized {"n":10,"median_ms":35,"p95_ms":224,"max_ms":224,"under_1500":10}
+{"name":"cli-chrome","trial":1,"open_ms":4353.877542000002,"ready_ms":4388.845417,"form":true,"screenshot":true,"warm_snapshot_ms":7.7245420000035665}
+{"name":"cli-chrome","trial":2,"open_ms":3887.5942920000016,"ready_ms":3898.9295839999977}
+{"name":"cli-chrome","trial":3,"open_ms":3964.461292,"ready_ms":3986.072082999999}
+{"name":"cli-chrome","trial":4,"open_ms":3737.4925000000003,"ready_ms":3749.2227920000005}
+{"name":"cli-chrome","trial":5,"open_ms":3928.8429999999935,"ready_ms":3942.5805409999957}
+{"name":"cli-chrome","trial":6,"open_ms":3938.267,"ready_ms":3948.7652499999967}
+{"name":"cli-chrome","trial":7,"open_ms":3804.204417000001,"ready_ms":3817.7585830000025}
+{"name":"cli-chrome","trial":8,"open_ms":3789.1768750000047,"ready_ms":3803.355625000004}
+{"name":"cli-chrome","trial":9,"open_ms":3939.0909580000007,"ready_ms":3948.719542000006}
+{"name":"cli-chrome","trial":10,"open_ms":3806.582832999993,"ready_ms":3829.3285000000033}
+cli-chrome {"n":10,"median_ms":3921,"p95_ms":4389,"max_ms":4389,"under_1500":0}
+{"name":"cli-shell","trial":1,"open_ms":3633.322291999997,"ready_ms":3681.2395419999957,"form":true,"screenshot":true,"warm_snapshot_ms":7.260041999994428}
+{"name":"cli-shell","trial":2,"open_ms":3309.663124999992,"ready_ms":3319.205667000002}
+{"name":"cli-shell","trial":3,"open_ms":3374.520374999993,"ready_ms":3388.031999999992}
+{"name":"cli-shell","trial":4,"open_ms":3345.45541699999,"ready_ms":3367.7166670000006}
+{"name":"cli-shell","trial":5,"open_ms":3443.2155829999974,"ready_ms":3467.632666999998}
+{"name":"cli-shell","trial":6,"open_ms":3316.0865829999966,"ready_ms":3331.2004580000066}
+{"name":"cli-shell","trial":7,"open_ms":3314.9138749999984,"ready_ms":3340.076457999996}
+{"name":"cli-shell","trial":8,"open_ms":3303.2564580000035,"ready_ms":3326.925083000009}
+{"name":"cli-shell","trial":9,"open_ms":3373.2453749999986,"ready_ms":3397.163207999998}
+{"name":"cli-shell","trial":10,"open_ms":3317.1568750000006,"ready_ms":3339.469624999998}
+cli-shell {"n":10,"median_ms":3354,"p95_ms":3681,"max_ms":3681,"under_1500":0}
+{"name":"cli-lightpanda","trial":1,"open_ms":3288.9092079999973,"ready_ms":3301.698915999994,"error":"✗ Cannot confirm which element would receive a click at (72, 30), so the click on '@e3' was refused: CDP error (DOM.getNodeForLocation): 'DOM.getNodeForLocation' wasn't found\n"}
+cli-lightpanda {"n":1,"median_ms":3302,"p95_ms":3302,"max_ms":3302,"under_1500":0}

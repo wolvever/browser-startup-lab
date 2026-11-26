@@ -1,0 +1,28 @@
+name: Cross-platform browser benchmark
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  benchmark:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-22.04, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm run setup
+      # No browser warmup: the first trial retains any first-use cost.
+      - run: node benchmark.mjs --mode all --engine shell --rounds 10 --fast --label ci-process-cold
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: browser-benchmark-${{ matrix.os }}
+          path: results/runs/

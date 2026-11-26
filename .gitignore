@@ -1,0 +1,8 @@
+node_modules/
+browsers/
+bin/lightpanda
+bin/lightpanda.exe
+profile-*/
+installation.json
+results/runs/
+.DS_Store

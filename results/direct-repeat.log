@@ -1,0 +1,4 @@
+direct-chrome-baseline {"n":10,"median_ms":539,"p95_ms":715,"max_ms":715,"under_1500":10}
+direct-chrome-optimized {"n":10,"median_ms":486,"p95_ms":671,"max_ms":671,"under_1500":10}
+direct-shell-optimized {"n":10,"median_ms":160,"p95_ms":425,"max_ms":425,"under_1500":10}
+direct-lightpanda-optimized {"n":10,"median_ms":33,"p95_ms":135,"max_ms":135,"under_1500":10}

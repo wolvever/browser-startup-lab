@@ -1,0 +1,19 @@
+{
+  "name": "browser-startup-lab",
+  "version": "1.0.0",
+  "description": "Isolated browser startup benchmarks and agent-browser launcher",
+  "scripts": {
+    "setup": "node setup.mjs",
+    "benchmark": "node benchmark.mjs",
+    "agent": "node agent.mjs"
+  },
+  "dependencies": {
+    "@puppeteer/browsers": "3.3.0",
+    "agent-browser": "0.45.0",
+    "puppeteer-core": "25.19.0"
+  },
+  "private": true,
+  "engines": {
+    "node": ">=22.12.0"
+  }
+}

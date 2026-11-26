@@ -1,0 +1,247 @@
+{
+  "date": "2026-11-26T16:05:47.066Z",
+  "platform": "darwin",
+  "arch": "arm64",
+  "osRelease": "25.5.0",
+  "cpu": "Apple M1",
+  "cores": 8,
+  "memoryGB": 16,
+  "node": "v22.22.2",
+  "options": {
+    "mode": "all",
+    "engine": "shell",
+    "rounds": "10",
+    "fast": true,
+    "label": "process-cold"
+  },
+  "methodology": {
+    "startup": "new browser process and, for CLI, unique daemon/session per trial",
+    "diskCache": "uncontrolled; no cache purge",
+    "rebootCold": "not established by this benchmark",
+    "readiness": "direct: local page load and JS evaluation; CLI: local page load and interactive snapshot",
+    "advisoryEnabled": false
+  },
+  "dependencies": {
+    "@puppeteer/browsers": "3.3.0",
+    "agent-browser": "0.45.0",
+    "puppeteer-core": "25.19.0"
+  },
+  "installation": {
+    "date": "2026-11-26T16:05:39.867Z",
+    "platform": "darwin",
+    "arch": "arm64",
+    "chromeVersion": "158.0.8127.88"
+  },
+  "rounds": 10,
+  "summary": {
+    "direct-shell-optimized": {
+      "n": 10,
+      "median_ms": 193,
+      "p95_ms": 753,
+      "max_ms": 753,
+      "under_1500": 10
+    },
+    "cli-shell": {
+      "n": 10,
+      "median_ms": 328,
+      "p95_ms": 383,
+      "max_ms": 383,
+      "under_1500": 10
+    }
+  },
+  "records": [
+    {
+      "name": "direct-shell-optimized",
+      "trial": 1,
+      "cold_start": true,
+      "browser_pid": 73769,
+      "profile": "fresh-directory",
+      "ready_ms": 752.758208,
+      "form": true
+    },
+    {
+      "name": "direct-shell-optimized",
+      "trial": 2,
+      "cold_start": true,
+      "browser_pid": 73821,
+      "profile": "fresh-directory",
+      "ready_ms": 163.42841699999997,
+      "form": true
+    },
+    {
+      "name": "direct-shell-optimized",
+      "trial": 3,
+      "cold_start": true,
+      "browser_pid": 73831,
+      "profile": "fresh-directory",
+      "ready_ms": 173.42433299999993,
+      "form": true
+    },
+    {
+      "name": "direct-shell-optimized",
+      "trial": 4,
+      "cold_start": true,
+      "browser_pid": 73839,
+      "profile": "fresh-directory",
+      "ready_ms": 186.88700000000017,
+      "form": true
+    },
+    {
+      "name": "direct-shell-optimized",
+      "trial": 5,
+      "cold_start": true,
+      "browser_pid": 73848,
+      "profile": "fresh-directory",
+      "ready_ms": 202.38858300000015,
+      "form": true
+    },
+    {
+      "name": "direct-shell-optimized",
+      "trial": 6,
+      "cold_start": true,
+      "browser_pid": 73878,
+      "profile": "fresh-directory",
+      "ready_ms": 218.95487500000013,
+      "form": true
+    },
+    {
+      "name": "direct-shell-optimized",
+      "trial": 7,
+      "cold_start": true,
+      "browser_pid": 73887,
+      "profile": "fresh-directory",
+      "ready_ms": 243.1999579999997,
+      "form": true
+    },
+    {
+      "name": "direct-shell-optimized",
+      "trial": 8,
+      "cold_start": true,
+      "browser_pid": 73893,
+      "profile": "fresh-directory",
+      "ready_ms": 198.5935840000002,
+      "form": true
+    },
+    {
+      "name": "direct-shell-optimized",
+      "trial": 9,
+      "cold_start": true,
+      "browser_pid": 73937,
+      "profile": "fresh-directory",
+      "ready_ms": 163.2182499999999,
+      "form": true
+    },
+    {
+      "name": "direct-shell-optimized",
+      "trial": 10,
+      "cold_start": true,
+      "browser_pid": 73954,
+      "profile": "fresh-directory",
+      "ready_ms": 166.63587499999994,
+      "form": true
+    },
+    {
+      "name": "cli-shell",
+      "trial": 1,
+      "cold_start": true,
+      "session": "bench-20261126T160540041Z-73653-shell-1",
+      "profile": "new-daemon-temporary-profile",
+      "open_ms": 318.5927919999999,
+      "ready_ms": 329.30575,
+      "form": true,
+      "screenshot": true,
+      "warm_snapshot_ms": 12.452708999999686,
+      "closed": true
+    },
+    {
+      "name": "cli-shell",
+      "trial": 2,
+      "cold_start": true,
+      "session": "bench-20261126T160540041Z-73653-shell-2",
+      "profile": "new-daemon-temporary-profile",
+      "open_ms": 317.3307910000003,
+      "ready_ms": 327.10337500000014,
+      "closed": true
+    },
+    {
+      "name": "cli-shell",
+      "trial": 3,
+      "cold_start": true,
+      "session": "bench-20261126T160540041Z-73653-shell-3",
+      "profile": "new-daemon-temporary-profile",
+      "open_ms": 325.35179100000005,
+      "ready_ms": 335.07837500000005,
+      "closed": true
+    },
+    {
+      "name": "cli-shell",
+      "trial": 4,
+      "cold_start": true,
+      "session": "bench-20261126T160540041Z-73653-shell-4",
+      "profile": "new-daemon-temporary-profile",
+      "open_ms": 312.57187500000055,
+      "ready_ms": 324.2585830000007,
+      "closed": true
+    },
+    {
+      "name": "cli-shell",
+      "trial": 5,
+      "cold_start": true,
+      "session": "bench-20261126T160540041Z-73653-shell-5",
+      "profile": "new-daemon-temporary-profile",
+      "open_ms": 302.1285830000006,
+      "ready_ms": 311.5178329999999,
+      "closed": true
+    },
+    {
+      "name": "cli-shell",
+      "trial": 6,
+      "cold_start": true,
+      "session": "bench-20261126T160540041Z-73653-shell-6",
+      "profile": "new-daemon-temporary-profile",
+      "open_ms": 297.4601249999996,
+      "ready_ms": 305.6790000000001,
+      "closed": true
+    },
+    {
+      "name": "cli-shell",
+      "trial": 7,
+      "cold_start": true,
+      "session": "bench-20261126T160540041Z-73653-shell-7",
+      "profile": "new-daemon-temporary-profile",
+      "open_ms": 324.9056250000003,
+      "ready_ms": 338.44008399999984,
+      "closed": true
+    },
+    {
+      "name": "cli-shell",
+      "trial": 8,
+      "cold_start": true,
+      "session": "bench-20261126T160540041Z-73653-shell-8",
+      "profile": "new-daemon-temporary-profile",
+      "open_ms": 302.38158399999975,
+      "ready_ms": 311.6319590000003,
+      "closed": true
+    },
+    {
+      "name": "cli-shell",
+      "trial": 9,
+      "cold_start": true,
+      "session": "bench-20261126T160540041Z-73653-shell-9",
+      "profile": "new-daemon-temporary-profile",
+      "open_ms": 372.9052500000007,
+      "ready_ms": 383.3746660000006,
+      "closed": true
+    },
+    {
+      "name": "cli-shell",
+      "trial": 10,
+      "cold_start": true,
+      "session": "bench-20261126T160540041Z-73653-shell-10",
+      "profile": "new-daemon-temporary-profile",
+      "open_ms": 325.24825000000055,
+      "ready_ms": 335.6927080000005,
+      "closed": true
+    }
+  ]
+}

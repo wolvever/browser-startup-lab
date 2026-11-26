@@ -1,0 +1,74 @@
+{
+  "date": "2026-11-26T09:49:39.230Z",
+  "platform": "darwin",
+  "arch": "arm64",
+  "chrome": "/Users/jucheng/work/browser-startup-lab/browsers/chrome/mac_arm-158.0.8127.88/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing",
+  "shell": "/Users/jucheng/work/browser-startup-lab/browsers/chrome-headless-shell/mac_arm-158.0.8127.88/chrome-headless-shell-mac-arm64/chrome-headless-shell",
+  "rounds": 10,
+  "records": [
+    {
+      "name": "cli-lightpanda",
+      "trial": 1,
+      "open_ms": 317.46466599999997,
+      "ready_ms": 329.43199999999996,
+      "form": false,
+      "form_error": "✗ Cannot confirm which element would receive a click at (72, 30), so the click on '@e3' was refused: CDP error (DOM.getNodeForLocation): 'DOM.getNodeForLocation' wasn't found\n",
+      "screenshot": true,
+      "warm_snapshot_ms": 5.929500000000019
+    },
+    {
+      "name": "cli-lightpanda",
+      "trial": 2,
+      "open_ms": 233.95520799999997,
+      "ready_ms": 244.42145800000003
+    },
+    {
+      "name": "cli-lightpanda",
+      "trial": 3,
+      "open_ms": 236.66483300000004,
+      "ready_ms": 248.2785419999999
+    },
+    {
+      "name": "cli-lightpanda",
+      "trial": 4,
+      "open_ms": 244.58679199999983,
+      "ready_ms": 255.82208300000002
+    },
+    {
+      "name": "cli-lightpanda",
+      "trial": 5,
+      "open_ms": 237.97616700000003,
+      "ready_ms": 250.47500000000014
+    },
+    {
+      "name": "cli-lightpanda",
+      "trial": 6,
+      "open_ms": 244.36112500000013,
+      "ready_ms": 257.8608750000001
+    },
+    {
+      "name": "cli-lightpanda",
+      "trial": 7,
+      "open_ms": 242.32191699999998,
+      "ready_ms": 256.52262499999983
+    },
+    {
+      "name": "cli-lightpanda",
+      "trial": 8,
+      "open_ms": 245.4002089999999,
+      "ready_ms": 258.50641700000006
+    },
+    {
+      "name": "cli-lightpanda",
+      "trial": 9,
+      "open_ms": 246.82066699999996,
+      "ready_ms": 260.3324590000002
+    },
+    {
+      "name": "cli-lightpanda",
+      "trial": 10,
+      "open_ms": 242.4781250000001,
+      "ready_ms": 252.93274999999994
+    }
+  ]
+}

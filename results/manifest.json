@@ -1,0 +1,15 @@
+{
+  "testedAt": "2026-11-26T09:50:23.599Z",
+  "os": "25.5.0",
+  "cpu": "Apple M1",
+  "cores": 8,
+  "memoryGB": 16,
+  "chrome": "158.0.8127.88",
+  "lightpanda": "1.1.0-nightly.12455+06b13205b",
+  "lightpandaSHA256": "48724345e00c3a02bdde370d60ce5933d93888d13aedaca8eb6406fe35f1d60d",
+  "dependencies": {
+    "@puppeteer/browsers": "3.3.0",
+    "agent-browser": "0.45.0",
+    "puppeteer-core": "25.19.0"
+  }
+}

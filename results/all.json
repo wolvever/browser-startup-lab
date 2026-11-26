@@ -1,0 +1,383 @@
+{
+  "date": "2026-11-26T09:48:51.310Z",
+  "platform": "darwin",
+  "arch": "arm64",
+  "chrome": "/Users/jucheng/work/browser-startup-lab/browsers/chrome/mac_arm-158.0.8127.88/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing",
+  "shell": "/Users/jucheng/work/browser-startup-lab/browsers/chrome-headless-shell/mac_arm-158.0.8127.88/chrome-headless-shell-mac-arm64/chrome-headless-shell",
+  "rounds": 10,
+  "records": [
+    {
+      "name": "direct-chrome-baseline",
+      "trial": 1,
+      "ready_ms": 4877.970959,
+      "form": true
+    },
+    {
+      "name": "direct-chrome-baseline",
+      "trial": 2,
+      "ready_ms": 473.9924580000006,
+      "form": true
+    },
+    {
+      "name": "direct-chrome-baseline",
+      "trial": 3,
+      "ready_ms": 555.746083,
+      "form": true
+    },
+    {
+      "name": "direct-chrome-baseline",
+      "trial": 4,
+      "ready_ms": 482.4652500000002,
+      "form": true
+    },
+    {
+      "name": "direct-chrome-baseline",
+      "trial": 5,
+      "ready_ms": 564.2522909999989,
+      "form": true
+    },
+    {
+      "name": "direct-chrome-baseline",
+      "trial": 6,
+      "ready_ms": 493.38395800000035,
+      "form": true
+    },
+    {
+      "name": "direct-chrome-baseline",
+      "trial": 7,
+      "ready_ms": 510.2268750000003,
+      "form": true
+    },
+    {
+      "name": "direct-chrome-baseline",
+      "trial": 8,
+      "ready_ms": 498.5724590000009,
+      "form": true
+    },
+    {
+      "name": "direct-chrome-baseline",
+      "trial": 9,
+      "ready_ms": 470.65620899999885,
+      "form": true
+    },
+    {
+      "name": "direct-chrome-baseline",
+      "trial": 10,
+      "ready_ms": 496.98404200000004,
+      "form": true
+    },
+    {
+      "name": "direct-chrome-optimized",
+      "trial": 1,
+      "ready_ms": 648.4420420000006,
+      "form": true
+    },
+    {
+      "name": "direct-chrome-optimized",
+      "trial": 2,
+      "ready_ms": 521.6762909999998,
+      "form": true
+    },
+    {
+      "name": "direct-chrome-optimized",
+      "trial": 3,
+      "ready_ms": 557.4042500000014,
+      "form": true
+    },
+    {
+      "name": "direct-chrome-optimized",
+      "trial": 4,
+      "ready_ms": 489.07437500000015,
+      "form": true
+    },
+    {
+      "name": "direct-chrome-optimized",
+      "trial": 5,
+      "ready_ms": 488.7555830000001,
+      "form": true
+    },
+    {
+      "name": "direct-chrome-optimized",
+      "trial": 6,
+      "ready_ms": 491.43624999999884,
+      "form": true
+    },
+    {
+      "name": "direct-chrome-optimized",
+      "trial": 7,
+      "ready_ms": 481.2472080000007,
+      "form": true
+    },
+    {
+      "name": "direct-chrome-optimized",
+      "trial": 8,
+      "ready_ms": 479.33795799999825,
+      "form": true
+    },
+    {
+      "name": "direct-chrome-optimized",
+      "trial": 9,
+      "ready_ms": 464.7925830000022,
+      "form": true
+    },
+    {
+      "name": "direct-chrome-optimized",
+      "trial": 10,
+      "ready_ms": 531.6337500000009,
+      "form": true
+    },
+    {
+      "name": "direct-shell-optimized",
+      "trial": 1,
+      "ready_ms": 6116.064040999998,
+      "form": true
+    },
+    {
+      "name": "direct-shell-optimized",
+      "trial": 2,
+      "ready_ms": 151.6665839999987,
+      "form": true
+    },
+    {
+      "name": "direct-shell-optimized",
+      "trial": 3,
+      "ready_ms": 165.26175000000148,
+      "form": true
+    },
+    {
+      "name": "direct-shell-optimized",
+      "trial": 4,
+      "ready_ms": 164.760459000001,
+      "form": true
+    },
+    {
+      "name": "direct-shell-optimized",
+      "trial": 5,
+      "ready_ms": 162.17691600000035,
+      "form": true
+    },
+    {
+      "name": "direct-shell-optimized",
+      "trial": 6,
+      "ready_ms": 171.1934160000019,
+      "form": true
+    },
+    {
+      "name": "direct-shell-optimized",
+      "trial": 7,
+      "ready_ms": 165.24508399999831,
+      "form": true
+    },
+    {
+      "name": "direct-shell-optimized",
+      "trial": 8,
+      "ready_ms": 179.27966700000252,
+      "form": true
+    },
+    {
+      "name": "direct-shell-optimized",
+      "trial": 9,
+      "ready_ms": 167.01333299999897,
+      "form": true
+    },
+    {
+      "name": "direct-shell-optimized",
+      "trial": 10,
+      "ready_ms": 165.6899999999987,
+      "form": true
+    },
+    {
+      "name": "direct-lightpanda-optimized",
+      "trial": 1,
+      "ready_ms": 224.1805000000022,
+      "form": true
+    },
+    {
+      "name": "direct-lightpanda-optimized",
+      "trial": 2,
+      "ready_ms": 35.125167000001966,
+      "form": true
+    },
+    {
+      "name": "direct-lightpanda-optimized",
+      "trial": 3,
+      "ready_ms": 35.280541999996785,
+      "form": true
+    },
+    {
+      "name": "direct-lightpanda-optimized",
+      "trial": 4,
+      "ready_ms": 35.3574170000029,
+      "form": true
+    },
+    {
+      "name": "direct-lightpanda-optimized",
+      "trial": 5,
+      "ready_ms": 35.60883300000205,
+      "form": true
+    },
+    {
+      "name": "direct-lightpanda-optimized",
+      "trial": 6,
+      "ready_ms": 34.976542000000336,
+      "form": true
+    },
+    {
+      "name": "direct-lightpanda-optimized",
+      "trial": 7,
+      "ready_ms": 34.25062500000058,
+      "form": true
+    },
+    {
+      "name": "direct-lightpanda-optimized",
+      "trial": 8,
+      "ready_ms": 34.93500000000131,
+      "form": true
+    },
+    {
+      "name": "direct-lightpanda-optimized",
+      "trial": 9,
+      "ready_ms": 35.221832999999606,
+      "form": true
+    },
+    {
+      "name": "direct-lightpanda-optimized",
+      "trial": 10,
+      "ready_ms": 34.91312499999913,
+      "form": true
+    },
+    {
+      "name": "cli-chrome",
+      "trial": 1,
+      "open_ms": 4353.877542000002,
+      "ready_ms": 4388.845417,
+      "form": true,
+      "screenshot": true,
+      "warm_snapshot_ms": 7.7245420000035665
+    },
+    {
+      "name": "cli-chrome",
+      "trial": 2,
+      "open_ms": 3887.5942920000016,
+      "ready_ms": 3898.9295839999977
+    },
+    {
+      "name": "cli-chrome",
+      "trial": 3,
+      "open_ms": 3964.461292,
+      "ready_ms": 3986.072082999999
+    },
+    {
+      "name": "cli-chrome",
+      "trial": 4,
+      "open_ms": 3737.4925000000003,
+      "ready_ms": 3749.2227920000005
+    },
+    {
+      "name": "cli-chrome",
+      "trial": 5,
+      "open_ms": 3928.8429999999935,
+      "ready_ms": 3942.5805409999957
+    },
+    {
+      "name": "cli-chrome",
+      "trial": 6,
+      "open_ms": 3938.267,
+      "ready_ms": 3948.7652499999967
+    },
+    {
+      "name": "cli-chrome",
+      "trial": 7,
+      "open_ms": 3804.204417000001,
+      "ready_ms": 3817.7585830000025
+    },
+    {
+      "name": "cli-chrome",
+      "trial": 8,
+      "open_ms": 3789.1768750000047,
+      "ready_ms": 3803.355625000004
+    },
+    {
+      "name": "cli-chrome",
+      "trial": 9,
+      "open_ms": 3939.0909580000007,
+      "ready_ms": 3948.719542000006
+    },
+    {
+      "name": "cli-chrome",
+      "trial": 10,
+      "open_ms": 3806.582832999993,
+      "ready_ms": 3829.3285000000033
+    },
+    {
+      "name": "cli-shell",
+      "trial": 1,
+      "open_ms": 3633.322291999997,
+      "ready_ms": 3681.2395419999957,
+      "form": true,
+      "screenshot": true,
+      "warm_snapshot_ms": 7.260041999994428
+    },
+    {
+      "name": "cli-shell",
+      "trial": 2,
+      "open_ms": 3309.663124999992,
+      "ready_ms": 3319.205667000002
+    },
+    {
+      "name": "cli-shell",
+      "trial": 3,
+      "open_ms": 3374.520374999993,
+      "ready_ms": 3388.031999999992
+    },
+    {
+      "name": "cli-shell",
+      "trial": 4,
+      "open_ms": 3345.45541699999,
+      "ready_ms": 3367.7166670000006
+    },
+    {
+      "name": "cli-shell",
+      "trial": 5,
+      "open_ms": 3443.2155829999974,
+      "ready_ms": 3467.632666999998
+    },
+    {
+      "name": "cli-shell",
+      "trial": 6,
+      "open_ms": 3316.0865829999966,
+      "ready_ms": 3331.2004580000066
+    },
+    {
+      "name": "cli-shell",
+      "trial": 7,
+      "open_ms": 3314.9138749999984,
+      "ready_ms": 3340.076457999996
+    },
+    {
+      "name": "cli-shell",
+      "trial": 8,
+      "open_ms": 3303.2564580000035,
+      "ready_ms": 3326.925083000009
+    },
+    {
+      "name": "cli-shell",
+      "trial": 9,
+      "open_ms": 3373.2453749999986,
+      "ready_ms": 3397.163207999998
+    },
+    {
+      "name": "cli-shell",
+      "trial": 10,
+      "open_ms": 3317.1568750000006,
+      "ready_ms": 3339.469624999998
+    },
+    {
+      "name": "cli-lightpanda",
+      "trial": 1,
+      "open_ms": 3288.9092079999973,
+      "ready_ms": 3301.698915999994,
+      "error": "✗ Cannot confirm which element would receive a click at (72, 30), so the click on '@e3' was refused: CDP error (DOM.getNodeForLocation): 'DOM.getNodeForLocation' wasn't found\n"
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "date": "2026-11-26T16:07:41.672Z",
+  "platform": "darwin",
+  "arch": "arm64",
+  "osRelease": "25.5.0",
+  "cpu": "Apple M1",
+  "cores": 8,
+  "memoryGB": 16,
+  "node": "v22.22.2",
+  "options": {
+    "mode": "cli",
+    "engine": "chrome-tuned",
+    "rounds": "3",
+    "fast": true,
+    "label": "process-cold"
+  },
+  "methodology": {
+    "startup": "new browser process and, for CLI, unique daemon/session per trial",
+    "diskCache": "uncontrolled; no cache purge",
+    "rebootCold": "not established by this benchmark",
+    "readiness": "direct: local page load and JS evaluation; CLI: local page load and interactive snapshot",
+    "advisoryEnabled": false
+  },
+  "dependencies": {
+    "@puppeteer/browsers": "3.3.0",
+    "agent-browser": "0.45.0",
+    "puppeteer-core": "25.19.0"
+  },
+  "installation": {
+    "date": "2026-11-26T16:05:39.867Z",
+    "platform": "darwin",
+    "arch": "arm64",
+    "chromeVersion": "158.0.8127.88"
+  },
+  "rounds": 3,
+  "summary": {
+    "cli-chrome-tuned": {
+      "n": 3,
+      "median_ms": 909,
+      "p95_ms": 2786,
+      "max_ms": 2786,
+      "under_1500": 2
+    }
+  },
+  "records": [
+    {
+      "name": "cli-chrome-tuned",
+      "trial": 1,
+      "cold_start": true,
+      "session": "b-431c7bd3e15c4e8f-t-1",
+      "profile": "new-daemon-temporary-profile",
+      "open_ms": 2750.839542,
+      "ready_ms": 2786.071917,
+      "form": true,
+      "screenshot": true,
+      "warm_snapshot_ms": 11.25479200000018,
+      "closed": true
+    },
+    {
+      "name": "cli-chrome-tuned",
+      "trial": 2,
+      "cold_start": true,
+      "session": "b-431c7bd3e15c4e8f-t-2",
+      "profile": "new-daemon-temporary-profile",
+      "open_ms": 895.5283750000003,
+      "ready_ms": 909.3539580000001,
+      "closed": true
+    },
+    {
+      "name": "cli-chrome-tuned",
+      "trial": 3,
+      "cold_start": true,
+      "session": "b-431c7bd3e15c4e8f-t-3",
+      "profile": "new-daemon-temporary-profile",
+      "open_ms": 826.7928330000004,
+      "ready_ms": 840.279458,
+      "closed": true
+    }
+  ]
+}

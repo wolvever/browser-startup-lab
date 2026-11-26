@@ -1,0 +1,115 @@
+{
+  "date": "2026-11-26T16:07:44.993Z",
+  "platform": "darwin",
+  "arch": "arm64",
+  "osRelease": "25.5.0",
+  "cpu": "Apple M1",
+  "cores": 8,
+  "memoryGB": 16,
+  "node": "v22.22.2",
+  "options": {
+    "mode": "all",
+    "engine": "lightpanda",
+    "rounds": "3",
+    "fast": true,
+    "label": "process-cold"
+  },
+  "methodology": {
+    "startup": "new browser process and, for CLI, unique daemon/session per trial",
+    "diskCache": "uncontrolled; no cache purge",
+    "rebootCold": "not established by this benchmark",
+    "readiness": "direct: local page load and JS evaluation; CLI: local page load and interactive snapshot",
+    "advisoryEnabled": false
+  },
+  "dependencies": {
+    "@puppeteer/browsers": "3.3.0",
+    "agent-browser": "0.45.0",
+    "puppeteer-core": "25.19.0"
+  },
+  "installation": {
+    "date": "2026-11-26T16:05:39.867Z",
+    "platform": "darwin",
+    "arch": "arm64",
+    "chromeVersion": "158.0.8127.88"
+  },
+  "rounds": 3,
+  "summary": {
+    "direct-lightpanda-optimized": {
+      "n": 3,
+      "median_ms": 41,
+      "p95_ms": 153,
+      "max_ms": 153,
+      "under_1500": 3
+    },
+    "cli-lightpanda": {
+      "n": 3,
+      "median_ms": 256,
+      "p95_ms": 267,
+      "max_ms": 267,
+      "under_1500": 3
+    }
+  },
+  "records": [
+    {
+      "name": "direct-lightpanda-optimized",
+      "trial": 1,
+      "cold_start": true,
+      "browser_pid": 84960,
+      "profile": "new-process",
+      "ready_ms": 153.15949999999998,
+      "form": true
+    },
+    {
+      "name": "direct-lightpanda-optimized",
+      "trial": 2,
+      "cold_start": true,
+      "browser_pid": 84990,
+      "profile": "new-process",
+      "ready_ms": 39.115125000000035,
+      "form": true
+    },
+    {
+      "name": "direct-lightpanda-optimized",
+      "trial": 3,
+      "cold_start": true,
+      "browser_pid": 84996,
+      "profile": "new-process",
+      "ready_ms": 41.44779200000016,
+      "form": true
+    },
+    {
+      "name": "cli-lightpanda",
+      "trial": 1,
+      "cold_start": true,
+      "session": "b-8c35cf54f7f44c17-l-1",
+      "profile": "new-daemon-temporary-profile",
+      "open_ms": 256.77312500000016,
+      "ready_ms": 267.1878750000001,
+      "form": false,
+      "form_error": "✗ Cannot confirm which element would receive a click at (72, 30), so the click on '@e3' was refused: CDP error (DOM.getNodeForLocation): 'DOM.getNodeForLocation' wasn't found\n",
+      "screenshot": true,
+      "warm_snapshot_ms": 10.372041999999965,
+      "closed": true
+    },
+    {
+      "name": "cli-lightpanda",
+      "trial": 2,
+      "cold_start": true,
+      "session": "b-8c35cf54f7f44c17-l-2",
+      "profile": "new-daemon-temporary-profile",
+      "open_ms": 235.87129200000027,
+      "ready_ms": 245.30883399999993,
+      "closed": true
+    },
+    {
+      "name": "cli-lightpanda",
+      "trial": 3,
+      "cold_start": true,
+      "session": "b-8c35cf54f7f44c17-l-3",
+      "profile": "new-daemon-temporary-profile",
+      "open_ms": 246.24924999999985,
+      "ready_ms": 255.94287499999973,
+      "closed": true
+    }
+  ]
+}

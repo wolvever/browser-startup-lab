@@ -6,8 +6,10 @@ import {mkdir, writeFile} from 'node:fs/promises';
 import {once} from 'node:events';
 import {resolve} from 'node:path';
 import {randomUUID} from 'node:crypto';
+import {parseArgs} from 'node:util';
 import os from 'node:os';
 import {root, browserPath, cliPath} from './runtime.mjs';
+import {startKitesurf} from './kitesurf.mjs';
 
 const exec = promisify(execFile);
 const duties1 = 'Lead the kelp heatwave surveys, supervise two technicians, and publish the annual genotype panel.';
@@ -196,9 +198,19 @@ function same(actual, wanted) {
 }
 
 async function fillWith(engine) {
-  const executable = await browserPath(engine);
   const session = `form-${stamp}-${engine}`;
-  const base = ['--config', config, '--namespace', 'startup-lab-form', '--session', session, '--engine', engine === 'lightpanda' ? 'lightpanda' : 'chrome', '--executable-path', executable];
+  let base;
+  let kitesurfWs = null;
+  let stopEngine = async () => {};
+  if (engine === 'kitesurf') {
+    const kite = await startKitesurf(`lab-form-${process.pid}`);
+    stopEngine = kite.stop;
+    base = ['--config', config, '--namespace', 'startup-lab-form', '--session', session];
+    kitesurfWs = kite.ws;
+  } else {
+    const executable = await browserPath(engine);
+    base = ['--config', config, '--namespace', 'startup-lab-form', '--session', session, '--engine', engine === 'lightpanda' ? 'lightpanda' : 'chrome', '--executable-path', executable];
+  }
   const snapshots = new Map();
   const attempts = [];
   const started = performance.now();
@@ -207,6 +219,7 @@ async function fillWith(engine) {
   let dump = null;
   let pageHeight = null;
   try {
+    if (kitesurfWs) await run(base, ['connect', kitesurfWs]);
     await run(base, ['open', url]);
     await run(base, ['set', 'viewport', '1280', '900']);
     await run(base, ['wait', '--fn', "[...document.querySelectorAll('#citizenship option')].some(option => option.value === 'Canada')"]);
@@ -259,6 +272,7 @@ async function fillWith(engine) {
     await run(base, ['screenshot', resolve(outputDir, `${engine}-after.png`)]);
   } finally {
     try { await run(base, ['close']); } catch { /* session may already be closed */ }
+    await stopEngine();
   }
   const fields = Object.keys(expected).sort();
   const mismatches = fields.filter(field => !same(dump?.[field], expected[field])).map(field => ({field, expected: expected[field], actual: dump?.[field] ?? null}));
@@ -278,11 +292,15 @@ async function fillWith(engine) {
   };
 }
 
+const engines = parseArgs({options: {engine: {type: 'string', default: 'shell,lightpanda'}}}).values.engine.split(',').filter(Boolean);
+if (engines.some(engine => !['shell', 'lightpanda', 'kitesurf'].includes(engine))) {
+  throw Error('Usage: node fill-form.mjs [--engine shell,lightpanda,kitesurf]');
+}
 console.log(`Form: ${url}`);
 console.log(`Results: ${outputDir}`);
 const reports = [];
 try {
-  for (const engine of ['shell', 'lightpanda']) reports.push(await fillWith(engine));
+  for (const engine of engines) reports.push(await fillWith(engine));
 } finally {
   server.close();
   const summary = Object.fromEntries(reports.map(report => [report.engine, {

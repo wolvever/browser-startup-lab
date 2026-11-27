@@ -92,6 +92,17 @@ Success is `#success` visible and not hidden. The heading alone is not a receipt
 
 Copy `results.json`, the Shell receipt screenshot, the top-of-form screenshot, and the Lightpanda after-submit screenshot into `results/validation/<os>-<arch>-long-form/`.
 
+## Kitesurf, as an extra engine
+
+Kitesurf is Apache-2.0 and lives at `https://github.com/cloudflare/kitesurf`. It is not an `--engine` value. A trial starts `ghcr.io/cloudflare/kitesurf` with host networking, waits for `http://127.0.0.1:8787/health`, and attaches agent-browser with `connect ws://127.0.0.1:8787/devtools/browser`. Direct trials use that same WebSocket. The local process is workerd, which Cloudflare does not treat as a hardened sandbox, so open only this lab's fixture.
+
+```sh
+node compare.mjs --rounds 10 --paths direct-kitesurf,cli-kitesurf --label kitesurf
+node fill-form.mjs --engine kitesurf
+```
+
+Score it with the same click, screenshot, and 121-answer rules. Keep it out of the Shell versus Lightpanda winner gate. Cold time includes starting a new container. Report RSS when workerd hides its proportional set size.
+
 ## Publish
 
 Update `README.md` with the machine, the Asia/Shanghai timestamp, the table, and the winner. State action failures and the error text. Commit the validation copies and this prompt. `results/runs/` stays gitignored.

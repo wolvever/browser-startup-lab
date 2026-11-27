@@ -9,7 +9,8 @@ import {randomUUID} from 'node:crypto';
 import {parseArgs} from 'node:util';
 import os from 'node:os';
 import {root, browserPath, cliPath, pandaPath, installationMetadata} from './runtime.mjs';
-import {summarize, listPids, memoryOfNewPids, analyzePng, refsFromSnapshot} from './metrics.mjs';
+import {summarize, listPids, memoryOfNewPids, analyzePng, refsFromSnapshot, round1} from './metrics.mjs';
+import {imageIdentity, startKitesurf} from './kitesurf.mjs';
 
 const exec = promisify(execFile);
 const {values: options} = parseArgs({options: {
@@ -20,8 +21,10 @@ const {values: options} = parseArgs({options: {
 const rounds = Number(options.rounds);
 const paths = options.paths.split(',').filter(Boolean);
 if (!Number.isInteger(rounds) || rounds < 1 || !/^[a-z0-9-]+$/.test(options.label)) {
-  throw Error('Usage: node compare.mjs [--rounds N] [--paths cli-shell,cli-lightpanda,direct-shell,direct-lightpanda] [--label name]');
+  throw Error('Usage: node compare.mjs [--rounds N] [--paths cli-shell,cli-lightpanda,direct-shell,direct-lightpanda,cli-kitesurf,direct-kitesurf] [--label name]');
 }
+const allowed = new Set(['cli-shell', 'cli-lightpanda', 'direct-shell', 'direct-lightpanda', 'cli-kitesurf', 'direct-kitesurf']);
+if (paths.some(pathName => !allowed.has(pathName))) throw Error(`Unknown path. Expected ${[...allowed].join(', ')}`);
 
 const html = `<!doctype html><title>Agent benchmark</title><style>body{margin:0;background:#123;color:white;font:20px sans-serif}canvas{border:3px solid red}</style>
 <h1>Agent benchmark</h1><label>Name<input id="name"></label><button id="submit">Submit</button><p id="result">Waiting</p><canvas id="canvas" width="100" height="60"></canvas>
@@ -122,7 +125,106 @@ try {
       const row = {name: pathName, trial: i + 1, cold_start: true};
       const before = listPids();
       try {
-        if (pathName.startsWith('cli-')) {
+        if (pathName.endsWith('kitesurf')) {
+          const kiteName = `lab-kite-${process.pid}-${i + 1}`;
+          const session = `${sessionPrefix}-k-${i + 1}`;
+          const base = ['--config', config, '--namespace', 'startup-lab-compare', '--session', session];
+          const fullStart = performance.now();
+          const kite = await startKitesurf(kiteName);
+          row.engine_start_ms = round1(kite.start_ms);
+          row.session = session;
+          let browser;
+          try {
+            if (pathName === 'cli-kitesurf') {
+              await runCli(base, ['connect', kite.ws]);
+              await runCli(base, ['open', url]);
+              const snap = await runCli(base, ['snapshot', '-i']);
+              row.ready_ms = performance.now() - fullStart;
+              if (!snap.stdout.includes('Submit')) throw Error('snapshot missing Submit');
+              samples.cold.push(row.ready_ms);
+              await new Promise(r => setTimeout(r, 80));
+              row.memory = memoryOfNewPids(before);
+              if (row.memory.pss_coverage < 1) row.memory.pss_kb = null;
+              if (row.memory.rss_kb) samples.rss.push(row.memory.rss_kb);
+              if (row.memory.pss_kb) samples.pss.push(row.memory.pss_kb);
+              const warm = [];
+              for (let n = 0; n < 5; n++) {
+                const w = performance.now();
+                await runCli(base, ['snapshot', '-i']);
+                warm.push(performance.now() - w);
+              }
+              row.warm_snapshot_ms = warm;
+              row.warm_median_ms = summarize(warm).median;
+              if (row.warm_median_ms !== undefined) samples.warm.push(row.warm_median_ms);
+              const {input, button} = refsFromSnapshot(snap.stdout);
+              const actionStart = performance.now();
+              try {
+                if (!input || !button) throw Error('missing input/button refs');
+                await runCli(base, ['fill', `@${input}`, 'Agent']);
+                await runCli(base, ['click', `@${button}`]);
+                const result = await runCli(base, ['get', 'text', '#result']);
+                row.form = result.stdout.includes('Hello Agent');
+                if (!row.form) row.form_error = result.stdout.trim();
+              } catch (error) {
+                row.form = false;
+                row.form_error = (error.stderr || error.message || String(error)).slice(0, 500);
+              }
+              row.action_ms = performance.now() - actionStart;
+              row.action_kind = 'snapshot-ref';
+              if (row.form) samples.action.push(row.action_ms);
+              const shot = resolve(outputDir, `${pathName}-trial${i + 1}.png`);
+              const shotStart = performance.now();
+              try {
+                await runCli(base, ['screenshot', shot]);
+                row.screenshot_ms = performance.now() - shotStart;
+                row.screenshot = analyzePng(shot);
+                samples.screenshot.push(row.screenshot_ms);
+              } catch (error) {
+                row.screenshot_ms = performance.now() - shotStart;
+                row.screenshot = {error: (error.stderr || error.message || String(error)).slice(0, 500)};
+              }
+              if (i === 0) await writeFile(resolve(outputDir, `${pathName}-snapshot.txt`), snap.stdout);
+            } else {
+              browser = await puppeteer.connect({browserWSEndpoint: kite.ws, protocolTimeout: 20000});
+              const page = await browser.newPage();
+              await page.setViewport({width: 1280, height: 900});
+              await page.goto(url, {waitUntil: 'load', timeout: 15000});
+              if (!await page.evaluate(() => window.ready)) throw Error('JS not ready');
+              row.ready_ms = performance.now() - fullStart;
+              samples.cold.push(row.ready_ms);
+              await new Promise(r => setTimeout(r, 80));
+              row.memory = memoryOfNewPids(before);
+              if (row.memory.pss_coverage < 1) row.memory.pss_kb = null;
+              if (row.memory.rss_kb) samples.rss.push(row.memory.rss_kb);
+              if (row.memory.pss_kb) samples.pss.push(row.memory.pss_kb);
+              const warm = await warmTree(page);
+              row.warm_mode = warm.mode;
+              row.warm_snapshot_ms = warm.samples;
+              row.warm_median_ms = summarize(warm.samples).median;
+              if (row.warm_median_ms !== undefined) samples.warm.push(row.warm_median_ms);
+              if (warm.error) row.warm_error = warm.error;
+              const actionStart = performance.now();
+              await page.evaluate(() => { document.querySelector('#name').value = 'Agent'; document.querySelector('#submit').click(); });
+              row.form = await page.$eval('#result', element => element.textContent) === 'Hello Agent';
+              row.action_ms = performance.now() - actionStart;
+              row.action_kind = 'dom-evaluate';
+              if (row.form) samples.action.push(row.action_ms);
+              const shot = resolve(outputDir, `${pathName}-trial${i + 1}.png`);
+              const shotStart = performance.now();
+              await page.screenshot({path: shot, type: 'png'});
+              row.screenshot_ms = performance.now() - shotStart;
+              row.screenshot = analyzePng(shot);
+              samples.screenshot.push(row.screenshot_ms);
+            }
+          } finally {
+            if (browser) await browser.disconnect().catch(() => {});
+            if (pathName === 'cli-kitesurf') {
+              try { await runCli(base, ['close']); row.closed = true; }
+              catch (error) { row.cleanup_error = (error.stderr || error.message || String(error)).slice(0, 400); }
+            }
+            await kite.stop();
+          }
+        } else if (pathName.startsWith('cli-')) {
           const engine = pathName.slice(4);
           const session = `${sessionPrefix}-${engine[0]}-${i + 1}`;
           const executable = await browserPath(engine);
@@ -275,9 +377,11 @@ try {
       screenshot: 'PNG must contain the fixture navy background, a red canvas border, and a black canvas fill.',
       diskCache: 'uncontrolled; the shell binary was smoke-launched once before this run',
       advisory: 'disabled',
+      kitesurf: 'cli-kitesurf and direct-kitesurf start a new container from ghcr.io/cloudflare/kitesurf for every trial, with host networking, and remove it afterwards. The timer includes container start, /health, and the same readiness check. agent-browser attaches with connect. The local engine runs page JavaScript in workerd, so this lab opens only its own fixture.',
     },
     dependencies,
     installation: await installationMetadata(),
+    kitesurf: paths.some(pathName => pathName.includes('kitesurf')) ? await imageIdentity() : undefined,
     summary,
     decision,
     records,
@@ -290,7 +394,7 @@ try {
 function decide(summary) {
   const agent = summary['cli-shell'];
   const panda = summary['cli-lightpanda'];
-  if (!agent || !panda) return {error: 'both CLI paths are required to decide the contest'};
+  if (!agent || !panda) return {contest: 'skipped', reason: 'The Shell versus Lightpanda decision needs both cli-shell and cli-lightpanda in the same run.'};
   const agentUsable = agent.form_pass > 0 && agent.form_fail === 0 && agent.screenshot_pass > 0 && agent.screenshot_fail === 0 && agent.launch_errors === 0;
   const pandaUsable = panda.form_pass > 0 && panda.form_fail === 0 && panda.screenshot_pass > 0 && panda.screenshot_fail === 0 && panda.launch_errors === 0;
   const categories = {

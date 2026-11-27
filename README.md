@@ -102,6 +102,27 @@ Lightpanda filled every text field, date, number, range, and select, including t
 node fill-form.mjs
 ```
 
+## Kitesurf
+
+[Kitesurf](https://github.com/cloudflare/kitesurf) is Cloudflare's experimental browser engine, Apache-2.0, open source since 13 November 2026. It parses HTML, runs page JavaScript, and paints screenshots without Chrome. Locally it is the Docker image `ghcr.io/cloudflare/kitesurf`, which listens on `http://127.0.0.1:8787` and accepts CDP at `ws://127.0.0.1:8787/devtools/browser`. agent-browser attaches with `connect`. Deploying the same engine to a Cloudflare account needs the Workers Paid plan, because each page is its own worker. The local runtime is workerd, and Cloudflare says it is not a hardened sandbox, so this lab opens only its own fixture.
+
+```sh
+docker run --rm --network host -e KITESURF_ALLOW_PRIVATE_NETWORK=1 ghcr.io/cloudflare/kitesurf
+node compare.mjs --rounds 10 --paths direct-kitesurf,cli-kitesurf --label kitesurf
+node fill-form.mjs --engine kitesurf
+```
+
+Measured on 2026-11-26 19:12 America/Los_Angeles on the same Linux x64 host. Each trial starts a new container and removes it afterwards. The cold time includes that start. `/health` arrived in about 560 ms, and the published cold time continues through the readiness check. Proportional set size was unreadable for the container's workerd process, so the memory figure is RSS.
+
+| Path | Cold median / max | Warm snapshot | RSS | Click | Screenshot |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| agent-browser `connect` + Kitesurf | 844 / 901 ms | 6.0 ms | 436 MiB | **10/10** | **10/10** |
+| Direct CDP + Kitesurf | 732 / 786 ms | 1.2 ms | 422 MiB | DOM 10/10 | **10/10** |
+
+The small fixture click is a snapshot ref fill and click. The screenshot has the navy page, the red canvas border, and the black canvas fill, and the result text reads `Hello Agent`.
+
+On the 121-answer residency form, Kitesurf stored 101 answers. Text, dates, numbers, the range, and selects, including the multi-select, matched. All 20 radios and checkboxes were refused: agent-browser's hit test said the control was covered, usually by its own label or by an empty box, so the click would land on that element instead. Submit was refused the same way, and the application was not stored. The page itself rendered: the signature reads Amelia Joan Okonkwo, the instructions box stayed checked, and the marketing box stayed empty. Evidence: [linux-x64-kitesurf](results/validation/linux-x64-kitesurf).
+
 ## Reproduce on another OS
 
 Requires **Node.js 22.12+** and npm. Commands below work in macOS/Linux shells and Windows PowerShell without Unix environment-variable syntax.
@@ -216,7 +237,8 @@ All values are rounded to milliseconds; the Windows direct path had 9/10 samples
 - `compare.mjs`: cold start, warm snapshot, memory, ref click, and screenshot fidelity for agent-browser and Lightpanda.
 - `optimize.mjs`: five-loop hillclimb on the agent-browser path.
 - `metrics.mjs`: shared summaries, process memory, and PNG fidelity check.
-- `fill-form.mjs`: fills the long residency application through agent-browser and Lightpanda.
+- `kitesurf.mjs`: starts and stops the Kitesurf Docker image for a trial.
+- `fill-form.mjs`: fills the long residency application through agent-browser, Lightpanda, and Kitesurf.
 - `fixture/residency-application.html`: the 13-section form.
 - `agent.mjs`: isolated interactive CLI wrapper.
 - `results/`: original evidence and selected portable-harness validations.

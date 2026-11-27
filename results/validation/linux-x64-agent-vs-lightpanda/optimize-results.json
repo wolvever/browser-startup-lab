@@ -1,0 +1,1163 @@
+{
+  "date": "2026-11-26T16:26:12.921Z",
+  "platform": "linux",
+  "arch": "x64",
+  "cpu": "Intel(R) Xeon(R) Processor",
+  "cores": 4,
+  "memoryGB": 15.628173828125,
+  "node": "v22.23.4",
+  "workload": "Five loops of open, interactive snapshot, ref fill, ref click, text read, and screenshot on a local fixture. Each configuration is repeated twice; reported totals are medians.",
+  "keep": "Keep a lever when every loop still passes the click and the screenshot fidelity check, and median total time drops at least 5%, or memory drops at least 10% or the first loop drops at least 8% without the total slowing more than 3%.",
+  "shellArgs": [
+    "--disable-extensions",
+    "--disable-component-extensions-with-background-pages",
+    "--disable-background-networking",
+    "--disable-component-update",
+    "--disable-default-apps",
+    "--disable-sync",
+    "--disable-translate",
+    "--no-first-run",
+    "--no-default-browser-check",
+    "--disable-hang-monitor",
+    "--disable-prompt-on-repost",
+    "--disable-domain-reliability",
+    "--disable-breakpad",
+    "--disable-client-side-phishing-detection",
+    "--metrics-recording-only",
+    "--mute-audio",
+    "--no-pings",
+    "--disable-gpu",
+    "--renderer-process-limit=1",
+    "--disable-features=Translate,MediaRouter,OptimizationHints,AudioServiceOutOfProcess,PaintHolding"
+  ],
+  "kept": [
+    "reuse-daemon",
+    "batch-tail"
+  ],
+  "final": {
+    "id": "2-batch-tail",
+    "config": {
+      "reuse": true,
+      "batch": true,
+      "noWebmcp": false,
+      "tuned": false,
+      "compact": false
+    },
+    "ok": true,
+    "total_ms": 766.3,
+    "first_ms": 286,
+    "pss_kb": 206915,
+    "repetitions": [
+      {
+        "rep": 1,
+        "error": null,
+        "form_pass": 5,
+        "screenshot_pass": 5,
+        "total_ms": 746.3,
+        "loops": [
+          {
+            "loop": 1,
+            "ms": 292.4,
+            "pss_kb": 203999,
+            "rss_kb": 470824,
+            "processes": 8,
+            "names": {
+              "agent-browser-l": 1,
+              "chrome-headless": 7
+            },
+            "screenshot_bytes": 16446
+          },
+          {
+            "loop": 2,
+            "ms": 98.6,
+            "pss_kb": 206291,
+            "rss_kb": 474560,
+            "processes": 8,
+            "names": {
+              "agent-browser-l": 1,
+              "chrome-headless": 7
+            },
+            "screenshot_bytes": 16446
+          },
+          {
+            "loop": 3,
+            "ms": 99.8,
+            "pss_kb": 207994,
+            "rss_kb": 476864,
+            "processes": 8,
+            "names": {
+              "agent-browser-l": 1,
+              "chrome-headless": 7
+            },
+            "screenshot_bytes": 16446
+          },
+          {
+            "loop": 4,
+            "ms": 100.5,
+            "pss_kb": 209666,
+            "rss_kb": 479064,
+            "processes": 8,
+            "names": {
+              "agent-browser-l": 1,
+              "chrome-headless": 7
+            },
+            "screenshot_bytes": 16446
+          },
+          {
+            "loop": 5,
+            "ms": 99.2,
+            "pss_kb": 211266,
+            "rss_kb": 481176,
+            "processes": 8,
+            "names": {
+              "agent-browser-l": 1,
+              "chrome-headless": 7
+            },
+            "screenshot_bytes": 16446
+          }
+        ],
+        "pss_kb": 207994,
+        "first_ms": 292.4
+      },
+      {
+        "rep": 2,
+        "error": null,
+        "form_pass": 5,
+        "screenshot_pass": 5,
+        "total_ms": 786.3,
+        "loops": [
+          {
+            "loop": 1,
+            "ms": 279.6,
+            "pss_kb": 201541,
+            "rss_kb": 472424,
+            "processes": 8,
+            "names": {
+              "agent-browser-l": 1,
+              "chrome-headless": 7
+            },
+            "screenshot_bytes": 16446
+          },
+          {
+            "loop": 2,
+            "ms": 115.6,
+            "pss_kb": 204213,
+            "rss_kb": 476328,
+            "processes": 8,
+            "names": {
+              "agent-browser-l": 1,
+              "chrome-headless": 7
+            },
+            "screenshot_bytes": 16446
+          },
+          {
+            "loop": 3,
+            "ms": 118.5,
+            "pss_kb": 205836,
+            "rss_kb": 478552,
+            "processes": 8,
+            "names": {
+              "agent-browser-l": 1,
+              "chrome-headless": 7
+            },
+            "screenshot_bytes": 16446
+          },
+          {
+            "loop": 4,
+            "ms": 113.2,
+            "pss_kb": 207345,
+            "rss_kb": 480660,
+            "processes": 8,
+            "names": {
+              "agent-browser-l": 1,
+              "chrome-headless": 7
+            },
+            "screenshot_bytes": 16446
+          },
+          {
+            "loop": 5,
+            "ms": 104.2,
+            "pss_kb": 209001,
+            "rss_kb": 483020,
+            "processes": 8,
+            "names": {
+              "agent-browser-l": 1,
+              "chrome-headless": 7
+            },
+            "screenshot_bytes": 16446
+          }
+        ],
+        "pss_kb": 205836,
+        "first_ms": 279.6
+      }
+    ]
+  },
+  "history": [
+    {
+      "step": 0,
+      "lever": "baseline",
+      "hypothesis": "Cold daemon per loop, separate CLI calls, default Shell launch.",
+      "accepted": true,
+      "reason": "starting point",
+      "total_ms": 1760.2,
+      "first_ms": 303.9,
+      "pss_kb": 203311.5,
+      "config": {
+        "reuse": false,
+        "batch": false,
+        "noWebmcp": false,
+        "tuned": false,
+        "compact": false
+      },
+      "repetitions": [
+        {
+          "rep": 1,
+          "error": null,
+          "form_pass": 5,
+          "screenshot_pass": 5,
+          "total_ms": 1772.8,
+          "loops": [
+            {
+              "loop": 1,
+              "ms": 317.2,
+              "pss_kb": 202890,
+              "rss_kb": 471744,
+              "processes": 8,
+              "names": {
+                "agent-browser-l": 1,
+                "chrome-headless": 7
+              },
+              "screenshot_bytes": 16446
+            },
+            {
+              "loop": 2,
+              "ms": 293.5,
+              "pss_kb": 203604,
+              "rss_kb": 472272,
+              "processes": 8,
+              "names": {
+                "agent-browser-l": 1,
+                "chrome-headless": 7
+              },
+              "screenshot_bytes": 16446
+            },
+            {
+              "loop": 3,
+              "ms": 295.2,
+              "pss_kb": 203727,
+              "rss_kb": 470864,
+              "processes": 8,
+              "names": {
+                "agent-browser-l": 1,
+                "chrome-headless": 7
+              },
+              "screenshot_bytes": 16446
+            },
+            {
+              "loop": 4,
+              "ms": 294.7,
+              "pss_kb": 202185,
+              "rss_kb": 471072,
+              "processes": 8,
+              "names": {
+                "agent-browser-l": 1,
+                "chrome-headless": 7
+              },
+              "screenshot_bytes": 16446
+            },
+            {
+              "loop": 5,
+              "ms": 293.9,
+              "pss_kb": 203166,
+              "rss_kb": 471244,
+              "processes": 8,
+              "names": {
+                "agent-browser-l": 1,
+                "chrome-headless": 7
+              },
+              "screenshot_bytes": 16446
+            }
+          ],
+          "pss_kb": 203166,
+          "first_ms": 317.2
+        },
+        {
+          "rep": 2,
+          "error": null,
+          "form_pass": 5,
+          "screenshot_pass": 5,
+          "total_ms": 1747.5,
+          "loops": [
+            {
+              "loop": 1,
+              "ms": 290.5,
+              "pss_kb": 203718,
+              "rss_kb": 471812,
+              "processes": 8,
+              "names": {
+                "agent-browser-l": 1,
+                "chrome-headless": 7
+              },
+              "screenshot_bytes": 16446
+            },
+            {
+              "loop": 2,
+              "ms": 294.5,
+              "pss_kb": 204003,
+              "rss_kb": 471176,
+              "processes": 8,
+              "names": {
+                "agent-browser-l": 1,
+                "chrome-headless": 7
+              },
+              "screenshot_bytes": 16446
+            },
+            {
+              "loop": 3,
+              "ms": 296.5,
+              "pss_kb": 202691,
+              "rss_kb": 471432,
+              "processes": 8,
+              "names": {
+                "agent-browser-l": 1,
+                "chrome-headless": 7
+              },
+              "screenshot_bytes": 16446
+            },
+            {
+              "loop": 4,
+              "ms": 294.9,
+              "pss_kb": 203289,
+              "rss_kb": 471092,
+              "processes": 8,
+              "names": {
+                "agent-browser-l": 1,
+                "chrome-headless": 7
+              },
+              "screenshot_bytes": 16446
+            },
+            {
+              "loop": 5,
+              "ms": 294.5,
+              "pss_kb": 203457,
+              "rss_kb": 470764,
+              "processes": 8,
+              "names": {
+                "agent-browser-l": 1,
+                "chrome-headless": 7
+              },
+              "screenshot_bytes": 16446
+            }
+          ],
+          "pss_kb": 203457,
+          "first_ms": 290.5
+        }
+      ]
+    },
+    {
+      "step": 1,
+      "lever": "reuse-daemon",
+      "hypothesis": "Keep one daemon and browser open across the five task loops.",
+      "accepted": true,
+      "reason": "faster 5-loop total. total 1760.2→816.2 ms (53.6%), first 303.9→294.7 ms (3.0%), pss 199→202 MiB (-1.7%)",
+      "total_ms": 816.2,
+      "first_ms": 294.7,
+      "pss_kb": 206776,
+      "config": {
+        "reuse": true,
+        "batch": false,
+        "noWebmcp": false,
+        "tuned": false,
+        "compact": false
+      },
+      "repetitions": [
+        {
+          "rep": 1,
+          "error": null,
+          "form_pass": 5,
+          "screenshot_pass": 5,
+          "total_ms": 816.8,
+          "loops": [
+            {
+              "loop": 1,
+              "ms": 294.5,
+              "pss_kb": 202887,
+              "rss_kb": 472356,
+              "processes": 8,
+              "names": {
+                "agent-browser-l": 1,
+                "chrome-headless": 7
+              },
+              "screenshot_bytes": 16446
+            },
+            {
+              "loop": 2,
+              "ms": 117.5,
+              "pss_kb": 205337,
+              "rss_kb": 476016,
+              "processes": 8,
+              "names": {
+                "agent-browser-l": 1,
+                "chrome-headless": 7
+              },
+              "screenshot_bytes": 16446
+            },
+            {
+              "loop": 3,
+              "ms": 113.2,
+              "pss_kb": 207347,
+              "rss_kb": 478756,
+              "processes": 8,
+              "names": {
+                "agent-browser-l": 1,
+                "chrome-headless": 7
+              },
+              "screenshot_bytes": 16446
+            },
+            {
+              "loop": 4,
+              "ms": 116.9,
+              "pss_kb": 208531,
+              "rss_kb": 480348,
+              "processes": 8,
+              "names": {
+                "agent-browser-l": 1,
+                "chrome-headless": 7
+              },
+              "screenshot_bytes": 16446
+            },
+            {
+              "loop": 5,
+              "ms": 118.8,
+              "pss_kb": 210283,
+              "rss_kb": 482636,
+              "processes": 8,
+              "names": {
+                "agent-browser-l": 1,
+                "chrome-headless": 7
+              },
+              "screenshot_bytes": 16446
+            }
+          ],
+          "pss_kb": 207347,
+          "first_ms": 294.5
+        },
+        {
+          "rep": 2,
+          "error": null,
+          "form_pass": 5,
+          "screenshot_pass": 5,
+          "total_ms": 815.5,
+          "loops": [
+            {
+              "loop": 1,
+              "ms": 294.9,
+              "pss_kb": 202249,
+              "rss_kb": 471756,
+              "processes": 8,
+              "names": {
+                "agent-browser-l": 1,
+                "chrome-headless": 7
+              },
+              "screenshot_bytes": 16446
+            },
+            {
+              "loop": 2,
+              "ms": 113.9,
+              "pss_kb": 204756,
+              "rss_kb": 475624,
+              "processes": 8,
+              "names": {
+                "agent-browser-l": 1,
+                "chrome-headless": 7
+              },
+              "screenshot_bytes": 16446
+            },
+            {
+              "loop": 3,
+              "ms": 116.1,
+              "pss_kb": 206205,
+              "rss_kb": 477544,
+              "processes": 8,
+              "names": {
+                "agent-browser-l": 1,
+                "chrome-headless": 7
+              },
+              "screenshot_bytes": 16446
+            },
+            {
+              "loop": 4,
+              "ms": 118.1,
+              "pss_kb": 208082,
+              "rss_kb": 480212,
+              "processes": 8,
+              "names": {
+                "agent-browser-l": 1,
+                "chrome-headless": 7
+              },
+              "screenshot_bytes": 16446
+            },
+            {
+              "loop": 5,
+              "ms": 116.8,
+              "pss_kb": 209386,
+              "rss_kb": 481900,
+              "processes": 8,
+              "names": {
+                "agent-browser-l": 1,
+                "chrome-headless": 7
+              },
+              "screenshot_bytes": 16446
+            }
+          ],
+          "pss_kb": 206205,
+          "first_ms": 294.9
+        }
+      ]
+    },
+    {
+      "step": 2,
+      "lever": "batch-tail",
+      "hypothesis": "After the snapshot, run fill, click, read, and screenshot in one CLI process.",
+      "accepted": true,
+      "reason": "faster 5-loop total. total 816.2→766.3 ms (6.1%), first 294.7→286 ms (3.0%), pss 202→202 MiB (-0.1%)",
+      "total_ms": 766.3,
+      "first_ms": 286,
+      "pss_kb": 206915,
+      "config": {
+        "reuse": true,
+        "batch": true,
+        "noWebmcp": false,
+        "tuned": false,
+        "compact": false
+      },
+      "repetitions": [
+        {
+          "rep": 1,
+          "error": null,
+          "form_pass": 5,
+          "screenshot_pass": 5,
+          "total_ms": 746.3,
+          "loops": [
+            {
+              "loop": 1,
+              "ms": 292.4,
+              "pss_kb": 203999,
+              "rss_kb": 470824,
+              "processes": 8,
+              "names": {
+                "agent-browser-l": 1,
+                "chrome-headless": 7
+              },
+              "screenshot_bytes": 16446
+            },
+            {
+              "loop": 2,
+              "ms": 98.6,
+              "pss_kb": 206291,
+              "rss_kb": 474560,
+              "processes": 8,
+              "names": {
+                "agent-browser-l": 1,
+                "chrome-headless": 7
+              },
+              "screenshot_bytes": 16446
+            },
+            {
+              "loop": 3,
+              "ms": 99.8,
+              "pss_kb": 207994,
+              "rss_kb": 476864,
+              "processes": 8,
+              "names": {
+                "agent-browser-l": 1,
+                "chrome-headless": 7
+              },
+              "screenshot_bytes": 16446
+            },
+            {
+              "loop": 4,
+              "ms": 100.5,
+              "pss_kb": 209666,
+              "rss_kb": 479064,
+              "processes": 8,
+              "names": {
+                "agent-browser-l": 1,
+                "chrome-headless": 7
+              },
+              "screenshot_bytes": 16446
+            },
+            {
+              "loop": 5,
+              "ms": 99.2,
+              "pss_kb": 211266,
+              "rss_kb": 481176,
+              "processes": 8,
+              "names": {
+                "agent-browser-l": 1,
+                "chrome-headless": 7
+              },
+              "screenshot_bytes": 16446
+            }
+          ],
+          "pss_kb": 207994,
+          "first_ms": 292.4
+        },
+        {
+          "rep": 2,
+          "error": null,
+          "form_pass": 5,
+          "screenshot_pass": 5,
+          "total_ms": 786.3,
+          "loops": [
+            {
+              "loop": 1,
+              "ms": 279.6,
+              "pss_kb": 201541,
+              "rss_kb": 472424,
+              "processes": 8,
+              "names": {
+                "agent-browser-l": 1,
+                "chrome-headless": 7
+              },
+              "screenshot_bytes": 16446
+            },
+            {
+              "loop": 2,
+              "ms": 115.6,
+              "pss_kb": 204213,
+              "rss_kb": 476328,
+              "processes": 8,
+              "names": {
+                "agent-browser-l": 1,
+                "chrome-headless": 7
+              },
+              "screenshot_bytes": 16446
+            },
+            {
+              "loop": 3,
+              "ms": 118.5,
+              "pss_kb": 205836,
+              "rss_kb": 478552,
+              "processes": 8,
+              "names": {
+                "agent-browser-l": 1,
+                "chrome-headless": 7
+              },
+              "screenshot_bytes": 16446
+            },
+            {
+              "loop": 4,
+              "ms": 113.2,
+              "pss_kb": 207345,
+              "rss_kb": 480660,
+              "processes": 8,
+              "names": {
+                "agent-browser-l": 1,
+                "chrome-headless": 7
+              },
+              "screenshot_bytes": 16446
+            },
+            {
+              "loop": 5,
+              "ms": 104.2,
+              "pss_kb": 209001,
+              "rss_kb": 483020,
+              "processes": 8,
+              "names": {
+                "agent-browser-l": 1,
+                "chrome-headless": 7
+              },
+              "screenshot_bytes": 16446
+            }
+          ],
+          "pss_kb": 205836,
+          "first_ms": 279.6
+        }
+      ]
+    },
+    {
+      "step": 3,
+      "lever": "no-webmcp",
+      "hypothesis": "Skip the default WebMCP init script on the Chrome launch path.",
+      "accepted": false,
+      "reason": "below the keep threshold. total 766.3→783.8 ms (-2.3%), first 286→279 ms (2.4%), pss 202→203 MiB (-0.6%)",
+      "total_ms": 783.8,
+      "first_ms": 279,
+      "pss_kb": 208081,
+      "config": {
+        "reuse": true,
+        "batch": true,
+        "noWebmcp": true,
+        "tuned": false,
+        "compact": false
+      },
+      "repetitions": [
+        {
+          "rep": 1,
+          "error": null,
+          "form_pass": 5,
+          "screenshot_pass": 5,
+          "total_ms": 764.1,
+          "loops": [
+            {
+              "loop": 1,
+              "ms": 279.5,
+              "pss_kb": 203982,
+              "rss_kb": 472868,
+              "processes": 8,
+              "names": {
+                "agent-browser-l": 1,
+                "chrome-headless": 7
+              },
+              "screenshot_bytes": 16446
+            },
+            {
+              "loop": 2,
+              "ms": 113,
+              "pss_kb": 206799,
+              "rss_kb": 477164,
+              "processes": 8,
+              "names": {
+                "agent-browser-l": 1,
+                "chrome-headless": 7
+              },
+              "screenshot_bytes": 16446
+            },
+            {
+              "loop": 3,
+              "ms": 115.4,
+              "pss_kb": 208472,
+              "rss_kb": 479500,
+              "processes": 8,
+              "names": {
+                "agent-browser-l": 1,
+                "chrome-headless": 7
+              },
+              "screenshot_bytes": 16446
+            },
+            {
+              "loop": 4,
+              "ms": 100.4,
+              "pss_kb": 209775,
+              "rss_kb": 481508,
+              "processes": 8,
+              "names": {
+                "agent-browser-l": 1,
+                "chrome-headless": 7
+              },
+              "screenshot_bytes": 16446
+            },
+            {
+              "loop": 5,
+              "ms": 100.6,
+              "pss_kb": 211431,
+              "rss_kb": 483700,
+              "processes": 8,
+              "names": {
+                "agent-browser-l": 1,
+                "chrome-headless": 7
+              },
+              "screenshot_bytes": 16446
+            }
+          ],
+          "pss_kb": 208472,
+          "first_ms": 279.5
+        },
+        {
+          "rep": 2,
+          "error": null,
+          "form_pass": 5,
+          "screenshot_pass": 5,
+          "total_ms": 803.5,
+          "loops": [
+            {
+              "loop": 1,
+              "ms": 278.4,
+              "pss_kb": 203209,
+              "rss_kb": 471308,
+              "processes": 8,
+              "names": {
+                "agent-browser-l": 1,
+                "chrome-headless": 7
+              },
+              "screenshot_bytes": 16446
+            },
+            {
+              "loop": 2,
+              "ms": 117.2,
+              "pss_kb": 206182,
+              "rss_kb": 475860,
+              "processes": 8,
+              "names": {
+                "agent-browser-l": 1,
+                "chrome-headless": 7
+              },
+              "screenshot_bytes": 16446
+            },
+            {
+              "loop": 3,
+              "ms": 116.1,
+              "pss_kb": 207690,
+              "rss_kb": 477904,
+              "processes": 8,
+              "names": {
+                "agent-browser-l": 1,
+                "chrome-headless": 7
+              },
+              "screenshot_bytes": 16446
+            },
+            {
+              "loop": 4,
+              "ms": 117.8,
+              "pss_kb": 209238,
+              "rss_kb": 479988,
+              "processes": 8,
+              "names": {
+                "agent-browser-l": 1,
+                "chrome-headless": 7
+              },
+              "screenshot_bytes": 16446
+            },
+            {
+              "loop": 5,
+              "ms": 118.1,
+              "pss_kb": 210906,
+              "rss_kb": 482192,
+              "processes": 8,
+              "names": {
+                "agent-browser-l": 1,
+                "chrome-headless": 7
+              },
+              "screenshot_bytes": 16446
+            }
+          ],
+          "pss_kb": 207690,
+          "first_ms": 278.4
+        }
+      ]
+    },
+    {
+      "step": 4,
+      "lever": "tuned-args",
+      "hypothesis": "Launch Headless Shell with background features, GPU, and extra renderers disabled.",
+      "accepted": false,
+      "reason": "below the keep threshold. total 766.3→798.8 ms (-4.2%), first 286→289.8 ms (-1.3%), pss 202→205 MiB (-1.4%)",
+      "total_ms": 798.8,
+      "first_ms": 289.8,
+      "pss_kb": 209780,
+      "config": {
+        "reuse": true,
+        "batch": true,
+        "noWebmcp": false,
+        "tuned": true,
+        "compact": false
+      },
+      "repetitions": [
+        {
+          "rep": 1,
+          "error": null,
+          "form_pass": 5,
+          "screenshot_pass": 5,
+          "total_ms": 811.2,
+          "loops": [
+            {
+              "loop": 1,
+              "ms": 292.3,
+              "pss_kb": 205150,
+              "rss_kb": 473688,
+              "processes": 8,
+              "names": {
+                "agent-browser-l": 1,
+                "chrome-headless": 7
+              },
+              "screenshot_bytes": 16446
+            },
+            {
+              "loop": 2,
+              "ms": 116,
+              "pss_kb": 207385,
+              "rss_kb": 477264,
+              "processes": 8,
+              "names": {
+                "agent-browser-l": 1,
+                "chrome-headless": 7
+              },
+              "screenshot_bytes": 16446
+            },
+            {
+              "loop": 3,
+              "ms": 118.1,
+              "pss_kb": 209317,
+              "rss_kb": 479924,
+              "processes": 8,
+              "names": {
+                "agent-browser-l": 1,
+                "chrome-headless": 7
+              },
+              "screenshot_bytes": 16446
+            },
+            {
+              "loop": 4,
+              "ms": 116.2,
+              "pss_kb": 210653,
+              "rss_kb": 481668,
+              "processes": 8,
+              "names": {
+                "agent-browser-l": 1,
+                "chrome-headless": 7
+              },
+              "screenshot_bytes": 16446
+            },
+            {
+              "loop": 5,
+              "ms": 113.1,
+              "pss_kb": 212247,
+              "rss_kb": 483860,
+              "processes": 8,
+              "names": {
+                "agent-browser-l": 1,
+                "chrome-headless": 7
+              },
+              "screenshot_bytes": 16446
+            }
+          ],
+          "pss_kb": 209317,
+          "first_ms": 292.3
+        },
+        {
+          "rep": 2,
+          "error": null,
+          "form_pass": 5,
+          "screenshot_pass": 5,
+          "total_ms": 786.3,
+          "loops": [
+            {
+              "loop": 1,
+              "ms": 287.2,
+              "pss_kb": 205646,
+              "rss_kb": 473520,
+              "processes": 8,
+              "names": {
+                "agent-browser-l": 1,
+                "chrome-headless": 7
+              },
+              "screenshot_bytes": 16446
+            },
+            {
+              "loop": 2,
+              "ms": 110.1,
+              "pss_kb": 208250,
+              "rss_kb": 477584,
+              "processes": 8,
+              "names": {
+                "agent-browser-l": 1,
+                "chrome-headless": 7
+              },
+              "screenshot_bytes": 16446
+            },
+            {
+              "loop": 3,
+              "ms": 114.7,
+              "pss_kb": 210243,
+              "rss_kb": 480304,
+              "processes": 8,
+              "names": {
+                "agent-browser-l": 1,
+                "chrome-headless": 7
+              },
+              "screenshot_bytes": 16446
+            },
+            {
+              "loop": 4,
+              "ms": 102.5,
+              "pss_kb": 211579,
+              "rss_kb": 482216,
+              "processes": 8,
+              "names": {
+                "agent-browser-l": 1,
+                "chrome-headless": 7
+              },
+              "screenshot_bytes": 16446
+            },
+            {
+              "loop": 5,
+              "ms": 116,
+              "pss_kb": 213271,
+              "rss_kb": 484276,
+              "processes": 8,
+              "names": {
+                "agent-browser-l": 1,
+                "chrome-headless": 7
+              },
+              "screenshot_bytes": 16446
+            }
+          ],
+          "pss_kb": 210243,
+          "first_ms": 287.2
+        }
+      ]
+    },
+    {
+      "step": 5,
+      "lever": "compact-snapshot",
+      "hypothesis": "Ask for a compact interactive snapshot so the agent reads less tree output.",
+      "accepted": false,
+      "reason": "below the keep threshold. total 766.3→782.6 ms (-2.1%), first 286→278.8 ms (2.5%), pss 202→203 MiB (-0.4%)",
+      "total_ms": 782.6,
+      "first_ms": 278.8,
+      "pss_kb": 207682.5,
+      "config": {
+        "reuse": true,
+        "batch": true,
+        "noWebmcp": false,
+        "tuned": false,
+        "compact": true
+      },
+      "repetitions": [
+        {
+          "rep": 1,
+          "error": null,
+          "form_pass": 5,
+          "screenshot_pass": 5,
+          "total_ms": 798.1,
+          "loops": [
+            {
+              "loop": 1,
+              "ms": 277.8,
+              "pss_kb": 203647,
+              "rss_kb": 471184,
+              "processes": 8,
+              "names": {
+                "agent-browser-l": 1,
+                "chrome-headless": 7
+              },
+              "screenshot_bytes": 16446
+            },
+            {
+              "loop": 2,
+              "ms": 114.7,
+              "pss_kb": 206338,
+              "rss_kb": 475196,
+              "processes": 8,
+              "names": {
+                "agent-browser-l": 1,
+                "chrome-headless": 7
+              },
+              "screenshot_bytes": 16446
+            },
+            {
+              "loop": 3,
+              "ms": 117,
+              "pss_kb": 208235,
+              "rss_kb": 477820,
+              "processes": 8,
+              "names": {
+                "agent-browser-l": 1,
+                "chrome-headless": 7
+              },
+              "screenshot_bytes": 16446
+            },
+            {
+              "loop": 4,
+              "ms": 121.3,
+              "pss_kb": 209479,
+              "rss_kb": 479472,
+              "processes": 8,
+              "names": {
+                "agent-browser-l": 1,
+                "chrome-headless": 7
+              },
+              "screenshot_bytes": 16446
+            },
+            {
+              "loop": 5,
+              "ms": 112.1,
+              "pss_kb": 211167,
+              "rss_kb": 481696,
+              "processes": 8,
+              "names": {
+                "agent-browser-l": 1,
+                "chrome-headless": 7
+              },
+              "screenshot_bytes": 16446
+            }
+          ],
+          "pss_kb": 208235,
+          "first_ms": 277.8
+        },
+        {
+          "rep": 2,
+          "error": null,
+          "form_pass": 5,
+          "screenshot_pass": 5,
+          "total_ms": 767,
+          "loops": [
+            {
+              "loop": 1,
+              "ms": 279.7,
+              "pss_kb": 203055,
+              "rss_kb": 470732,
+              "processes": 8,
+              "names": {
+                "agent-browser-l": 1,
+                "chrome-headless": 7
+              },
+              "screenshot_bytes": 16446
+            },
+            {
+              "loop": 2,
+              "ms": 119.8,
+              "pss_kb": 205779,
+              "rss_kb": 474952,
+              "processes": 8,
+              "names": {
+                "agent-browser-l": 1,
+                "chrome-headless": 7
+              },
+              "screenshot_bytes": 16446
+            },
+            {
+              "loop": 3,
+              "ms": 111,
+              "pss_kb": 207130,
+              "rss_kb": 476776,
+              "processes": 8,
+              "names": {
+                "agent-browser-l": 1,
+                "chrome-headless": 7
+              },
+              "screenshot_bytes": 16446
+            },
+            {
+              "loop": 4,
+              "ms": 99.4,
+              "pss_kb": 208674,
+              "rss_kb": 479024,
+              "processes": 8,
+              "names": {
+                "agent-browser-l": 1,
+                "chrome-headless": 7
+              },
+              "screenshot_bytes": 16446
+            },
+            {
+              "loop": 5,
+              "ms": 100.4,
+              "pss_kb": 210378,
+              "rss_kb": 481264,
+              "processes": 8,
+              "names": {
+                "agent-browser-l": 1,
+                "chrome-headless": 7
+              },
+              "screenshot_bytes": 16446
+            }
+          ],
+          "pss_kb": 207130,
+          "first_ms": 279.7
+        }
+      ]
+    }
+  ]
+}

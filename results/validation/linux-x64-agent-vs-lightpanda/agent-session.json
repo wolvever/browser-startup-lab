@@ -1,0 +1,189 @@
+{
+  "url": "http://127.0.0.1:44529/",
+  "engines": {
+    "shell": {
+      "refs": {
+        "input": "e3",
+        "button": "e2"
+      },
+      "hello": true,
+      "steps": [
+        {
+          "cmd": "open http://127.0.0.1:44529/",
+          "code": 0,
+          "ms": 255.5,
+          "stdout": "✓ Agent benchmark\n  http://127.0.0.1:44529/\n",
+          "stderr": "[agent-browser] launched browser\n"
+        },
+        {
+          "cmd": "snapshot -i",
+          "code": 0,
+          "ms": 83.5,
+          "stdout": "- heading \"Agent benchmark\" [level=1, ref=e1]\n- textbox \"Name\" [ref=e3]\n- button \"Submit\" [ref=e2]\n",
+          "stderr": ""
+        },
+        {
+          "cmd": "fill @e3 Agent",
+          "code": 0,
+          "ms": 60.1,
+          "stdout": "✓ Done\n",
+          "stderr": ""
+        },
+        {
+          "cmd": "click @e2",
+          "code": 0,
+          "ms": 60.7,
+          "stdout": "✓ Done\n",
+          "stderr": ""
+        },
+        {
+          "cmd": "get text #result",
+          "code": 0,
+          "ms": 56.6,
+          "stdout": "Hello Agent\n",
+          "stderr": ""
+        },
+        {
+          "cmd": "screenshot /workspace/results/validation/linux-x64-agent-vs-lightpanda/agent-shell.png",
+          "code": 0,
+          "ms": 96.8,
+          "stdout": "✓ Screenshot saved to /workspace/results/validation/linux-x64-agent-vs-lightpanda/agent-shell.png\n",
+          "stderr": ""
+        },
+        {
+          "cmd": "close",
+          "code": 0,
+          "ms": 107.4,
+          "stdout": "✓ Browser closed\n",
+          "stderr": ""
+        }
+      ]
+    },
+    "lightpanda": {
+      "refs": {
+        "input": "e2",
+        "button": "e3"
+      },
+      "hello": false,
+      "steps": [
+        {
+          "cmd": "open http://127.0.0.1:44529/",
+          "code": 0,
+          "ms": 289.5,
+          "stdout": "✓ Agent benchmark\n  http://127.0.0.1:44529/\n",
+          "stderr": "[agent-browser] launched browser\n"
+        },
+        {
+          "cmd": "snapshot -i",
+          "code": 0,
+          "ms": 61,
+          "stdout": "- heading \"Agent benchmark\" [level=1, ref=e1]\n- textbox \"Name\" [ref=e2]\n- button \"Submit\" [ref=e3]\n",
+          "stderr": ""
+        },
+        {
+          "cmd": "fill @e2 Agent",
+          "code": 0,
+          "ms": 58.9,
+          "stdout": "✓ Done\n",
+          "stderr": ""
+        },
+        {
+          "cmd": "click @e3",
+          "code": 1,
+          "ms": 57.6,
+          "stdout": "",
+          "stderr": "✗ Cannot confirm which element would receive a click at (72, 30), so the click on '@e3' was refused: CDP error (DOM.getNodeForLocation): 'DOM.getNodeForLocation' wasn't found\n"
+        },
+        {
+          "cmd": "get text #result",
+          "code": 0,
+          "ms": 53.5,
+          "stdout": "Waiting\n",
+          "stderr": ""
+        },
+        {
+          "cmd": "screenshot /workspace/results/validation/linux-x64-agent-vs-lightpanda/agent-lightpanda.png",
+          "code": 0,
+          "ms": 73.8,
+          "stdout": "✓ Screenshot saved to /workspace/results/validation/linux-x64-agent-vs-lightpanda/agent-lightpanda.png\n",
+          "stderr": ""
+        },
+        {
+          "cmd": "close",
+          "code": 0,
+          "ms": 57.3,
+          "stdout": "✓ Browser closed\n",
+          "stderr": ""
+        }
+      ]
+    }
+  },
+  "wrapper_reuse_loops": [
+    {
+      "loop": 1,
+      "ms": 583.7,
+      "hello": true,
+      "codes": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "loop": 2,
+      "ms": 414.2,
+      "hello": true,
+      "codes": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "loop": 3,
+      "ms": 366.5,
+      "hello": true,
+      "codes": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "loop": 4,
+      "ms": 366.9,
+      "hello": true,
+      "codes": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "loop": 5,
+      "ms": 400,
+      "hello": true,
+      "codes": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "wrapper_reuse_total_ms": 2131.3
+}

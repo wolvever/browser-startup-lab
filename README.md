@@ -44,7 +44,63 @@ Sources: [direct trials](results/direct.json), [full Chrome CLI](results/cli-chr
 - **Reboot/disk-cache cold:** not established by these local measurements. The harness does not reboot the OS or purge filesystem caches. Starting a new process does not imply a cold OS page cache.
 - **Warm operations:** separately reported as `warm_snapshot_ms`; never included as cold-start scores.
 
-Internet page loading, login, complex website readiness, memory usage, and broad website compatibility are outside this benchmark. The local fixture removes external network variance, except when the optional online advisory is enabled.
+Internet page loading, login, complex website readiness, and broad website compatibility are outside this benchmark. The original macOS runs did not measure memory. The Linux comparison below does. The local fixture removes external network variance, except when the optional online advisory is enabled.
+
+## Linux x64: agent-browser vs Lightpanda
+
+Measured on 2026-11-27 00:23 Asia/Shanghai (2026-11-26 16:23 UTC) on Linux x64, 4 cores, 15.6 GB, Node 22.23.4. Ten process-cold trials each, advisory disabled, no discarded warmup. agent-browser here means the CLI driving Headless Shell. Lightpanda is judged on that same CLI, which is how an agent drives it. Direct CDP numbers are context for the engine itself.
+
+Memory is the proportional set size (PSS) of processes that appeared during the trial, sampled after ready. RSS is higher for Chrome because its processes share libraries.
+
+| Path | Cold median / max | Warm snapshot median | PSS / RSS | Agent click | Screenshot fidelity |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| agent-browser + Headless Shell | **203 / 210 ms** | 4.6 ms | 188 / 446 MiB | **10/10** | **10/10** |
+| agent-browser + Lightpanda | 221 / 228 ms | **3.5 ms** | **35 / 39 MiB** | 0/10 | 0/10 |
+| Direct Headless Shell | 82 / 99 ms | 0.7 ms | 180 / 504 MiB | DOM only | 10/10 |
+| Direct Lightpanda | **26 / 30 ms** | **0.3 ms** | **21 / 23 MiB** | DOM only | 0/10 |
+
+The agent click is `snapshot -i`, then `fill @ref` and `click @ref`. Lightpanda refused every click with `DOM.getNodeForLocation wasn't found`. Its screenshot is black text on white, without the fixture's navy page, red canvas border, or black canvas fill. Direct DOM `.click()` does submit the form, and that path is not the agent's hit test.
+
+**agent-browser won.** A path that cannot click or render the fixture does not win the agent benchmark, even though Lightpanda uses less memory and is much faster over direct CDP. Through the CLI, Lightpanda's cold start was also slower than Shell (221 vs 203 ms). Raw evidence, including both screenshots: [linux-x64-agent-vs-lightpanda](results/validation/linux-x64-agent-vs-lightpanda).
+
+### Five optimization loops
+
+The workload is five iterations of open, snapshot, ref fill, ref click, read, and screenshot. Each candidate ran twice. A change was kept only when every loop still passed the click and the screenshot check, and the median total dropped at least 5% (or memory dropped 10%, or the first loop dropped 8%, without the total slowing more than 3%).
+
+| Loop | Change | Median total | Decision |
+| --- | --- | ---: | --- |
+| 0 | Cold daemon every loop | 1,760 ms | baseline |
+| 1 | Reuse one daemon for all five loops | **816 ms** | **kept, −54%** |
+| 2 | Batch fill, click, read, and screenshot after the snapshot | 766 ms | not stable (6.1% here, 1.3% on the previous hillclimb) |
+| 3 | `--no-webmcp` | 784 ms | dropped |
+| 4 | Extra Chromium launch flags, including `--disable-gpu` | 799 ms | dropped, slightly slower and larger |
+| 5 | Compact interactive snapshot | 783 ms | dropped |
+
+Leave the session open between agent commands. Closing it throws away the only change that reliably cut the five-loop time in half. Batching the tail is optional and was inside run-to-run noise, so the launcher still issues separate commands.
+
+The documented `node agent.mjs --fast shell` wrapper was then measured on the same five reused loops. It paid for an `@puppeteer/browsers` import on every command, about 30 ms, before it found a path that is determined by the pinned version. Resolving that path in `runtime.mjs` without the import cut wrapper startup from about 50 ms to about 26 ms, and the five loops from **2,131 ms to 1,385 ms**, with all five clicks and screenshots still passing. [`wrapper-after.json`](results/validation/linux-x64-agent-vs-lightpanda/wrapper-after.json).
+
+```sh
+node compare.mjs --rounds 10
+node optimize.mjs
+```
+
+## Long residency application
+
+`fixture/residency-application.html` is a 13-section form, about 10,300 pixels tall, with 121 answers: text, email, phone, URL, dates, months, numbers, a range, text areas, selects, a multi-select, radios, and checkboxes. Repeated labels such as City, Country, and Employer are disambiguated by section. Two boxes must stay empty, one starts checked, and a disabled staff field plus a read-only application id must keep their original values. `node fill-form.mjs` drives each engine the way an agent does: a scoped snapshot, then `fill`, `select`, or `check` on the ref. Date and month controls are the exception. Chrome exposes them as repeated Month, Day, and Year spin buttons, and filling one part is rejected, so those controls are set with `fill #id`.
+
+| Engine | Answers correct | Actions that failed | Submitted |
+| --- | ---: | ---: | ---: |
+| agent-browser + Headless Shell | **121/121** | **0** | **yes** |
+| agent-browser + Lightpanda | 101/121 | 20 | no |
+
+Shell stored the application. The receipt shows Amelia Okonkwo, `dob=1991-04-17`, `citizenship=Canada`, `job1-current=yes`, `areas=Marine ecology|Genomics|Climate`, and the certification boxes. The read-only id stayed `APP-2026-00421`, the disabled field stayed `INTERNAL`, and the marketing and "on behalf of someone else" boxes stayed empty.
+
+Lightpanda filled every text field, date, number, range, and select, including the multi-select. All 20 failures are radios and checkboxes. `check` is refused with `DOM.getNodeForLocation wasn't found`, and the same error blocks Submit. Those 20 answers stayed blank, so the application was not stored. Evidence: [linux-x64-long-form](results/validation/linux-x64-long-form).
+
+```sh
+node fill-form.mjs
+```
 
 ## Reproduce on another OS
 
@@ -127,6 +183,8 @@ Original measurements under `results/` remain versioned. New `results/runs/` out
 node agent.mjs --fast shell open https://example.com
 node agent.mjs --fast shell snapshot -i
 # Use refs from the returned snapshot for fill/click.
+# Leave this session open across repeated commands. Closing it between
+# five local task loops cost about 940 ms on the Linux run above.
 node agent.mjs --fast shell close
 ```
 
@@ -155,8 +213,14 @@ All values are rounded to milliseconds; the Windows direct path had 9/10 samples
 - `setup.mjs`: host-specific browser downloads and version/hash recording.
 - `runtime.mjs`: pinned browser selection and agent-browser native binary discovery.
 - `benchmark.mjs`: fixture, cold-start measurement, compatibility checks, and raw output.
+- `compare.mjs`: cold start, warm snapshot, memory, ref click, and screenshot fidelity for agent-browser and Lightpanda.
+- `optimize.mjs`: five-loop hillclimb on the agent-browser path.
+- `metrics.mjs`: shared summaries, process memory, and PNG fidelity check.
+- `fill-form.mjs`: fills the long residency application through agent-browser and Lightpanda.
+- `fixture/residency-application.html`: the 13-section form.
 - `agent.mjs`: isolated interactive CLI wrapper.
 - `results/`: original evidence and selected portable-harness validations.
+- [Benchmark prompt](docs/benchmark-prompt.md): agent instructions for the contest, the five-loop hillclimb, and the long-form fill.
 - [Original research report](docs/original-report.md): detailed first-session findings and alternative-engine research.
 
 Headless Shell is a separate Chromium implementation and does not offer every full Chrome feature; see [Puppeteer's headless-mode guidance](https://pptr.dev/guides/headless-modes). [Chrome for Testing](https://developer.chrome.com/docs/automation-and-testing/chrome-for-testing) provides the full-browser fallback. Obscura was researched but not benchmarked; its [experimental adapter documents fidelity gaps](https://agent-browser.dev/engines/obscura).

@@ -1,0 +1,2108 @@
+{
+  "date": "2026-11-26T16:23:36.460Z",
+  "platform": "linux",
+  "arch": "x64",
+  "osRelease": "6.12.113+",
+  "cpu": "Intel(R) Xeon(R) Processor",
+  "cores": 4,
+  "memoryGB": 15.628173828125,
+  "node": "v22.23.4",
+  "options": {
+    "rounds": 10,
+    "label": "linux-x64",
+    "paths": [
+      "cli-shell",
+      "cli-lightpanda",
+      "direct-shell",
+      "direct-lightpanda"
+    ]
+  },
+  "methodology": {
+    "contest": "agent-browser means the CLI driving Headless Shell. Lightpanda is scored on the CLI path an agent uses, with direct CDP reported separately.",
+    "cold": "New browser process and, for the CLI, a unique daemon and session. Timer stops after local navigation plus interactive snapshot (CLI) or JS ready (direct).",
+    "warm": "Median of five extra interactive snapshots on the same process. Direct engines read the accessibility tree over CDP when the domain exists.",
+    "memory": "Sum of VmRSS and, when readable, proportional set size of processes that appeared during the trial, sampled 80ms after ready and before the action.",
+    "agentUse": "CLI trials use snapshot refs, fill, click, and get text. Direct trials set the field and click through the DOM, which is not the agent hit-test path.",
+    "screenshot": "PNG must contain the fixture navy background, a red canvas border, and a black canvas fill.",
+    "diskCache": "uncontrolled; the shell binary was smoke-launched once before this run",
+    "advisory": "disabled"
+  },
+  "dependencies": {
+    "@puppeteer/browsers": "3.3.0",
+    "agent-browser": "0.45.0",
+    "puppeteer-core": "25.19.0"
+  },
+  "installation": {
+    "date": "2026-11-26T16:17:17.096Z",
+    "platform": "linux",
+    "arch": "x64",
+    "chromeVersion": "158.0.8127.88",
+    "lightpanda": {
+      "url": "https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-x86_64-linux",
+      "version": "1.1.0-nightly.12455+06b13205b",
+      "sha256": "df4ae6b30f536724d93f99d7a23c30b9c1d04aaddc9d9b6a9b062eb4b1853eeb"
+    }
+  },
+  "summary": {
+    "cli-shell": {
+      "cold": {
+        "n": 10,
+        "min": 198,
+        "median": 202.9,
+        "p95": 209.9,
+        "max": 209.9,
+        "under_1500": 10
+      },
+      "warm": {
+        "n": 10,
+        "min": 3.9,
+        "median": 4.6,
+        "p95": 4.8,
+        "max": 4.8,
+        "under_1500": 10
+      },
+      "action": {
+        "n": 10,
+        "min": 17.9,
+        "median": 25.1,
+        "p95": 33.2,
+        "max": 33.2,
+        "under_1500": 10
+      },
+      "screenshot_time": {
+        "n": 10,
+        "min": 42.5,
+        "median": 45,
+        "p95": 48.4,
+        "max": 48.4,
+        "under_1500": 10
+      },
+      "memory_rss_kb": {
+        "n": 10,
+        "min": 455636,
+        "median": 456442,
+        "p95": 458320,
+        "max": 458320,
+        "under_1500": 0
+      },
+      "memory_pss_kb": {
+        "n": 10,
+        "min": 191037,
+        "median": 192541.5,
+        "p95": 193264,
+        "max": 193264,
+        "under_1500": 0
+      },
+      "form_pass": 10,
+      "form_fail": 0,
+      "screenshot_pass": 10,
+      "screenshot_fail": 0,
+      "launch_errors": 0
+    },
+    "cli-lightpanda": {
+      "cold": {
+        "n": 10,
+        "min": 219.6,
+        "median": 221.3,
+        "p95": 227.7,
+        "max": 227.7,
+        "under_1500": 10
+      },
+      "warm": {
+        "n": 10,
+        "min": 3.3,
+        "median": 3.5,
+        "p95": 3.8,
+        "max": 3.8,
+        "under_1500": 10
+      },
+      "action": {
+        "n": 0
+      },
+      "screenshot_time": {
+        "n": 10,
+        "min": 15.8,
+        "median": 16.1,
+        "p95": 16.9,
+        "max": 16.9,
+        "under_1500": 10
+      },
+      "memory_rss_kb": {
+        "n": 10,
+        "min": 39720,
+        "median": 39956,
+        "p95": 40132,
+        "max": 40132,
+        "under_1500": 0
+      },
+      "memory_pss_kb": {
+        "n": 10,
+        "min": 35421,
+        "median": 35683.5,
+        "p95": 35878,
+        "max": 35878,
+        "under_1500": 0
+      },
+      "form_pass": 0,
+      "form_fail": 10,
+      "screenshot_pass": 0,
+      "screenshot_fail": 10,
+      "launch_errors": 0
+    },
+    "direct-shell": {
+      "cold": {
+        "n": 10,
+        "min": 76.3,
+        "median": 81.9,
+        "p95": 99.3,
+        "max": 99.3,
+        "under_1500": 10
+      },
+      "warm": {
+        "n": 10,
+        "min": 0.5,
+        "median": 0.7,
+        "p95": 1,
+        "max": 1,
+        "under_1500": 10
+      },
+      "action": {
+        "n": 10,
+        "min": 5.8,
+        "median": 7,
+        "p95": 10.4,
+        "max": 10.4,
+        "under_1500": 10
+      },
+      "screenshot_time": {
+        "n": 10,
+        "min": 28.7,
+        "median": 37.1,
+        "p95": 41.7,
+        "max": 41.7,
+        "under_1500": 10
+      },
+      "memory_rss_kb": {
+        "n": 10,
+        "min": 514976,
+        "median": 515584,
+        "p95": 518416,
+        "max": 518416,
+        "under_1500": 0
+      },
+      "memory_pss_kb": {
+        "n": 10,
+        "min": 181462,
+        "median": 184082,
+        "p95": 184728,
+        "max": 184728,
+        "under_1500": 0
+      },
+      "form_pass": 10,
+      "form_fail": 0,
+      "screenshot_pass": 10,
+      "screenshot_fail": 0,
+      "launch_errors": 0
+    },
+    "direct-lightpanda": {
+      "cold": {
+        "n": 10,
+        "min": 24.5,
+        "median": 26.1,
+        "p95": 29.6,
+        "max": 29.6,
+        "under_1500": 10
+      },
+      "warm": {
+        "n": 10,
+        "min": 0.1,
+        "median": 0.3,
+        "p95": 0.8,
+        "max": 0.8,
+        "under_1500": 10
+      },
+      "action": {
+        "n": 10,
+        "min": 4.6,
+        "median": 5.1,
+        "p95": 8,
+        "max": 8,
+        "under_1500": 10
+      },
+      "screenshot_time": {
+        "n": 10,
+        "min": 4.7,
+        "median": 5.1,
+        "p95": 5.5,
+        "max": 5.5,
+        "under_1500": 10
+      },
+      "memory_rss_kb": {
+        "n": 10,
+        "min": 23288,
+        "median": 23304,
+        "p95": 23320,
+        "max": 23320,
+        "under_1500": 0
+      },
+      "memory_pss_kb": {
+        "n": 10,
+        "min": 21215,
+        "median": 21235,
+        "p95": 21242,
+        "max": 21242,
+        "under_1500": 0
+      },
+      "form_pass": 10,
+      "form_fail": 0,
+      "screenshot_pass": 0,
+      "screenshot_fail": 10,
+      "launch_errors": 0
+    }
+  },
+  "decision": {
+    "agent_browser_usable": true,
+    "lightpanda_cli_usable": false,
+    "categories": {
+      "cold": "agent-browser",
+      "warm": "lightpanda",
+      "memory": "lightpanda",
+      "agent_use": "agent-browser",
+      "screenshot": "agent-browser"
+    },
+    "winner": "agent-browser",
+    "rule": "Usability (ref click plus screenshot fidelity, every trial) gates the win. If both pass, more category wins takes it. Direct CDP numbers are context, not the agent interface."
+  },
+  "records": [
+    {
+      "name": "cli-shell",
+      "trial": 1,
+      "cold_start": true,
+      "session": "c-374cae0c6191-s-1",
+      "ready_ms": 203.81919,
+      "memory": {
+        "processes": 8,
+        "rss_kb": 456028,
+        "pss_kb": 192675,
+        "pss_coverage": 1,
+        "names": {
+          "agent-browser-l": 1,
+          "chrome-headless": 7
+        }
+      },
+      "warm_snapshot_ms": [
+        7.533325000000048,
+        4.97098299999999,
+        4.560438999999974,
+        4.087390000000028,
+        3.568981000000008
+      ],
+      "warm_median_ms": 4.6,
+      "form": true,
+      "action_ms": 27.78873699999997,
+      "screenshot_ms": 48.39711,
+      "screenshot": {
+        "bytes": 16446,
+        "width": 1280,
+        "height": 720,
+        "pixels": 921600,
+        "mean_rgb": [
+          20,
+          36,
+          53
+        ],
+        "navy": 906296,
+        "red": 996,
+        "black": 2413,
+        "white": 6582,
+        "pass": true
+      },
+      "closed": true
+    },
+    {
+      "name": "cli-shell",
+      "trial": 2,
+      "cold_start": true,
+      "session": "c-374cae0c6191-s-2",
+      "ready_ms": 200.25912300000005,
+      "memory": {
+        "processes": 8,
+        "rss_kb": 458320,
+        "pss_kb": 193264,
+        "pss_coverage": 1,
+        "names": {
+          "agent-browser-l": 1,
+          "chrome-headless": 7
+        }
+      },
+      "warm_snapshot_ms": [
+        8.370330999999965,
+        4.125157000000058,
+        3.946719999999914,
+        3.704211999999984,
+        3.851374999999962
+      ],
+      "warm_median_ms": 3.9,
+      "form": true,
+      "action_ms": 23.00163900000007,
+      "screenshot_ms": 48.039720999999986,
+      "screenshot": {
+        "bytes": 16446,
+        "width": 1280,
+        "height": 720,
+        "pixels": 921600,
+        "mean_rgb": [
+          20,
+          36,
+          53
+        ],
+        "navy": 906296,
+        "red": 996,
+        "black": 2413,
+        "white": 6582,
+        "pass": true
+      },
+      "closed": true
+    },
+    {
+      "name": "cli-shell",
+      "trial": 3,
+      "cold_start": true,
+      "session": "c-374cae0c6191-s-3",
+      "ready_ms": 202.14354000000003,
+      "memory": {
+        "processes": 8,
+        "rss_kb": 456940,
+        "pss_kb": 191291,
+        "pss_coverage": 1,
+        "names": {
+          "agent-browser-l": 1,
+          "chrome-headless": 7
+        }
+      },
+      "warm_snapshot_ms": [
+        5.219769999999926,
+        4.580569999999852,
+        4.611623000000009,
+        3.873642000000018,
+        3.963081000000102
+      ],
+      "warm_median_ms": 4.6,
+      "form": true,
+      "action_ms": 20.211726,
+      "screenshot_ms": 44.37183500000015,
+      "screenshot": {
+        "bytes": 16446,
+        "width": 1280,
+        "height": 720,
+        "pixels": 921600,
+        "mean_rgb": [
+          20,
+          36,
+          53
+        ],
+        "navy": 906296,
+        "red": 996,
+        "black": 2413,
+        "white": 6582,
+        "pass": true
+      },
+      "closed": true
+    },
+    {
+      "name": "cli-shell",
+      "trial": 4,
+      "cold_start": true,
+      "session": "c-374cae0c6191-s-4",
+      "ready_ms": 197.95781699999998,
+      "memory": {
+        "processes": 8,
+        "rss_kb": 457368,
+        "pss_kb": 191037,
+        "pss_coverage": 1,
+        "names": {
+          "agent-browser-l": 1,
+          "chrome-headless": 7
+        }
+      },
+      "warm_snapshot_ms": [
+        7.520383000000038,
+        4.480963000000202,
+        3.9123809999998684,
+        4.163113000000067,
+        3.9418490000000475
+      ],
+      "warm_median_ms": 4.2,
+      "form": true,
+      "action_ms": 29.77153800000019,
+      "screenshot_ms": 47.280393000000004,
+      "screenshot": {
+        "bytes": 16446,
+        "width": 1280,
+        "height": 720,
+        "pixels": 921600,
+        "mean_rgb": [
+          20,
+          36,
+          53
+        ],
+        "navy": 906296,
+        "red": 996,
+        "black": 2413,
+        "white": 6582,
+        "pass": true
+      },
+      "closed": true
+    },
+    {
+      "name": "cli-shell",
+      "trial": 5,
+      "cold_start": true,
+      "session": "c-374cae0c6191-s-5",
+      "ready_ms": 209.8597189999998,
+      "memory": {
+        "processes": 8,
+        "rss_kb": 456116,
+        "pss_kb": 193124,
+        "pss_coverage": 1,
+        "names": {
+          "agent-browser-l": 1,
+          "chrome-headless": 7
+        }
+      },
+      "warm_snapshot_ms": [
+        8.639156000000185,
+        5.809259999999995,
+        4.719646999999895,
+        4.390912000000299,
+        4.592016000000058
+      ],
+      "warm_median_ms": 4.7,
+      "form": true,
+      "action_ms": 23.62700199999972,
+      "screenshot_ms": 45.682242000000315,
+      "screenshot": {
+        "bytes": 16446,
+        "width": 1280,
+        "height": 720,
+        "pixels": 921600,
+        "mean_rgb": [
+          20,
+          36,
+          53
+        ],
+        "navy": 906296,
+        "red": 996,
+        "black": 2413,
+        "white": 6582,
+        "pass": true
+      },
+      "closed": true
+    },
+    {
+      "name": "cli-shell",
+      "trial": 6,
+      "cold_start": true,
+      "session": "c-374cae0c6191-s-6",
+      "ready_ms": 205.46477499999992,
+      "memory": {
+        "processes": 8,
+        "rss_kb": 456020,
+        "pss_kb": 191911,
+        "pss_coverage": 1,
+        "names": {
+          "agent-browser-l": 1,
+          "chrome-headless": 7
+        }
+      },
+      "warm_snapshot_ms": [
+        7.789007000000311,
+        4.314726999999948,
+        3.992616999999882,
+        3.895948999999746,
+        4.470677000000251
+      ],
+      "warm_median_ms": 4.3,
+      "form": true,
+      "action_ms": 17.889435999999932,
+      "screenshot_ms": 48.00031399999989,
+      "screenshot": {
+        "bytes": 16446,
+        "width": 1280,
+        "height": 720,
+        "pixels": 921600,
+        "mean_rgb": [
+          20,
+          36,
+          53
+        ],
+        "navy": 906296,
+        "red": 996,
+        "black": 2413,
+        "white": 6582,
+        "pass": true
+      },
+      "closed": true
+    },
+    {
+      "name": "cli-shell",
+      "trial": 7,
+      "cold_start": true,
+      "session": "c-374cae0c6191-s-7",
+      "ready_ms": 204.70287099999996,
+      "memory": {
+        "processes": 8,
+        "rss_kb": 455796,
+        "pss_kb": 192256,
+        "pss_coverage": 1,
+        "names": {
+          "agent-browser-l": 1,
+          "chrome-headless": 7
+        }
+      },
+      "warm_snapshot_ms": [
+        8.348473000000013,
+        5.626617000000351,
+        4.480078999999932,
+        4.6615450000003875,
+        4.62963099999979
+      ],
+      "warm_median_ms": 4.7,
+      "form": true,
+      "action_ms": 33.17510900000025,
+      "screenshot_ms": 43.82965400000012,
+      "screenshot": {
+        "bytes": 16446,
+        "width": 1280,
+        "height": 720,
+        "pixels": 921600,
+        "mean_rgb": [
+          20,
+          36,
+          53
+        ],
+        "navy": 906296,
+        "red": 996,
+        "black": 2413,
+        "white": 6582,
+        "pass": true
+      },
+      "closed": true
+    },
+    {
+      "name": "cli-shell",
+      "trial": 8,
+      "cold_start": true,
+      "session": "c-374cae0c6191-s-8",
+      "ready_ms": 202.2785799999997,
+      "memory": {
+        "processes": 8,
+        "rss_kb": 455636,
+        "pss_kb": 192625,
+        "pss_coverage": 1,
+        "names": {
+          "agent-browser-l": 1,
+          "chrome-headless": 7
+        }
+      },
+      "warm_snapshot_ms": [
+        6.755022000000281,
+        4.64586700000018,
+        4.233679999999822,
+        4.223155000000133,
+        4.19729099999995
+      ],
+      "warm_median_ms": 4.2,
+      "form": true,
+      "action_ms": 26.606142999999975,
+      "screenshot_ms": 43.71903599999996,
+      "screenshot": {
+        "bytes": 16446,
+        "width": 1280,
+        "height": 720,
+        "pixels": 921600,
+        "mean_rgb": [
+          20,
+          36,
+          53
+        ],
+        "navy": 906296,
+        "red": 996,
+        "black": 2413,
+        "white": 6582,
+        "pass": true
+      },
+      "closed": true
+    },
+    {
+      "name": "cli-shell",
+      "trial": 9,
+      "cold_start": true,
+      "session": "c-374cae0c6191-s-9",
+      "ready_ms": 202.88657899999998,
+      "memory": {
+        "processes": 8,
+        "rss_kb": 456768,
+        "pss_kb": 192458,
+        "pss_coverage": 1,
+        "names": {
+          "agent-browser-l": 1,
+          "chrome-headless": 7
+        }
+      },
+      "warm_snapshot_ms": [
+        7.27639199999976,
+        4.616971999999805,
+        4.720890000000054,
+        4.308443999999781,
+        4.931054000000131
+      ],
+      "warm_median_ms": 4.7,
+      "form": true,
+      "action_ms": 27.898345999999947,
+      "screenshot_ms": 42.53918899999917,
+      "screenshot": {
+        "bytes": 16446,
+        "width": 1280,
+        "height": 720,
+        "pixels": 921600,
+        "mean_rgb": [
+          20,
+          36,
+          53
+        ],
+        "navy": 906296,
+        "red": 996,
+        "black": 2413,
+        "white": 6582,
+        "pass": true
+      },
+      "closed": true
+    },
+    {
+      "name": "cli-shell",
+      "trial": 10,
+      "cold_start": true,
+      "session": "c-374cae0c6191-s-10",
+      "ready_ms": 202.89135700000043,
+      "memory": {
+        "processes": 8,
+        "rss_kb": 457668,
+        "pss_kb": 192902,
+        "pss_coverage": 1,
+        "names": {
+          "agent-browser-l": 1,
+          "chrome-headless": 7
+        }
+      },
+      "warm_snapshot_ms": [
+        7.101907999999639,
+        5.739152000000104,
+        4.627101999999468,
+        4.8075040000003355,
+        4.2157280000001265
+      ],
+      "warm_median_ms": 4.8,
+      "form": true,
+      "action_ms": 22.86148299999968,
+      "screenshot_ms": 44.1008410000004,
+      "screenshot": {
+        "bytes": 16446,
+        "width": 1280,
+        "height": 720,
+        "pixels": 921600,
+        "mean_rgb": [
+          20,
+          36,
+          53
+        ],
+        "navy": 906296,
+        "red": 996,
+        "black": 2413,
+        "white": 6582,
+        "pass": true
+      },
+      "closed": true
+    },
+    {
+      "name": "cli-lightpanda",
+      "trial": 1,
+      "cold_start": true,
+      "session": "c-374cae0c6191-l-1",
+      "ready_ms": 220.9353369999999,
+      "memory": {
+        "processes": 2,
+        "rss_kb": 39960,
+        "pss_kb": 35678,
+        "pss_coverage": 1,
+        "names": {
+          "agent-browser-l": 1,
+          "lightpanda": 1
+        }
+      },
+      "warm_snapshot_ms": [
+        5.940403000000515,
+        4.22854499999994,
+        3.2446499999996377,
+        3.23738400000002,
+        3.3026249999993524
+      ],
+      "warm_median_ms": 3.3,
+      "form": false,
+      "form_error": "✗ Cannot confirm which element would receive a click at (72, 30), so the click on '@e3' was refused: CDP error (DOM.getNodeForLocation): 'DOM.getNodeForLocation' wasn't found\n",
+      "action_ms": 9.19058000000041,
+      "screenshot_ms": 16.217518000000382,
+      "screenshot": {
+        "bytes": 13863,
+        "width": 1920,
+        "height": 1080,
+        "pixels": 2073600,
+        "mean_rgb": [
+          255,
+          255,
+          255
+        ],
+        "navy": 0,
+        "red": 0,
+        "black": 0,
+        "white": 2071533,
+        "pass": false
+      },
+      "closed": true
+    },
+    {
+      "name": "cli-lightpanda",
+      "trial": 2,
+      "cold_start": true,
+      "session": "c-374cae0c6191-l-2",
+      "ready_ms": 220.45890899999995,
+      "memory": {
+        "processes": 2,
+        "rss_kb": 40068,
+        "pss_kb": 35831,
+        "pss_coverage": 1,
+        "names": {
+          "agent-browser-l": 1,
+          "lightpanda": 1
+        }
+      },
+      "warm_snapshot_ms": [
+        3.691282000000683,
+        3.449174999999741,
+        3.042927999999847,
+        3.9623109999993176,
+        3.4642380000004778
+      ],
+      "warm_median_ms": 3.5,
+      "form": false,
+      "form_error": "✗ Cannot confirm which element would receive a click at (72, 30), so the click on '@e3' was refused: CDP error (DOM.getNodeForLocation): 'DOM.getNodeForLocation' wasn't found\n",
+      "action_ms": 8.13678499999969,
+      "screenshot_ms": 15.750991999999314,
+      "screenshot": {
+        "bytes": 13863,
+        "width": 1920,
+        "height": 1080,
+        "pixels": 2073600,
+        "mean_rgb": [
+          255,
+          255,
+          255
+        ],
+        "navy": 0,
+        "red": 0,
+        "black": 0,
+        "white": 2071533,
+        "pass": false
+      },
+      "closed": true
+    },
+    {
+      "name": "cli-lightpanda",
+      "trial": 3,
+      "cold_start": true,
+      "session": "c-374cae0c6191-l-3",
+      "ready_ms": 222.55148000000008,
+      "memory": {
+        "processes": 2,
+        "rss_kb": 39952,
+        "pss_kb": 35626,
+        "pss_coverage": 1,
+        "names": {
+          "agent-browser-l": 1,
+          "lightpanda": 1
+        }
+      },
+      "warm_snapshot_ms": [
+        5.605596000000332,
+        3.3767390000002706,
+        3.308484000000135,
+        3.077704999999696,
+        3.5098619999998846
+      ],
+      "warm_median_ms": 3.4,
+      "form": false,
+      "form_error": "✗ Cannot confirm which element would receive a click at (72, 30), so the click on '@e3' was refused: CDP error (DOM.getNodeForLocation): 'DOM.getNodeForLocation' wasn't found\n",
+      "action_ms": 8.815848000000187,
+      "screenshot_ms": 16.00920700000006,
+      "screenshot": {
+        "bytes": 13863,
+        "width": 1920,
+        "height": 1080,
+        "pixels": 2073600,
+        "mean_rgb": [
+          255,
+          255,
+          255
+        ],
+        "navy": 0,
+        "red": 0,
+        "black": 0,
+        "white": 2071533,
+        "pass": false
+      },
+      "closed": true
+    },
+    {
+      "name": "cli-lightpanda",
+      "trial": 4,
+      "cold_start": true,
+      "session": "c-374cae0c6191-l-4",
+      "ready_ms": 221.66245999999956,
+      "memory": {
+        "processes": 2,
+        "rss_kb": 40024,
+        "pss_kb": 35759,
+        "pss_coverage": 1,
+        "names": {
+          "agent-browser-l": 1,
+          "lightpanda": 1
+        }
+      },
+      "warm_snapshot_ms": [
+        5.277363999999579,
+        3.415984999999637,
+        3.59471399999984,
+        3.347580999999991,
+        3.4887690000005023
+      ],
+      "warm_median_ms": 3.5,
+      "form": false,
+      "form_error": "✗ Cannot confirm which element would receive a click at (72, 30), so the click on '@e3' was refused: CDP error (DOM.getNodeForLocation): 'DOM.getNodeForLocation' wasn't found\n",
+      "action_ms": 13.35544900000059,
+      "screenshot_ms": 16.094699999999648,
+      "screenshot": {
+        "bytes": 13863,
+        "width": 1920,
+        "height": 1080,
+        "pixels": 2073600,
+        "mean_rgb": [
+          255,
+          255,
+          255
+        ],
+        "navy": 0,
+        "red": 0,
+        "black": 0,
+        "white": 2071533,
+        "pass": false
+      },
+      "closed": true
+    },
+    {
+      "name": "cli-lightpanda",
+      "trial": 5,
+      "cold_start": true,
+      "session": "c-374cae0c6191-l-5",
+      "ready_ms": 222.74615100000028,
+      "memory": {
+        "processes": 2,
+        "rss_kb": 39904,
+        "pss_kb": 35652,
+        "pss_coverage": 1,
+        "names": {
+          "agent-browser-l": 1,
+          "lightpanda": 1
+        }
+      },
+      "warm_snapshot_ms": [
+        3.9061609999998836,
+        3.4130330000007234,
+        3.3227990000004866,
+        3.270662999999331,
+        3.304858999999851
+      ],
+      "warm_median_ms": 3.3,
+      "form": false,
+      "form_error": "✗ Cannot confirm which element would receive a click at (72, 30), so the click on '@e3' was refused: CDP error (DOM.getNodeForLocation): 'DOM.getNodeForLocation' wasn't found\n",
+      "action_ms": 8.603164000000106,
+      "screenshot_ms": 16.908567999999832,
+      "screenshot": {
+        "bytes": 13863,
+        "width": 1920,
+        "height": 1080,
+        "pixels": 2073600,
+        "mean_rgb": [
+          255,
+          255,
+          255
+        ],
+        "navy": 0,
+        "red": 0,
+        "black": 0,
+        "white": 2071533,
+        "pass": false
+      },
+      "closed": true
+    },
+    {
+      "name": "cli-lightpanda",
+      "trial": 6,
+      "cold_start": true,
+      "session": "c-374cae0c6191-l-6",
+      "ready_ms": 219.6355309999999,
+      "memory": {
+        "processes": 2,
+        "rss_kb": 40132,
+        "pss_kb": 35878,
+        "pss_coverage": 1,
+        "names": {
+          "agent-browser-l": 1,
+          "lightpanda": 1
+        }
+      },
+      "warm_snapshot_ms": [
+        4.387822000000597,
+        3.4733509999996386,
+        3.817798999999468,
+        2.9052089999995587,
+        3.5829479999993055
+      ],
+      "warm_median_ms": 3.6,
+      "form": false,
+      "form_error": "✗ Cannot confirm which element would receive a click at (72, 30), so the click on '@e3' was refused: CDP error (DOM.getNodeForLocation): 'DOM.getNodeForLocation' wasn't found\n",
+      "action_ms": 8.608984999999848,
+      "screenshot_ms": 16.227089999999407,
+      "screenshot": {
+        "bytes": 13863,
+        "width": 1920,
+        "height": 1080,
+        "pixels": 2073600,
+        "mean_rgb": [
+          255,
+          255,
+          255
+        ],
+        "navy": 0,
+        "red": 0,
+        "black": 0,
+        "white": 2071533,
+        "pass": false
+      },
+      "closed": true
+    },
+    {
+      "name": "cli-lightpanda",
+      "trial": 7,
+      "cold_start": true,
+      "session": "c-374cae0c6191-l-7",
+      "ready_ms": 219.56071300000076,
+      "memory": {
+        "processes": 2,
+        "rss_kb": 39944,
+        "pss_kb": 35689,
+        "pss_coverage": 1,
+        "names": {
+          "agent-browser-l": 1,
+          "lightpanda": 1
+        }
+      },
+      "warm_snapshot_ms": [
+        3.554779000000053,
+        3.428996999999981,
+        3.4000409999998737,
+        3.241672999999537,
+        3.5576310000005833
+      ],
+      "warm_median_ms": 3.4,
+      "form": false,
+      "form_error": "✗ Cannot confirm which element would receive a click at (72, 30), so the click on '@e3' was refused: CDP error (DOM.getNodeForLocation): 'DOM.getNodeForLocation' wasn't found\n",
+      "action_ms": 8.508131999999932,
+      "screenshot_ms": 15.789040999999997,
+      "screenshot": {
+        "bytes": 13863,
+        "width": 1920,
+        "height": 1080,
+        "pixels": 2073600,
+        "mean_rgb": [
+          255,
+          255,
+          255
+        ],
+        "navy": 0,
+        "red": 0,
+        "black": 0,
+        "white": 2071533,
+        "pass": false
+      },
+      "closed": true
+    },
+    {
+      "name": "cli-lightpanda",
+      "trial": 8,
+      "cold_start": true,
+      "session": "c-374cae0c6191-l-8",
+      "ready_ms": 219.67111099999966,
+      "memory": {
+        "processes": 2,
+        "rss_kb": 40092,
+        "pss_kb": 35794,
+        "pss_coverage": 1,
+        "names": {
+          "agent-browser-l": 1,
+          "lightpanda": 1
+        }
+      },
+      "warm_snapshot_ms": [
+        3.9026270000003933,
+        3.4546440000003713,
+        3.3763269999999466,
+        3.3112099999998463,
+        3.270701999999801
+      ],
+      "warm_median_ms": 3.4,
+      "form": false,
+      "form_error": "✗ Cannot confirm which element would receive a click at (72, 30), so the click on '@e3' was refused: CDP error (DOM.getNodeForLocation): 'DOM.getNodeForLocation' wasn't found\n",
+      "action_ms": 8.207844999999907,
+      "screenshot_ms": 16.288203000000067,
+      "screenshot": {
+        "bytes": 13863,
+        "width": 1920,
+        "height": 1080,
+        "pixels": 2073600,
+        "mean_rgb": [
+          255,
+          255,
+          255
+        ],
+        "navy": 0,
+        "red": 0,
+        "black": 0,
+        "white": 2071533,
+        "pass": false
+      },
+      "closed": true
+    },
+    {
+      "name": "cli-lightpanda",
+      "trial": 9,
+      "cold_start": true,
+      "session": "c-374cae0c6191-l-9",
+      "ready_ms": 222.28059399999984,
+      "memory": {
+        "processes": 2,
+        "rss_kb": 39780,
+        "pss_kb": 35537,
+        "pss_coverage": 1,
+        "names": {
+          "agent-browser-l": 1,
+          "lightpanda": 1
+        }
+      },
+      "warm_snapshot_ms": [
+        4.152968000000328,
+        3.586412000000564,
+        3.452962999999727,
+        3.892794000000322,
+        3.671922999999879
+      ],
+      "warm_median_ms": 3.7,
+      "form": false,
+      "form_error": "✗ Cannot confirm which element would receive a click at (72, 30), so the click on '@e3' was refused: CDP error (DOM.getNodeForLocation): 'DOM.getNodeForLocation' wasn't found\n",
+      "action_ms": 8.329050999999708,
+      "screenshot_ms": 16.099867999999333,
+      "screenshot": {
+        "bytes": 13863,
+        "width": 1920,
+        "height": 1080,
+        "pixels": 2073600,
+        "mean_rgb": [
+          255,
+          255,
+          255
+        ],
+        "navy": 0,
+        "red": 0,
+        "black": 0,
+        "white": 2071533,
+        "pass": false
+      },
+      "closed": true
+    },
+    {
+      "name": "cli-lightpanda",
+      "trial": 10,
+      "cold_start": true,
+      "session": "c-374cae0c6191-l-10",
+      "ready_ms": 227.68184800000017,
+      "memory": {
+        "processes": 2,
+        "rss_kb": 39720,
+        "pss_kb": 35421,
+        "pss_coverage": 1,
+        "names": {
+          "agent-browser-l": 1,
+          "lightpanda": 1
+        }
+      },
+      "warm_snapshot_ms": [
+        4.899945000001026,
+        3.8060930000010558,
+        3.4241540000002715,
+        3.7685600000004342,
+        3.5984449999996286
+      ],
+      "warm_median_ms": 3.8,
+      "form": false,
+      "form_error": "✗ Cannot confirm which element would receive a click at (72, 30), so the click on '@e3' was refused: CDP error (DOM.getNodeForLocation): 'DOM.getNodeForLocation' wasn't found\n",
+      "action_ms": 8.90929099999994,
+      "screenshot_ms": 16.106606000001193,
+      "screenshot": {
+        "bytes": 13863,
+        "width": 1920,
+        "height": 1080,
+        "pixels": 2073600,
+        "mean_rgb": [
+          255,
+          255,
+          255
+        ],
+        "navy": 0,
+        "red": 0,
+        "black": 0,
+        "white": 2071533,
+        "pass": false
+      },
+      "closed": true
+    },
+    {
+      "name": "direct-shell",
+      "trial": 1,
+      "cold_start": true,
+      "browser_pid": 5001,
+      "ready_ms": 99.25486400000045,
+      "memory": {
+        "processes": 8,
+        "rss_kb": 516528,
+        "pss_kb": 183850,
+        "pss_coverage": 1,
+        "names": {
+          "chrome-headless": 8
+        }
+      },
+      "warm_mode": "accessibility-tree",
+      "warm_snapshot_ms": [
+        2.027226000000155,
+        0.841961000000083,
+        0.5538479999995616,
+        0.6037749999995867,
+        1.5670520000003307
+      ],
+      "warm_median_ms": 0.8,
+      "form": true,
+      "action_ms": 10.38230399999884,
+      "action_kind": "dom-evaluate",
+      "screenshot_ms": 41.47806000000128,
+      "screenshot": {
+        "bytes": 14807,
+        "width": 800,
+        "height": 600,
+        "pixels": 480000,
+        "mean_rgb": [
+          22,
+          38,
+          55
+        ],
+        "navy": 464696,
+        "red": 996,
+        "black": 2413,
+        "white": 6582,
+        "pass": true
+      },
+      "closed": true
+    },
+    {
+      "name": "direct-shell",
+      "trial": 2,
+      "cold_start": true,
+      "browser_pid": 5079,
+      "ready_ms": 79.67276899999888,
+      "memory": {
+        "processes": 8,
+        "rss_kb": 518416,
+        "pss_kb": 181462,
+        "pss_coverage": 1,
+        "names": {
+          "chrome-headless": 8
+        }
+      },
+      "warm_mode": "accessibility-tree",
+      "warm_snapshot_ms": [
+        0.8718349999999191,
+        0.613933000000543,
+        0.4766360000012355,
+        0.4409910000013042,
+        0.42130600000018603
+      ],
+      "warm_median_ms": 0.5,
+      "form": true,
+      "action_ms": 6.30192900000111,
+      "action_kind": "dom-evaluate",
+      "screenshot_ms": 28.70509999999922,
+      "screenshot": {
+        "bytes": 14807,
+        "width": 800,
+        "height": 600,
+        "pixels": 480000,
+        "mean_rgb": [
+          22,
+          38,
+          55
+        ],
+        "navy": 464696,
+        "red": 996,
+        "black": 2413,
+        "white": 6582,
+        "pass": true
+      },
+      "closed": true
+    },
+    {
+      "name": "direct-shell",
+      "trial": 3,
+      "cold_start": true,
+      "browser_pid": 5159,
+      "ready_ms": 81.66656299999886,
+      "memory": {
+        "processes": 8,
+        "rss_kb": 515732,
+        "pss_kb": 184063,
+        "pss_coverage": 1,
+        "names": {
+          "chrome-headless": 8
+        }
+      },
+      "warm_mode": "accessibility-tree",
+      "warm_snapshot_ms": [
+        0.9509779999989405,
+        0.6444360000004963,
+        0.5568709999988641,
+        0.6236639999988256,
+        0.820517000000109
+      ],
+      "warm_median_ms": 0.6,
+      "form": true,
+      "action_ms": 7.5455369999999675,
+      "action_kind": "dom-evaluate",
+      "screenshot_ms": 40.904537000000346,
+      "screenshot": {
+        "bytes": 14807,
+        "width": 800,
+        "height": 600,
+        "pixels": 480000,
+        "mean_rgb": [
+          22,
+          38,
+          55
+        ],
+        "navy": 464696,
+        "red": 996,
+        "black": 2413,
+        "white": 6582,
+        "pass": true
+      },
+      "closed": true
+    },
+    {
+      "name": "direct-shell",
+      "trial": 4,
+      "cold_start": true,
+      "browser_pid": 5240,
+      "ready_ms": 80.8996100000004,
+      "memory": {
+        "processes": 8,
+        "rss_kb": 515508,
+        "pss_kb": 184690,
+        "pss_coverage": 1,
+        "names": {
+          "chrome-headless": 8
+        }
+      },
+      "warm_mode": "accessibility-tree",
+      "warm_snapshot_ms": [
+        1.0196840000007796,
+        1.1736409999994066,
+        0.8161779999991268,
+        0.4922999999998865,
+        0.45726900000045134
+      ],
+      "warm_median_ms": 0.8,
+      "form": true,
+      "action_ms": 5.845029999998587,
+      "action_kind": "dom-evaluate",
+      "screenshot_ms": 33.4722580000016,
+      "screenshot": {
+        "bytes": 14807,
+        "width": 800,
+        "height": 600,
+        "pixels": 480000,
+        "mean_rgb": [
+          22,
+          38,
+          55
+        ],
+        "navy": 464696,
+        "red": 996,
+        "black": 2413,
+        "white": 6582,
+        "pass": true
+      },
+      "closed": true
+    },
+    {
+      "name": "direct-shell",
+      "trial": 5,
+      "cold_start": true,
+      "browser_pid": 5319,
+      "ready_ms": 87.52477499999986,
+      "memory": {
+        "processes": 8,
+        "rss_kb": 515560,
+        "pss_kb": 184268,
+        "pss_coverage": 1,
+        "names": {
+          "chrome-headless": 8
+        }
+      },
+      "warm_mode": "accessibility-tree",
+      "warm_snapshot_ms": [
+        0.7104120000003604,
+        0.5460579999999027,
+        0.5663010000007489,
+        1.1051120000010997,
+        0.5829759999996895
+      ],
+      "warm_median_ms": 0.6,
+      "form": true,
+      "action_ms": 6.59843600000022,
+      "action_kind": "dom-evaluate",
+      "screenshot_ms": 41.746650000000955,
+      "screenshot": {
+        "bytes": 14807,
+        "width": 800,
+        "height": 600,
+        "pixels": 480000,
+        "mean_rgb": [
+          22,
+          38,
+          55
+        ],
+        "navy": 464696,
+        "red": 996,
+        "black": 2413,
+        "white": 6582,
+        "pass": true
+      },
+      "closed": true
+    },
+    {
+      "name": "direct-shell",
+      "trial": 6,
+      "cold_start": true,
+      "browser_pid": 5399,
+      "ready_ms": 82.15514799999983,
+      "memory": {
+        "processes": 8,
+        "rss_kb": 515608,
+        "pss_kb": 184728,
+        "pss_coverage": 1,
+        "names": {
+          "chrome-headless": 8
+        }
+      },
+      "warm_mode": "accessibility-tree",
+      "warm_snapshot_ms": [
+        0.9915810000002239,
+        0.6579639999999927,
+        1.0210769999994227,
+        1.2324330000010377,
+        0.6437040000000707
+      ],
+      "warm_median_ms": 1,
+      "form": true,
+      "action_ms": 7.230158999998821,
+      "action_kind": "dom-evaluate",
+      "screenshot_ms": 31.435617000001002,
+      "screenshot": {
+        "bytes": 14807,
+        "width": 800,
+        "height": 600,
+        "pixels": 480000,
+        "mean_rgb": [
+          22,
+          38,
+          55
+        ],
+        "navy": 464696,
+        "red": 996,
+        "black": 2413,
+        "white": 6582,
+        "pass": true
+      },
+      "closed": true
+    },
+    {
+      "name": "direct-shell",
+      "trial": 7,
+      "cold_start": true,
+      "browser_pid": 5479,
+      "ready_ms": 80.72565100000065,
+      "memory": {
+        "processes": 8,
+        "rss_kb": 514976,
+        "pss_kb": 182738,
+        "pss_coverage": 1,
+        "names": {
+          "chrome-headless": 8
+        }
+      },
+      "warm_mode": "accessibility-tree",
+      "warm_snapshot_ms": [
+        0.8700410000001284,
+        0.5461040000009234,
+        0.4940549999992072,
+        0.4568460000009509,
+        0.5542349999996077
+      ],
+      "warm_median_ms": 0.5,
+      "form": true,
+      "action_ms": 5.833166000000347,
+      "action_kind": "dom-evaluate",
+      "screenshot_ms": 40.34519999999975,
+      "screenshot": {
+        "bytes": 14807,
+        "width": 800,
+        "height": 600,
+        "pixels": 480000,
+        "mean_rgb": [
+          22,
+          38,
+          55
+        ],
+        "navy": 464696,
+        "red": 996,
+        "black": 2413,
+        "white": 6582,
+        "pass": true
+      },
+      "closed": true
+    },
+    {
+      "name": "direct-shell",
+      "trial": 8,
+      "cold_start": true,
+      "browser_pid": 5559,
+      "ready_ms": 76.32527800000025,
+      "memory": {
+        "processes": 8,
+        "rss_kb": 515000,
+        "pss_kb": 184101,
+        "pss_coverage": 1,
+        "names": {
+          "chrome-headless": 8
+        }
+      },
+      "warm_mode": "accessibility-tree",
+      "warm_snapshot_ms": [
+        1.3280160000012984,
+        1.5509250000013708,
+        0.6064139999998588,
+        0.5030010000009497,
+        0.5331890000015846
+      ],
+      "warm_median_ms": 0.6,
+      "form": true,
+      "action_ms": 6.741276000000653,
+      "action_kind": "dom-evaluate",
+      "screenshot_ms": 37.07865799999854,
+      "screenshot": {
+        "bytes": 14807,
+        "width": 800,
+        "height": 600,
+        "pixels": 480000,
+        "mean_rgb": [
+          22,
+          38,
+          55
+        ],
+        "navy": 464696,
+        "red": 996,
+        "black": 2413,
+        "white": 6582,
+        "pass": true
+      },
+      "closed": true
+    },
+    {
+      "name": "direct-shell",
+      "trial": 9,
+      "cold_start": true,
+      "browser_pid": 5639,
+      "ready_ms": 96.07033199999933,
+      "memory": {
+        "processes": 8,
+        "rss_kb": 515768,
+        "pss_kb": 183480,
+        "pss_coverage": 1,
+        "names": {
+          "chrome-headless": 8
+        }
+      },
+      "warm_mode": "accessibility-tree",
+      "warm_snapshot_ms": [
+        0.8350119999995513,
+        0.6150309999993624,
+        0.7576259999987087,
+        0.9365099999995437,
+        0.8393210000012914
+      ],
+      "warm_median_ms": 0.8,
+      "form": true,
+      "action_ms": 9.10429699999986,
+      "action_kind": "dom-evaluate",
+      "screenshot_ms": 37.11412999999993,
+      "screenshot": {
+        "bytes": 14807,
+        "width": 800,
+        "height": 600,
+        "pixels": 480000,
+        "mean_rgb": [
+          22,
+          38,
+          55
+        ],
+        "navy": 464696,
+        "red": 996,
+        "black": 2413,
+        "white": 6582,
+        "pass": true
+      },
+      "closed": true
+    },
+    {
+      "name": "direct-shell",
+      "trial": 10,
+      "cold_start": true,
+      "browser_pid": 5720,
+      "ready_ms": 91.043760999999,
+      "memory": {
+        "processes": 8,
+        "rss_kb": 515052,
+        "pss_kb": 184422,
+        "pss_coverage": 1,
+        "names": {
+          "chrome-headless": 8
+        }
+      },
+      "warm_mode": "accessibility-tree",
+      "warm_snapshot_ms": [
+        2.0687900000011723,
+        0.8074419999993552,
+        0.6239519999999175,
+        0.5973920000014914,
+        0.9039290000000619
+      ],
+      "warm_median_ms": 0.8,
+      "form": true,
+      "action_ms": 7.506955000000744,
+      "action_kind": "dom-evaluate",
+      "screenshot_ms": 32.886461000000054,
+      "screenshot": {
+        "bytes": 14807,
+        "width": 800,
+        "height": 600,
+        "pixels": 480000,
+        "mean_rgb": [
+          22,
+          38,
+          55
+        ],
+        "navy": 464696,
+        "red": 996,
+        "black": 2413,
+        "white": 6582,
+        "pass": true
+      },
+      "closed": true
+    },
+    {
+      "name": "direct-lightpanda",
+      "trial": 1,
+      "cold_start": true,
+      "browser_pid": 5800,
+      "ready_ms": 27.80616800000098,
+      "memory": {
+        "processes": 1,
+        "rss_kb": 23296,
+        "pss_kb": 21238,
+        "pss_coverage": 1,
+        "names": {
+          "lightpanda": 1
+        }
+      },
+      "warm_mode": "accessibility-tree",
+      "warm_snapshot_ms": [
+        0.5651200000011158,
+        0.7756479999989097,
+        0.4272720000008121,
+        0.14862100000027567,
+        0.12010799999916344
+      ],
+      "warm_median_ms": 0.4,
+      "form": true,
+      "action_ms": 6.15212099999917,
+      "action_kind": "dom-evaluate",
+      "screenshot_ms": 5.014963999999964,
+      "screenshot": {
+        "bytes": 6624,
+        "width": 800,
+        "height": 600,
+        "pixels": 480000,
+        "mean_rgb": [
+          254,
+          254,
+          254
+        ],
+        "navy": 0,
+        "red": 0,
+        "black": 0,
+        "white": 477788,
+        "pass": false
+      },
+      "closed": true
+    },
+    {
+      "name": "direct-lightpanda",
+      "trial": 2,
+      "cold_start": true,
+      "browser_pid": 5810,
+      "ready_ms": 26.549815000000308,
+      "memory": {
+        "processes": 1,
+        "rss_kb": 23308,
+        "pss_kb": 21235,
+        "pss_coverage": 1,
+        "names": {
+          "lightpanda": 1
+        }
+      },
+      "warm_mode": "accessibility-tree",
+      "warm_snapshot_ms": [
+        0.13893599999937578,
+        0.9528289999998378,
+        0.8611609999989014,
+        0.8195350000005419,
+        0.22735500000089814
+      ],
+      "warm_median_ms": 0.8,
+      "form": true,
+      "action_ms": 4.653098000000682,
+      "action_kind": "dom-evaluate",
+      "screenshot_ms": 5.208769000000757,
+      "screenshot": {
+        "bytes": 6624,
+        "width": 800,
+        "height": 600,
+        "pixels": 480000,
+        "mean_rgb": [
+          254,
+          254,
+          254
+        ],
+        "navy": 0,
+        "red": 0,
+        "black": 0,
+        "white": 477788,
+        "pass": false
+      },
+      "closed": true
+    },
+    {
+      "name": "direct-lightpanda",
+      "trial": 3,
+      "cold_start": true,
+      "browser_pid": 5821,
+      "ready_ms": 24.51710599999933,
+      "memory": {
+        "processes": 1,
+        "rss_kb": 23292,
+        "pss_kb": 21234,
+        "pss_coverage": 1,
+        "names": {
+          "lightpanda": 1
+        }
+      },
+      "warm_mode": "accessibility-tree",
+      "warm_snapshot_ms": [
+        0.20651900000120804,
+        0.14839699999902223,
+        0.1482800000012503,
+        0.1366730000008829,
+        0.13221800000064832
+      ],
+      "warm_median_ms": 0.1,
+      "form": true,
+      "action_ms": 5.148572000000058,
+      "action_kind": "dom-evaluate",
+      "screenshot_ms": 4.84016100000008,
+      "screenshot": {
+        "bytes": 6624,
+        "width": 800,
+        "height": 600,
+        "pixels": 480000,
+        "mean_rgb": [
+          254,
+          254,
+          254
+        ],
+        "navy": 0,
+        "red": 0,
+        "black": 0,
+        "white": 477788,
+        "pass": false
+      },
+      "closed": true
+    },
+    {
+      "name": "direct-lightpanda",
+      "trial": 4,
+      "cold_start": true,
+      "browser_pid": 5831,
+      "ready_ms": 25.698199000000386,
+      "memory": {
+        "processes": 1,
+        "rss_kb": 23320,
+        "pss_kb": 21239,
+        "pss_coverage": 1,
+        "names": {
+          "lightpanda": 1
+        }
+      },
+      "warm_mode": "accessibility-tree",
+      "warm_snapshot_ms": [
+        0.8111519999984012,
+        0.8472799999999552,
+        0.5819069999997737,
+        0.540036999998847,
+        0.15826100000049337
+      ],
+      "warm_median_ms": 0.6,
+      "form": true,
+      "action_ms": 6.759968000000299,
+      "action_kind": "dom-evaluate",
+      "screenshot_ms": 5.06116800000018,
+      "screenshot": {
+        "bytes": 6624,
+        "width": 800,
+        "height": 600,
+        "pixels": 480000,
+        "mean_rgb": [
+          254,
+          254,
+          254
+        ],
+        "navy": 0,
+        "red": 0,
+        "black": 0,
+        "white": 477788,
+        "pass": false
+      },
+      "closed": true
+    },
+    {
+      "name": "direct-lightpanda",
+      "trial": 5,
+      "cold_start": true,
+      "browser_pid": 5841,
+      "ready_ms": 24.957629000000452,
+      "memory": {
+        "processes": 1,
+        "rss_kb": 23292,
+        "pss_kb": 21219,
+        "pss_coverage": 1,
+        "names": {
+          "lightpanda": 1
+        }
+      },
+      "warm_mode": "accessibility-tree",
+      "warm_snapshot_ms": [
+        0.14748899999904097,
+        0.12943100000120467,
+        0.10375999999996566,
+        0.11107100000117498,
+        0.097938000000795
+      ],
+      "warm_median_ms": 0.1,
+      "form": true,
+      "action_ms": 4.9362290000008215,
+      "action_kind": "dom-evaluate",
+      "screenshot_ms": 5.331115999999383,
+      "screenshot": {
+        "bytes": 6624,
+        "width": 800,
+        "height": 600,
+        "pixels": 480000,
+        "mean_rgb": [
+          254,
+          254,
+          254
+        ],
+        "navy": 0,
+        "red": 0,
+        "black": 0,
+        "white": 477788,
+        "pass": false
+      },
+      "closed": true
+    },
+    {
+      "name": "direct-lightpanda",
+      "trial": 6,
+      "cold_start": true,
+      "browser_pid": 5851,
+      "ready_ms": 26.829689999998664,
+      "memory": {
+        "processes": 1,
+        "rss_kb": 23308,
+        "pss_kb": 21235,
+        "pss_coverage": 1,
+        "names": {
+          "lightpanda": 1
+        }
+      },
+      "warm_mode": "accessibility-tree",
+      "warm_snapshot_ms": [
+        0.6968629999992118,
+        0.22931299999982002,
+        0.14871400000083668,
+        0.479326000000583,
+        0.1800760000005539
+      ],
+      "warm_median_ms": 0.2,
+      "form": true,
+      "action_ms": 5.150582000000213,
+      "action_kind": "dom-evaluate",
+      "screenshot_ms": 4.667945000001055,
+      "screenshot": {
+        "bytes": 6624,
+        "width": 800,
+        "height": 600,
+        "pixels": 480000,
+        "mean_rgb": [
+          254,
+          254,
+          254
+        ],
+        "navy": 0,
+        "red": 0,
+        "black": 0,
+        "white": 477788,
+        "pass": false
+      },
+      "closed": true
+    },
+    {
+      "name": "direct-lightpanda",
+      "trial": 7,
+      "cold_start": true,
+      "browser_pid": 5861,
+      "ready_ms": 26.657497999998668,
+      "memory": {
+        "processes": 1,
+        "rss_kb": 23308,
+        "pss_kb": 21242,
+        "pss_coverage": 1,
+        "names": {
+          "lightpanda": 1
+        }
+      },
+      "warm_mode": "accessibility-tree",
+      "warm_snapshot_ms": [
+        0.3672260000003007,
+        0.29540499999893655,
+        0.3105310000009922,
+        0.13100499999927706,
+        0.12325800000144227
+      ],
+      "warm_median_ms": 0.3,
+      "form": true,
+      "action_ms": 4.97074799999973,
+      "action_kind": "dom-evaluate",
+      "screenshot_ms": 4.993370000000141,
+      "screenshot": {
+        "bytes": 6624,
+        "width": 800,
+        "height": 600,
+        "pixels": 480000,
+        "mean_rgb": [
+          254,
+          254,
+          254
+        ],
+        "navy": 0,
+        "red": 0,
+        "black": 0,
+        "white": 477788,
+        "pass": false
+      },
+      "closed": true
+    },
+    {
+      "name": "direct-lightpanda",
+      "trial": 8,
+      "cold_start": true,
+      "browser_pid": 5871,
+      "ready_ms": 25.17919400000028,
+      "memory": {
+        "processes": 1,
+        "rss_kb": 23300,
+        "pss_kb": 21231,
+        "pss_coverage": 1,
+        "names": {
+          "lightpanda": 1
+        }
+      },
+      "warm_mode": "accessibility-tree",
+      "warm_snapshot_ms": [
+        0.28806299999996554,
+        0.5135350000000471,
+        0.5222389999998995,
+        0.6232959999997547,
+        0.5997299999999086
+      ],
+      "warm_median_ms": 0.5,
+      "form": true,
+      "action_ms": 4.635354000000007,
+      "action_kind": "dom-evaluate",
+      "screenshot_ms": 5.465605999999752,
+      "screenshot": {
+        "bytes": 6624,
+        "width": 800,
+        "height": 600,
+        "pixels": 480000,
+        "mean_rgb": [
+          254,
+          254,
+          254
+        ],
+        "navy": 0,
+        "red": 0,
+        "black": 0,
+        "white": 477788,
+        "pass": false
+      },
+      "closed": true
+    },
+    {
+      "name": "direct-lightpanda",
+      "trial": 9,
+      "cold_start": true,
+      "browser_pid": 5881,
+      "ready_ms": 29.644596000000092,
+      "memory": {
+        "processes": 1,
+        "rss_kb": 23316,
+        "pss_kb": 21235,
+        "pss_coverage": 1,
+        "names": {
+          "lightpanda": 1
+        }
+      },
+      "warm_mode": "accessibility-tree",
+      "warm_snapshot_ms": [
+        0.17381999999997788,
+        0.12177400000109628,
+        0.12638300000071467,
+        0.1152750000001106,
+        0.1014340000001539
+      ],
+      "warm_median_ms": 0.1,
+      "form": true,
+      "action_ms": 7.973630999998932,
+      "action_kind": "dom-evaluate",
+      "screenshot_ms": 5.32140999999865,
+      "screenshot": {
+        "bytes": 6624,
+        "width": 800,
+        "height": 600,
+        "pixels": 480000,
+        "mean_rgb": [
+          254,
+          254,
+          254
+        ],
+        "navy": 0,
+        "red": 0,
+        "black": 0,
+        "white": 477788,
+        "pass": false
+      },
+      "closed": true
+    },
+    {
+      "name": "direct-lightpanda",
+      "trial": 10,
+      "cold_start": true,
+      "browser_pid": 5891,
+      "ready_ms": 24.75175599999966,
+      "memory": {
+        "processes": 1,
+        "rss_kb": 23288,
+        "pss_kb": 21215,
+        "pss_coverage": 1,
+        "names": {
+          "lightpanda": 1
+        }
+      },
+      "warm_mode": "accessibility-tree",
+      "warm_snapshot_ms": [
+        0.15746500000022934,
+        0.12890000000152213,
+        0.12338699999963865,
+        0.1218300000000454,
+        0.111668000001373
+      ],
+      "warm_median_ms": 0.1,
+      "form": true,
+      "action_ms": 6.110681999998633,
+      "action_kind": "dom-evaluate",
+      "screenshot_ms": 5.207008000001224,
+      "screenshot": {
+        "bytes": 6624,
+        "width": 800,
+        "height": 600,
+        "pixels": 480000,
+        "mean_rgb": [
+          254,
+          254,
+          254
+        ],
+        "navy": 0,
+        "red": 0,
+        "black": 0,
+        "white": 477788,
+        "pass": false
+      },
+      "closed": true
+    }
+  ]
+}

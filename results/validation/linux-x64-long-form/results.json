@@ -1,0 +1,353 @@
+{
+  "date": "2026-11-27T02:16:28.754Z",
+  "platform": "linux",
+  "arch": "x64",
+  "cpu": "Intel(R) Xeon(R) Processor",
+  "cores": 4,
+  "node": "v22.23.4",
+  "url": "http://127.0.0.1:45541/",
+  "answers": 107,
+  "untouched_checked": 14,
+  "summary": {
+    "shell": {
+      "correct": "121/121",
+      "action_failures": 0,
+      "submitted": true,
+      "ms": 3316,
+      "page": {
+        "height": 10294,
+        "fields": 137,
+        "text": 8166
+      }
+    },
+    "lightpanda": {
+      "correct": "101/121",
+      "action_failures": 20,
+      "submitted": false,
+      "ms": 1571,
+      "page": {
+        "height": 10222,
+        "fields": 137,
+        "text": 8053
+      }
+    }
+  },
+  "reports": [
+    {
+      "engine": "shell",
+      "ms": 3316,
+      "page": {
+        "height": 10294,
+        "fields": 137,
+        "text": 8166
+      },
+      "actions": 107,
+      "action_failures": 0,
+      "submitted": true,
+      "submit_error": null,
+      "compared": 121,
+      "correct": 121,
+      "mismatches": [],
+      "failures": []
+    },
+    {
+      "engine": "lightpanda",
+      "ms": 1571,
+      "page": {
+        "height": 10222,
+        "fields": 137,
+        "text": 8053
+      },
+      "actions": 107,
+      "action_failures": 20,
+      "submitted": false,
+      "submit_error": "✗ Cannot confirm which element would receive a click at (122, 792), so the click on '@e391' was refused: CDP error (DOM.getNodeForLocation): 'DOM.getNodeForLocation' wasn't found\n",
+      "compared": 121,
+      "correct": 101,
+      "mismatches": [
+        {
+          "field": "certify",
+          "expected": "yes",
+          "actual": ""
+        },
+        {
+          "field": "conduct",
+          "expected": "yes",
+          "actual": ""
+        },
+        {
+          "field": "contact-method",
+          "expected": "email",
+          "actual": ""
+        },
+        {
+          "field": "job1-current",
+          "expected": "yes",
+          "actual": ""
+        },
+        {
+          "field": "lab-access",
+          "expected": "yes",
+          "actual": ""
+        },
+        {
+          "field": "lang-french",
+          "expected": "yes",
+          "actual": ""
+        },
+        {
+          "field": "lang-german",
+          "expected": "yes",
+          "actual": ""
+        },
+        {
+          "field": "lang-mandarin",
+          "expected": "yes",
+          "actual": ""
+        },
+        {
+          "field": "pronouns",
+          "expected": "she-her",
+          "actual": ""
+        },
+        {
+          "field": "q1",
+          "expected": "no",
+          "actual": ""
+        },
+        {
+          "field": "q2",
+          "expected": "no",
+          "actual": ""
+        },
+        {
+          "field": "q3",
+          "expected": "yes",
+          "actual": ""
+        },
+        {
+          "field": "q4",
+          "expected": "yes",
+          "actual": ""
+        },
+        {
+          "field": "q5",
+          "expected": "yes",
+          "actual": ""
+        },
+        {
+          "field": "q6",
+          "expected": "no",
+          "actual": ""
+        },
+        {
+          "field": "q7",
+          "expected": "no",
+          "actual": ""
+        },
+        {
+          "field": "q8",
+          "expected": "yes",
+          "actual": ""
+        },
+        {
+          "field": "sex",
+          "expected": "female",
+          "actual": ""
+        },
+        {
+          "field": "track",
+          "expected": "ecology",
+          "actual": ""
+        },
+        {
+          "field": "visa-sponsorship",
+          "expected": "yes",
+          "actual": ""
+        }
+      ],
+      "failures": [
+        {
+          "field": "sex",
+          "op": "check",
+          "name": "Female",
+          "scope": "#identity",
+          "ref": "e61",
+          "ok": false,
+          "error": "✗ Cannot confirm which element would receive a click at (46, 8), so the click on '@e61' was refused: CDP error (DOM.getNodeForLocation): 'DOM.getNodeForLocation' wasn't found\n"
+        },
+        {
+          "field": "pronouns",
+          "op": "check",
+          "name": "She/her",
+          "scope": "#identity",
+          "ref": "e64",
+          "ok": false,
+          "error": "✗ Cannot confirm which element would receive a click at (46, 8), so the click on '@e64' was refused: CDP error (DOM.getNodeForLocation): 'DOM.getNodeForLocation' wasn't found\n"
+        },
+        {
+          "field": "contact-method",
+          "op": "check",
+          "name": "Email me",
+          "scope": "#contact",
+          "ref": "e73",
+          "ok": false,
+          "error": "✗ Cannot confirm which element would receive a click at (46, 8), so the click on '@e73' was refused: CDP error (DOM.getNodeForLocation): 'DOM.getNodeForLocation' wasn't found\n"
+        },
+        {
+          "field": "job1-current",
+          "op": "check",
+          "name": "I currently work here",
+          "scope": "#job-1",
+          "ref": "e180",
+          "ok": false,
+          "error": "✗ Cannot confirm which element would receive a click at (46, 8), so the click on '@e180' was refused: CDP error (DOM.getNodeForLocation): 'DOM.getNodeForLocation' wasn't found\n"
+        },
+        {
+          "field": "lang-french",
+          "op": "check",
+          "name": "French",
+          "scope": "#languages",
+          "ref": "e219",
+          "ok": false,
+          "error": "✗ Cannot confirm which element would receive a click at (46, 8), so the click on '@e219' was refused: CDP error (DOM.getNodeForLocation): 'DOM.getNodeForLocation' wasn't found\n"
+        },
+        {
+          "field": "lang-mandarin",
+          "op": "check",
+          "name": "Mandarin",
+          "scope": "#languages",
+          "ref": "e221",
+          "ok": false,
+          "error": "✗ Cannot confirm which element would receive a click at (247, 8), so the click on '@e221' was refused: CDP error (DOM.getNodeForLocation): 'DOM.getNodeForLocation' wasn't found\n"
+        },
+        {
+          "field": "lang-german",
+          "op": "check",
+          "name": "German",
+          "scope": "#languages",
+          "ref": "e223",
+          "ok": false,
+          "error": "✗ Cannot confirm which element would receive a click at (457, 8), so the click on '@e223' was refused: CDP error (DOM.getNodeForLocation): 'DOM.getNodeForLocation' wasn't found\n"
+        },
+        {
+          "field": "track",
+          "op": "check",
+          "name": "Coastal ecology",
+          "scope": "#residency",
+          "ref": "e229",
+          "ok": false,
+          "error": "✗ Cannot confirm which element would receive a click at (46, 8), so the click on '@e229' was refused: CDP error (DOM.getNodeForLocation): 'DOM.getNodeForLocation' wasn't found\n"
+        },
+        {
+          "field": "lab-access",
+          "op": "check",
+          "name": "I need laboratory access",
+          "scope": "#residency",
+          "ref": "e252",
+          "ok": false,
+          "error": "✗ Cannot confirm which element would receive a click at (32, 8), so the click on '@e252' was refused: CDP error (DOM.getNodeForLocation): 'DOM.getNodeForLocation' wasn't found\n"
+        },
+        {
+          "field": "visa-sponsorship",
+          "op": "check",
+          "name": "I need visa sponsorship",
+          "scope": "#residency",
+          "ref": "e253",
+          "ok": false,
+          "error": "✗ Cannot confirm which element would receive a click at (32, 8), so the click on '@e253' was refused: CDP error (DOM.getNodeForLocation): 'DOM.getNodeForLocation' wasn't found\n"
+        },
+        {
+          "field": "q1",
+          "op": "check",
+          "name": "No",
+          "scope": "#q1",
+          "ref": "e362",
+          "ok": false,
+          "error": "✗ Cannot confirm which element would receive a click at (46, 8), so the click on '@e362' was refused: CDP error (DOM.getNodeForLocation): 'DOM.getNodeForLocation' wasn't found\n"
+        },
+        {
+          "field": "q2",
+          "op": "check",
+          "name": "No",
+          "scope": "#q2",
+          "ref": "e364",
+          "ok": false,
+          "error": "✗ Cannot confirm which element would receive a click at (46, 8), so the click on '@e364' was refused: CDP error (DOM.getNodeForLocation): 'DOM.getNodeForLocation' wasn't found\n"
+        },
+        {
+          "field": "q3",
+          "op": "check",
+          "name": "Yes",
+          "scope": "#q3",
+          "ref": "e365",
+          "ok": false,
+          "error": "✗ Cannot confirm which element would receive a click at (46, 8), so the click on '@e365' was refused: CDP error (DOM.getNodeForLocation): 'DOM.getNodeForLocation' wasn't found\n"
+        },
+        {
+          "field": "q4",
+          "op": "check",
+          "name": "Yes",
+          "scope": "#q4",
+          "ref": "e367",
+          "ok": false,
+          "error": "✗ Cannot confirm which element would receive a click at (46, 8), so the click on '@e367' was refused: CDP error (DOM.getNodeForLocation): 'DOM.getNodeForLocation' wasn't found\n"
+        },
+        {
+          "field": "q5",
+          "op": "check",
+          "name": "Yes",
+          "scope": "#q5",
+          "ref": "e369",
+          "ok": false,
+          "error": "✗ Cannot confirm which element would receive a click at (46, 49), so the click on '@e369' was refused: CDP error (DOM.getNodeForLocation): 'DOM.getNodeForLocation' wasn't found\n"
+        },
+        {
+          "field": "q6",
+          "op": "check",
+          "name": "No",
+          "scope": "#q6",
+          "ref": "e372",
+          "ok": false,
+          "error": "✗ Cannot confirm which element would receive a click at (46, 145), so the click on '@e372' was refused: CDP error (DOM.getNodeForLocation): 'DOM.getNodeForLocation' wasn't found\n"
+        },
+        {
+          "field": "q7",
+          "op": "check",
+          "name": "No",
+          "scope": "#q7",
+          "ref": "e374",
+          "ok": false,
+          "error": "✗ Cannot confirm which element would receive a click at (46, 221), so the click on '@e374' was refused: CDP error (DOM.getNodeForLocation): 'DOM.getNodeForLocation' wasn't found\n"
+        },
+        {
+          "field": "q8",
+          "op": "check",
+          "name": "Yes",
+          "scope": "#q8",
+          "ref": "e375",
+          "ok": false,
+          "error": "✗ Cannot confirm which element would receive a click at (46, 277), so the click on '@e375' was refused: CDP error (DOM.getNodeForLocation): 'DOM.getNodeForLocation' wasn't found\n"
+        },
+        {
+          "field": "certify",
+          "op": "check",
+          "name": "I certify that this application is true",
+          "scope": "#declarations",
+          "ref": "e379",
+          "ok": false,
+          "error": "✗ Cannot confirm which element would receive a click at (32, 430), so the click on '@e379' was refused: CDP error (DOM.getNodeForLocation): 'DOM.getNodeForLocation' wasn't found\n"
+        },
+        {
+          "field": "conduct",
+          "op": "check",
+          "name": "I agree to the residency code of conduct",
+          "scope": "#declarations",
+          "ref": "e380",
+          "ok": false,
+          "error": "✗ Cannot confirm which element would receive a click at (32, 450), so the click on '@e380' was refused: CDP error (DOM.getNodeForLocation): 'DOM.getNodeForLocation' wasn't found\n"
+        }
+      ]
+    }
+  ]
+}

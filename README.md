@@ -85,6 +85,23 @@ node compare.mjs --rounds 10
 node optimize.mjs
 ```
 
+## Long residency application
+
+`fixture/residency-application.html` is a 13-section form, about 10,300 pixels tall, with 121 answers: text, email, phone, URL, dates, months, numbers, a range, text areas, selects, a multi-select, radios, and checkboxes. Repeated labels such as City, Country, and Employer are disambiguated by section. Two boxes must stay empty, one starts checked, and a disabled staff field plus a read-only application id must keep their original values. `node fill-form.mjs` drives each engine the way an agent does: a scoped snapshot, then `fill`, `select`, or `check` on the ref. Date and month controls are the exception. Chrome exposes them as repeated Month, Day, and Year spin buttons, and filling one part is rejected, so those controls are set with `fill #id`.
+
+| Engine | Answers correct | Actions that failed | Submitted |
+| --- | ---: | ---: | ---: |
+| agent-browser + Headless Shell | **121/121** | **0** | **yes** |
+| agent-browser + Lightpanda | 101/121 | 20 | no |
+
+Shell stored the application. The receipt shows Amelia Okonkwo, `dob=1991-04-17`, `citizenship=Canada`, `job1-current=yes`, `areas=Marine ecology|Genomics|Climate`, and the certification boxes. The read-only id stayed `APP-2026-00421`, the disabled field stayed `INTERNAL`, and the marketing and "on behalf of someone else" boxes stayed empty.
+
+Lightpanda filled every text field, date, number, range, and select, including the multi-select. All 20 failures are radios and checkboxes. `check` is refused with `DOM.getNodeForLocation wasn't found`, and the same error blocks Submit. Those 20 answers stayed blank, so the application was not stored. Evidence: [linux-x64-long-form](results/validation/linux-x64-long-form).
+
+```sh
+node fill-form.mjs
+```
+
 ## Reproduce on another OS
 
 Requires **Node.js 22.12+** and npm. Commands below work in macOS/Linux shells and Windows PowerShell without Unix environment-variable syntax.
@@ -199,6 +216,8 @@ All values are rounded to milliseconds; the Windows direct path had 9/10 samples
 - `compare.mjs`: cold start, warm snapshot, memory, ref click, and screenshot fidelity for agent-browser and Lightpanda.
 - `optimize.mjs`: five-loop hillclimb on the agent-browser path.
 - `metrics.mjs`: shared summaries, process memory, and PNG fidelity check.
+- `fill-form.mjs`: fills the long residency application through agent-browser and Lightpanda.
+- `fixture/residency-application.html`: the 13-section form.
 - `agent.mjs`: isolated interactive CLI wrapper.
 - `results/`: original evidence and selected portable-harness validations.
 - [Original research report](docs/original-report.md): detailed first-session findings and alternative-engine research.

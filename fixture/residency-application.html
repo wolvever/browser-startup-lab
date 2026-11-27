@@ -1,0 +1,544 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>International research residency application</title>
+<style>
+  :root { color-scheme: light; --ink:#1c2430; --muted:#5c6775; --line:#d5dbe3; --paper:#f3f5f8; --card:#fff; --accent:#1f4e79; }
+  * { box-sizing: border-box; }
+  body { margin:0; font:16px/1.5 "Segoe UI", sans-serif; color:var(--ink); background:var(--paper); }
+  header { background:var(--accent); color:#fff; padding:28px 20px 32px; }
+  header h1 { margin:0 0 8px; font-size:28px; }
+  header p { margin:0; max-width:760px; }
+  .wrap { width:min(880px, calc(100% - 32px)); margin:0 auto; }
+  nav { background:#fff; border-bottom:1px solid var(--line); }
+  nav .wrap { display:flex; flex-wrap:wrap; gap:8px 16px; padding:12px 0; }
+  nav a { color:var(--accent); font-size:14px; }
+  main { padding:24px 0 80px; }
+  section { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:22px 22px 8px; margin:0 0 28px; }
+  section h2 { margin:0 0 6px; font-size:22px; }
+  section .lede { color:var(--muted); margin:0 0 18px; }
+  fieldset { border:1px solid var(--line); border-radius:10px; margin:0 0 16px; padding:12px 14px 4px; }
+  legend { font-weight:650; padding:0 6px; }
+  .grid { display:grid; grid-template-columns:1fr 1fr; gap:12px 16px; }
+  .span-2 { grid-column:1 / -1; }
+  label { display:block; font-size:14px; font-weight:650; margin-bottom:8px; }
+  label span.hint { display:block; font-weight:400; color:var(--muted); }
+  input, select, textarea { width:100%; font:inherit; padding:8px 10px; border:1px solid #b7c0cc; border-radius:8px; background:#fff; }
+  textarea { min-height:110px; resize:vertical; }
+  .choice { display:flex; align-items:center; gap:8px; font-weight:500; margin:0 0 8px; }
+  .choice input { width:auto; }
+  .row { display:flex; flex-wrap:wrap; gap:8px 18px; }
+  button { font:inherit; font-weight:650; border-radius:8px; padding:10px 16px; border:1px solid var(--accent); background:var(--accent); color:#fff; }
+  button.secondary { background:#fff; color:var(--accent); }
+  .actions { display:flex; gap:12px; align-items:center; margin:8px 0 18px; }
+  #progress { font-size:14px; color:var(--muted); }
+  #receipt { white-space:pre-wrap; font-family:ui-monospace, monospace; font-size:13px; background:#f7f9fc; border-radius:8px; padding:12px; }
+  .banner { background:#e5f4ea; border:1px solid #9dccad; border-radius:10px; padding:12px 14px; margin:0 0 16px; }
+  .error { background:#fdeCEC; border:1px solid #e3b4b4; border-radius:10px; padding:12px 14px; margin:0 0 16px; }
+  @media (max-width: 720px) { .grid { grid-template-columns:1fr; } .span-2 { grid-column:auto; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>International research residency application</h1>
+    <p>Northwater Institute, 2027 cohort. Complete every section. The page is intentionally long: later sections cover travel, referees, and declarations, and the submit button is at the bottom.</p>
+  </div>
+</header>
+<nav aria-label="Sections">
+  <div class="wrap">
+    <a href="#identity">Identity</a>
+    <a href="#contact">Contact</a>
+    <a href="#home-address">Home address</a>
+    <a href="#mailing-address">Mailing address</a>
+    <a href="#passport">Passport</a>
+    <a href="#employment">Employment</a>
+    <a href="#education">Education</a>
+    <a href="#languages">Languages</a>
+    <a href="#residency">Residency</a>
+    <a href="#travel">Travel</a>
+    <a href="#referees">Referees</a>
+    <a href="#compliance">Compliance</a>
+    <a href="#declarations">Declarations</a>
+  </div>
+</nav>
+<main class="wrap">
+  <form id="application" autocomplete="off" novalidate>
+    <p id="progress" aria-live="polite">Answered 0 of the tracked fields.</p>
+
+    <section id="identity">
+      <h2>1. Identity</h2>
+      <p class="lede">Use the names printed on your passport. Preferred name is what the institute will use in correspondence. Staff cannot edit the application id.</p>
+      <div class="grid">
+        <label>Legal first name <input id="first-name" data-field="first-name" required></label>
+        <label>Legal middle name <input id="middle-name" data-field="middle-name"></label>
+        <label>Legal last name <input id="last-name" data-field="last-name" required></label>
+        <label>Preferred name <input id="preferred-name" data-field="preferred-name" required></label>
+        <label>Date of birth <input id="dob" data-field="dob" type="date" required></label>
+        <label>National identification number <input id="national-id" data-field="national-id" required></label>
+        <label>Application id
+          <input id="application-id" data-field="application-id" value="APP-2026-00421" readonly></label>
+        <p class="lede">The application id is assigned by the institute. Leave it, and leave the disabled staff field alone.</p>
+        <label>Staff use only
+          <input id="staff-only" data-field="staff-only" value="INTERNAL" disabled></label>
+        <label class="span-2">Country of citizenship
+          <select id="citizenship" class="country" data-field="citizenship" required></select></label>
+        <label class="span-2">Second citizenship
+          <select id="second-citizenship" data-field="second-citizenship" required>
+            <option value="">Select a country</option>
+            <option>None</option>
+            <option>Canada</option>
+            <option>Nigeria</option>
+            <option>Japan</option>
+            <option>Germany</option>
+            <option>France</option>
+            <option>United Kingdom</option>
+            <option>United States</option>
+          </select></label>
+      </div>
+      <fieldset>
+        <legend>Sex</legend>
+        <label class="choice"><input type="radio" name="sex" data-field="sex" value="female" required> Female</label>
+        <label class="choice"><input type="radio" name="sex" data-field="sex" value="male"> Male</label>
+        <label class="choice"><input type="radio" name="sex" data-field="sex" value="x"> Another term</label>
+      </fieldset>
+      <fieldset>
+        <legend>Pronouns</legend>
+        <label class="choice"><input type="radio" name="pronouns" data-field="pronouns" value="she-her" required> She/her</label>
+        <label class="choice"><input type="radio" name="pronouns" data-field="pronouns" value="he-him"> He/him</label>
+        <label class="choice"><input type="radio" name="pronouns" data-field="pronouns" value="they-them"> They/them</label>
+      </fieldset>
+    </section>
+
+    <section id="contact">
+      <h2>2. Contact</h2>
+      <p class="lede">The backup email must be a different inbox from the primary email. Phone numbers should include the country code. The website may be a lab page or a personal site.</p>
+      <div class="grid">
+        <label>Email <input id="email" data-field="email" type="email" required></label>
+        <label>Backup email <input id="backup-email" data-field="backup-email" type="email" required></label>
+        <label>Mobile phone <input id="mobile" data-field="mobile" type="tel" required></label>
+        <label>Home phone <input id="home-phone" data-field="home-phone" type="tel"></label>
+        <label class="span-2">Website <input id="website" data-field="website" type="url" required></label>
+      </div>
+      <fieldset>
+        <legend>Preferred contact method</legend>
+        <label class="choice"><input type="radio" name="contact-method" data-field="contact-method" value="email" required> Email me</label>
+        <label class="choice"><input type="radio" name="contact-method" data-field="contact-method" value="phone"> Call my mobile</label>
+        <label class="choice"><input type="radio" name="contact-method" data-field="contact-method" value="either"> Either email or mobile</label>
+      </fieldset>
+    </section>
+
+    <section id="home-address">
+      <h2>3. Home address</h2>
+      <p class="lede">This is where you live today. Do not enter a university department here unless it is also your residence. Postal codes keep their original spacing.</p>
+      <div class="grid">
+        <label class="span-2">Street address <input id="home-line1" data-field="home-line1" required></label>
+        <label class="span-2">Apartment, suite, or unit <input id="home-line2" data-field="home-line2"></label>
+        <label>City <input id="home-city" data-field="home-city" required></label>
+        <label>State or province <input id="home-region" data-field="home-region" required></label>
+        <label>Postal code <input id="home-postal" data-field="home-postal" required></label>
+        <label>Country <select id="home-country" class="country" data-field="home-country" required></select></label>
+      </div>
+    </section>
+
+    <section id="mailing-address">
+      <h2>4. Mailing address</h2>
+      <p class="lede">Official letters go here. If this differs from home, leave the "same as home" box empty and type the mailing address in full. A post office box is acceptable on line 1.</p>
+      <label class="choice"><input id="same-as-home" data-field="same-as-home" type="checkbox" value="yes"> Mailing address is the same as home</label>
+      <div class="grid">
+        <label class="span-2">Street address <input id="mail-line1" data-field="mail-line1" required></label>
+        <label class="span-2">Apartment, suite, or unit <input id="mail-line2" data-field="mail-line2"></label>
+        <label>City <input id="mail-city" data-field="mail-city" required></label>
+        <label>State or province <input id="mail-region" data-field="mail-region" required></label>
+        <label>Postal code <input id="mail-postal" data-field="mail-postal" required></label>
+        <label>Country <select id="mail-country" class="country" data-field="mail-country" required></select></label>
+      </div>
+    </section>
+
+    <section id="passport">
+      <h2>5. Passport</h2>
+      <p class="lede">The passport must be valid for at least six months after the residency ends. Enter dates as the controls request them. Diplomatic and service documents are rare; most applicants hold an ordinary passport.</p>
+      <div class="grid">
+        <label>Passport number <input id="passport-number" data-field="passport-number" required></label>
+        <label>Issuing country <select id="passport-country" class="country" data-field="passport-country" required></select></label>
+        <label>Issue date <input id="passport-issued" data-field="passport-issued" type="date" required></label>
+        <label>Expiry date <input id="passport-expires" data-field="passport-expires" type="date" required></label>
+        <label class="span-2">Document type
+          <select id="document-type" data-field="document-type" required>
+            <option value="">Select a document type</option>
+            <option>Ordinary</option>
+            <option>Diplomatic</option>
+            <option>Service</option>
+          </select></label>
+      </div>
+    </section>
+
+    <section id="employment">
+      <h2>6. Employment</h2>
+      <p class="lede">List the current role first. If you still work there, check the current-role box and leave the end month empty. The second role is the position immediately before it. Duties should be specific, not a job advertisement.</p>
+      <fieldset id="job-1">
+        <legend>Position 1</legend>
+        <div class="grid">
+          <label>Employer <input id="job1-employer" data-field="job1-employer" required></label>
+          <label>Job title <input id="job1-title" data-field="job1-title" required></label>
+          <label>Start month <input id="job1-start" data-field="job1-start" type="month" required></label>
+          <label>End month <input id="job1-end" data-field="job1-end" type="month"></label>
+          <label class="choice span-2"><input id="job1-current" data-field="job1-current" type="checkbox" value="yes"> I currently work here</label>
+          <label class="span-2">Duties <textarea id="job1-duties" data-field="job1-duties" required></textarea></label>
+        </div>
+      </fieldset>
+      <fieldset id="job-2">
+        <legend>Position 2</legend>
+        <div class="grid">
+          <label>Employer <input id="job2-employer" data-field="job2-employer" required></label>
+          <label>Job title <input id="job2-title" data-field="job2-title" required></label>
+          <label>Start month <input id="job2-start" data-field="job2-start" type="month" required></label>
+          <label>End month <input id="job2-end" data-field="job2-end" type="month" required></label>
+          <label class="choice span-2"><input id="job2-current" data-field="job2-current" type="checkbox" value="yes"> I currently work in this role</label>
+          <label class="span-2">Duties <textarea id="job2-duties" data-field="job2-duties" required></textarea></label>
+        </div>
+      </fieldset>
+    </section>
+
+    <section id="education">
+      <h2>7. Education</h2>
+      <p class="lede">Most recent degree first. Years are calendar years, not academic years. The thesis or dissertation title can be a working title if the degree is unfinished, but say so in the title itself.</p>
+      <fieldset id="school-1">
+        <legend>Degree 1</legend>
+        <div class="grid">
+          <label>Institution <input id="school1-institution" data-field="school1-institution" required></label>
+          <label>Degree
+            <select id="school1-degree" data-field="school1-degree" required>
+              <option value="">Select a degree</option>
+              <option>PhD</option>
+              <option>Master's</option>
+              <option>Bachelor's</option>
+            </select></label>
+          <label>Field of study <input id="school1-field" data-field="school1-field" required></label>
+          <label>Start year <input id="school1-start" data-field="school1-start" type="number" min="1950" max="2030" required></label>
+          <label>End year <input id="school1-end" data-field="school1-end" type="number" min="1950" max="2035" required></label>
+          <label class="span-2">Thesis or dissertation title <textarea id="school1-thesis" data-field="school1-thesis" required></textarea></label>
+        </div>
+      </fieldset>
+      <fieldset id="school-2">
+        <legend>Degree 2</legend>
+        <div class="grid">
+          <label>Institution <input id="school2-institution" data-field="school2-institution" required></label>
+          <label>Degree
+            <select id="school2-degree" data-field="school2-degree" required>
+              <option value="">Select a degree</option>
+              <option>PhD</option>
+              <option>Master's</option>
+              <option>Bachelor's</option>
+            </select></label>
+          <label>Field of study <input id="school2-field" data-field="school2-field" required></label>
+          <label>Start year <input id="school2-start" data-field="school2-start" type="number" min="1950" max="2030" required></label>
+          <label>End year <input id="school2-end" data-field="school2-end" type="number" min="1950" max="2035" required></label>
+          <label class="span-2">Thesis or dissertation title <textarea id="school2-thesis" data-field="school2-thesis" required></textarea></label>
+        </div>
+      </fieldset>
+    </section>
+
+    <section id="languages">
+      <h2>8. Languages</h2>
+      <p class="lede">Check every language you can use for research, including reading. Do not check a language you can only greet someone in. Native language is a separate control from the checklist.</p>
+      <label>Native language
+        <select id="native-language" data-field="native-language" required>
+          <option value="">Select a language</option>
+          <option>English</option>
+          <option>French</option>
+          <option>Igbo</option>
+          <option>Yoruba</option>
+          <option>Japanese</option>
+          <option>Mandarin</option>
+          <option>Spanish</option>
+          <option>German</option>
+          <option>Arabic</option>
+        </select></label>
+      <fieldset>
+        <legend>Other research languages</legend>
+        <div class="row">
+          <label class="choice"><input id="lang-french" data-field="lang-french" type="checkbox" value="yes"> French</label>
+          <label class="choice"><input id="lang-spanish" data-field="lang-spanish" type="checkbox" value="yes"> Spanish</label>
+          <label class="choice"><input id="lang-mandarin" data-field="lang-mandarin" type="checkbox" value="yes"> Mandarin</label>
+          <label class="choice"><input id="lang-arabic" data-field="lang-arabic" type="checkbox" value="yes"> Arabic</label>
+          <label class="choice"><input id="lang-german" data-field="lang-german" type="checkbox" value="yes"> German</label>
+          <label class="choice"><input id="lang-japanese" data-field="lang-japanese" type="checkbox" value="yes"> Japanese</label>
+          <label class="choice"><input id="lang-portuguese" data-field="lang-portuguese" type="checkbox" value="yes"> Portuguese</label>
+          <label class="choice"><input id="lang-korean" data-field="lang-korean" type="checkbox" value="yes"> Korean</label>
+        </div>
+      </fieldset>
+      <label>Years of Mandarin study <input id="mandarin-years" data-field="mandarin-years" type="number" min="0" max="80" required></label>
+    </section>
+
+    <section id="residency">
+      <h2>9. Proposed residency</h2>
+      <p class="lede">Pick one track. The abstract is what reviewers read first; write it as prose, not a list of keywords. Keywords come later. Budget is a whole number of Canadian dollars for consumables, not salary. The confidence slider is your own estimate that you can arrive on the start date.</p>
+      <fieldset>
+        <legend>Program track</legend>
+        <label class="choice"><input type="radio" name="track" data-field="track" value="ecology" required> Coastal ecology</label>
+        <label class="choice"><input type="radio" name="track" data-field="track" value="materials"> Materials</label>
+        <label class="choice"><input type="radio" name="track" data-field="track" value="health"> Population health</label>
+      </fieldset>
+      <div class="grid">
+        <label>Residency start date <input id="start-date" data-field="start-date" type="date" required></label>
+        <label>Duration
+          <select id="duration" data-field="duration" required>
+            <option value="">Select a duration</option>
+            <option>6 months</option>
+            <option>9 months</option>
+            <option>12 months</option>
+          </select></label>
+        <label class="span-2">Project title <input id="project-title" data-field="project-title" required></label>
+        <label class="span-2">Abstract <textarea id="abstract" data-field="abstract" required></textarea></label>
+        <label class="span-2">Methods <textarea id="methods" data-field="methods" required></textarea></label>
+        <label class="span-2">Keywords <input id="keywords" data-field="keywords" required></label>
+        <label>Consumables budget (CAD) <input id="budget" data-field="budget" type="number" min="0" max="50000" required></label>
+        <label>Confidence in this timeline
+          <input id="confidence" data-field="confidence" type="range" min="0" max="100" value="50"></label>
+        <p class="lede">Confidence runs from 0, unsure, to 100, certain. Choose every research area that applies.</p>
+        <label class="span-2">Research areas
+          <select id="areas" data-field="areas" multiple size="6" required>
+            <option>Marine ecology</option>
+            <option>Genomics</option>
+            <option>Climate</option>
+            <option>Materials science</option>
+            <option>Epidemiology</option>
+            <option>Ocean sensing</option>
+            <option>Statistics</option>
+            <option>Community archives</option>
+          </select></label>
+      </div>
+      <label class="choice"><input id="lab-access" data-field="lab-access" type="checkbox" value="yes"> I need laboratory access</label>
+      <label class="choice"><input id="visa-sponsorship" data-field="visa-sponsorship" type="checkbox" value="yes"> I need visa sponsorship</label>
+    </section>
+
+    <section id="travel">
+      <h2>10. Travel in the past five years</h2>
+      <p class="lede">Three trips, most recent first. Include conferences and field work. Purpose should name the institution or the field site, not only the word "tourism" or "work". Dates are the days you entered and left the country.</p>
+      <fieldset id="trip-1">
+        <legend>Trip 1</legend>
+        <div class="grid">
+          <label>Country <select id="trip1-country" class="country" data-field="trip1-country" required></select></label>
+          <label>Purpose <input id="trip1-purpose" data-field="trip1-purpose" required></label>
+          <label>Arrival date <input id="trip1-arrive" data-field="trip1-arrive" type="date" required></label>
+          <label>Departure date <input id="trip1-depart" data-field="trip1-depart" type="date" required></label>
+        </div>
+      </fieldset>
+      <fieldset id="trip-2">
+        <legend>Trip 2</legend>
+        <div class="grid">
+          <label>Country <select id="trip2-country" class="country" data-field="trip2-country" required></select></label>
+          <label>Purpose <input id="trip2-purpose" data-field="trip2-purpose" required></label>
+          <label>Arrival date <input id="trip2-arrive" data-field="trip2-arrive" type="date" required></label>
+          <label>Departure date <input id="trip2-depart" data-field="trip2-depart" type="date" required></label>
+        </div>
+      </fieldset>
+      <fieldset id="trip-3">
+        <legend>Trip 3</legend>
+        <div class="grid">
+          <label>Country <select id="trip3-country" class="country" data-field="trip3-country" required></select></label>
+          <label>Purpose <input id="trip3-purpose" data-field="trip3-purpose" required></label>
+          <label>Arrival date <input id="trip3-arrive" data-field="trip3-arrive" type="date" required></label>
+          <label>Departure date <input id="trip3-depart" data-field="trip3-depart" type="date" required></label>
+        </div>
+      </fieldset>
+    </section>
+
+    <section id="referees">
+      <h2>11. Referees</h2>
+      <p class="lede">Two people who have supervised your research. Do not list a family member. The relationship is how they know the work, not a personal description. Use institutional email addresses when they have one.</p>
+      <fieldset id="referee-1">
+        <legend>Referee 1</legend>
+        <div class="grid">
+          <label>Full name <input id="ref1-name" data-field="ref1-name" required></label>
+          <label>Email <input id="ref1-email" data-field="ref1-email" type="email" required></label>
+          <label>Institution <input id="ref1-institution" data-field="ref1-institution" required></label>
+          <label>Phone <input id="ref1-phone" data-field="ref1-phone" type="tel" required></label>
+          <label class="span-2">Relationship
+            <select id="ref1-relationship" data-field="ref1-relationship" required>
+              <option value="">Select a relationship</option>
+              <option>Doctoral supervisor</option>
+              <option>Postdoctoral supervisor</option>
+              <option>Line manager</option>
+              <option>Collaborator</option>
+            </select></label>
+        </div>
+      </fieldset>
+      <fieldset id="referee-2">
+        <legend>Referee 2</legend>
+        <div class="grid">
+          <label>Full name <input id="ref2-name" data-field="ref2-name" required></label>
+          <label>Email <input id="ref2-email" data-field="ref2-email" type="email" required></label>
+          <label>Institution <input id="ref2-institution" data-field="ref2-institution" required></label>
+          <label>Phone <input id="ref2-phone" data-field="ref2-phone" type="tel" required></label>
+          <label class="span-2">Relationship
+            <select id="ref2-relationship" data-field="ref2-relationship" required>
+              <option value="">Select a relationship</option>
+              <option>Doctoral supervisor</option>
+              <option>Postdoctoral supervisor</option>
+              <option>Line manager</option>
+              <option>Collaborator</option>
+            </select></label>
+        </div>
+      </fieldset>
+    </section>
+
+    <section id="compliance">
+      <h2>12. Compliance</h2>
+      <p class="lede">Answer from your own record. A "yes" is not an automatic refusal; leaving a question blank makes the application incomplete. Question 4 is about a visa for Canada, not about travel you have already finished.</p>
+      <fieldset id="q1"><legend>Have you held a Northwater residency before?</legend>
+        <label class="choice"><input type="radio" name="q1" data-field="q1" value="yes" required> Yes</label>
+        <label class="choice"><input type="radio" name="q1" data-field="q1" value="no"> No</label>
+      </fieldset>
+      <fieldset id="q2"><legend>Are you enrolled in a degree program today?</legend>
+        <label class="choice"><input type="radio" name="q2" data-field="q2" value="yes" required> Yes</label>
+        <label class="choice"><input type="radio" name="q2" data-field="q2" value="no"> No</label>
+      </fieldset>
+      <fieldset id="q3"><legend>Will you be present for the full term?</legend>
+        <label class="choice"><input type="radio" name="q3" data-field="q3" value="yes" required> Yes</label>
+        <label class="choice"><input type="radio" name="q3" data-field="q3" value="no"> No</label>
+      </fieldset>
+      <fieldset id="q4"><legend>Do you need a visa to reside in Canada for this residency?</legend>
+        <label class="choice"><input type="radio" name="q4" data-field="q4" value="yes" required> Yes</label>
+        <label class="choice"><input type="radio" name="q4" data-field="q4" value="no"> No</label>
+      </fieldset>
+      <fieldset id="q5"><legend>Have you published with either referee?</legend>
+        <label class="choice"><input type="radio" name="q5" data-field="q5" value="yes" required> Yes</label>
+        <label class="choice"><input type="radio" name="q5" data-field="q5" value="no"> No</label>
+      </fieldset>
+      <fieldset id="q6"><legend>Have you had a research-misconduct finding?</legend>
+        <label class="choice"><input type="radio" name="q6" data-field="q6" value="yes" required> Yes</label>
+        <label class="choice"><input type="radio" name="q6" data-field="q6" value="no"> No</label>
+      </fieldset>
+      <fieldset id="q7"><legend>Will the project use export-controlled material?</legend>
+        <label class="choice"><input type="radio" name="q7" data-field="q7" value="yes" required> Yes</label>
+        <label class="choice"><input type="radio" name="q7" data-field="q7" value="no"> No</label>
+      </fieldset>
+      <fieldset id="q8"><legend>Can you attend opening week in person?</legend>
+        <label class="choice"><input type="radio" name="q8" data-field="q8" value="yes" required> Yes</label>
+        <label class="choice"><input type="radio" name="q8" data-field="q8" value="no"> No</label>
+      </fieldset>
+    </section>
+
+    <section id="declarations">
+      <h2>13. Declarations</h2>
+      <p class="lede">The last section. Two statements must be checked. Two other boxes must stay empty: marketing mail, and submitting on behalf of someone else. The instructions box starts checked; leave it checked. Then sign with your full legal name and today's date.</p>
+      <label class="choice"><input id="instructions-read" data-field="instructions-read" type="checkbox" value="yes" checked> I have read the instructions</label>
+      <label class="choice"><input id="certify" data-field="certify" type="checkbox" value="yes" required> I certify that this application is true</label>
+      <label class="choice"><input id="conduct" data-field="conduct" type="checkbox" value="yes" required> I agree to the residency code of conduct</label>
+      <label class="choice"><input id="marketing" data-field="marketing" type="checkbox" value="yes"> Send residency news to my backup email</label>
+      <label class="choice"><input id="behalf" data-field="behalf" type="checkbox" value="yes"> I am submitting this application for someone else</label>
+      <div class="grid">
+        <label>Signature <input id="signature" data-field="signature" required></label>
+        <label>Date signed <input id="signed-on" data-field="signed-on" type="date" required></label>
+        <label class="span-2">How did you hear about the residency?
+          <select id="heard" data-field="heard" required>
+            <option value="">Select a source</option>
+            <option>Colleague</option>
+            <option>Conference</option>
+            <option>Institute website</option>
+            <option>Journal advertisement</option>
+          </select></label>
+        <label class="span-2">Additional comments <textarea id="comments" data-field="comments"></textarea></label>
+      </div>
+      <div class="actions">
+        <button id="submit" type="submit">Submit application</button>
+        <button id="clear" class="secondary" type="button">Clear form</button>
+      </div>
+    </section>
+  </form>
+
+  <section id="result" hidden>
+    <h2>Submission result</h2>
+    <p class="banner" id="success">Application received. The institute stored this submission. Compare every line below with the answers you intended.</p>
+    <p class="error" id="invalid" hidden>The application is incomplete. Required answers are missing.</p>
+    <pre id="receipt"></pre>
+  </section>
+</main>
+<template id="countries">
+  <option value="">Select a country</option>
+  <option>Canada</option>
+  <option>Nigeria</option>
+  <option>Japan</option>
+  <option>Germany</option>
+  <option>Brazil</option>
+  <option>France</option>
+  <option>India</option>
+  <option>Mexico</option>
+  <option>South Korea</option>
+  <option>Australia</option>
+  <option>United Kingdom</option>
+  <option>United States</option>
+  <option>Kenya</option>
+  <option>Singapore</option>
+  <option>Sweden</option>
+  <option>Italy</option>
+  <option>Spain</option>
+  <option>Netherlands</option>
+  <option>Norway</option>
+  <option>New Zealand</option>
+  <option>Ireland</option>
+  <option>Portugal</option>
+  <option>Chile</option>
+  <option>Ghana</option>
+  <option>Vietnam</option>
+</template>
+<script>
+const countryOptions = document.getElementById('countries').content;
+for (const select of document.querySelectorAll('select.country')) select.append(countryOptions.cloneNode(true));
+
+const form = document.getElementById('application');
+const tracked = () => [...form.querySelectorAll('[data-field]')].filter(el => el.type !== 'radio');
+function paintProgress() {
+  const fields = new Map();
+  for (const el of form.querySelectorAll('[data-field]')) {
+    if (el.type === 'radio') {
+      if (el.checked) fields.set(el.dataset.field, true);
+      else if (!fields.has(el.dataset.field)) fields.set(el.dataset.field, false);
+    } else if (el.type === 'checkbox') fields.set(el.dataset.field, el.checked);
+    else if (el.multiple) fields.set(el.dataset.field, el.selectedOptions.length > 0);
+    else fields.set(el.dataset.field, String(el.value).trim() !== '' && el.value !== '50');
+  }
+  const done = [...fields.values()].filter(Boolean).length;
+  document.getElementById('progress').textContent = `Answered ${done} of ${fields.size} tracked fields.`;
+}
+form.addEventListener('input', paintProgress);
+form.addEventListener('change', paintProgress);
+paintProgress();
+
+function dump() {
+  const out = {};
+  for (const el of form.querySelectorAll('[data-field]')) {
+    const key = el.dataset.field;
+    if (el.type === 'radio') {
+      if (el.checked) out[key] = el.value;
+      else if (!(key in out)) out[key] = '';
+    } else if (el.type === 'checkbox') out[key] = el.checked ? el.value : '';
+    else if (el.multiple) out[key] = [...el.selectedOptions].map(option => option.value).join('|');
+    else out[key] = el.value;
+  }
+  return out;
+}
+window.dumpApplication = dump;
+
+form.addEventListener('submit', event => {
+  event.preventDefault();
+  const missing = [...form.querySelectorAll('[required]')].filter(el => el.type === 'radio' ? !form.querySelector(`input[name="${el.name}"]:checked`) : el.type === 'checkbox' ? !el.checked : el.multiple ? el.selectedOptions.length === 0 : String(el.value).trim() === '');
+  const result = document.getElementById('result');
+  result.hidden = false;
+  document.getElementById('invalid').hidden = missing.length === 0;
+  document.getElementById('success').hidden = missing.length !== 0;
+  const values = dump();
+  document.getElementById('receipt').textContent = Object.keys(values).sort().map(key => `${key}=${values[key]}`).join('\n');
+  result.scrollIntoView();
+});
+document.getElementById('clear').addEventListener('click', () => {
+  form.reset();
+  paintProgress();
+});
+</script>
+</body>
+</html>

@@ -7,6 +7,7 @@
     "benchmark": "node benchmark.mjs",
     "compare": "node compare.mjs",
     "optimize": "node optimize.mjs",
+    "form": "node fill-form.mjs",
     "agent": "node agent.mjs"
   },
   "dependencies": {

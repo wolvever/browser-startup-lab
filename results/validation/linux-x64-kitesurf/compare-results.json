@@ -1,0 +1,1104 @@
+{
+  "date": "2026-11-27T03:13:10.503Z",
+  "platform": "linux",
+  "arch": "x64",
+  "osRelease": "6.12.113+",
+  "cpu": "Intel(R) Xeon(R) Processor",
+  "cores": 4,
+  "memoryGB": 15.628173828125,
+  "node": "v22.23.4",
+  "options": {
+    "rounds": 10,
+    "paths": [
+      "direct-kitesurf",
+      "cli-kitesurf"
+    ],
+    "label": "kitesurf"
+  },
+  "methodology": {
+    "contest": "agent-browser means the CLI driving Headless Shell. Lightpanda is scored on the CLI path an agent uses, with direct CDP reported separately.",
+    "cold": "New browser process and, for the CLI, a unique daemon and session. Timer stops after local navigation plus interactive snapshot (CLI) or JS ready (direct).",
+    "warm": "Median of five extra interactive snapshots on the same process. Direct engines read the accessibility tree over CDP when the domain exists.",
+    "memory": "Sum of VmRSS and, when readable, proportional set size of processes that appeared during the trial, sampled 80ms after ready and before the action.",
+    "agentUse": "CLI trials use snapshot refs, fill, click, and get text. Direct trials set the field and click through the DOM, which is not the agent hit-test path.",
+    "screenshot": "PNG must contain the fixture navy background, a red canvas border, and a black canvas fill.",
+    "diskCache": "uncontrolled; the shell binary was smoke-launched once before this run",
+    "advisory": "disabled",
+    "kitesurf": "cli-kitesurf and direct-kitesurf start a new container from ghcr.io/cloudflare/kitesurf for every trial, with host networking, and remove it afterwards. The timer includes container start, /health, and the same readiness check. agent-browser attaches with connect. The local engine runs page JavaScript in workerd, so this lab opens only its own fixture."
+  },
+  "dependencies": {
+    "@puppeteer/browsers": "3.3.0",
+    "agent-browser": "0.45.0",
+    "puppeteer-core": "25.19.0"
+  },
+  "installation": {
+    "date": "2026-11-26T16:17:17.096Z",
+    "platform": "linux",
+    "arch": "x64",
+    "chromeVersion": "158.0.8127.88",
+    "lightpanda": {
+      "url": "https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-x86_64-linux",
+      "version": "1.1.0-nightly.12455+06b13205b",
+      "sha256": "df4ae6b30f536724d93f99d7a23c30b9c1d04aaddc9d9b6a9b062eb4b1853eeb"
+    }
+  },
+  "kitesurf": "sha256:076e1614b048b00620a3bf1eadc5515de2e49dc9a92b0a6c52fe53fdaf706a8a ghcr.io/cloudflare/kitesurf@sha256:076e1614b048b00620a3bf1eadc5515de2e49dc9a92b0a6c52fe53fdaf706a8a",
+  "summary": {
+    "direct-kitesurf": {
+      "cold": {
+        "n": 10,
+        "min": 722,
+        "median": 732.2,
+        "p95": 786,
+        "max": 786,
+        "under_1500": 10
+      },
+      "warm": {
+        "n": 10,
+        "min": 1.1,
+        "median": 1.2,
+        "p95": 1.3,
+        "max": 1.3,
+        "under_1500": 10
+      },
+      "action": {
+        "n": 10,
+        "min": 10.7,
+        "median": 11.8,
+        "p95": 14.7,
+        "max": 14.7,
+        "under_1500": 10
+      },
+      "screenshot_time": {
+        "n": 10,
+        "min": 21.5,
+        "median": 22.2,
+        "p95": 24.8,
+        "max": 24.8,
+        "under_1500": 10
+      },
+      "memory_rss_kb": {
+        "n": 10,
+        "min": 427344,
+        "median": 432568,
+        "p95": 436880,
+        "max": 436880,
+        "under_1500": 0
+      },
+      "memory_pss_kb": {
+        "n": 0
+      },
+      "form_pass": 10,
+      "form_fail": 0,
+      "screenshot_pass": 10,
+      "screenshot_fail": 0,
+      "launch_errors": 0
+    },
+    "cli-kitesurf": {
+      "cold": {
+        "n": 10,
+        "min": 835.4,
+        "median": 844.1,
+        "p95": 901.2,
+        "max": 901.2,
+        "under_1500": 10
+      },
+      "warm": {
+        "n": 10,
+        "min": 5.4,
+        "median": 6,
+        "p95": 6.3,
+        "max": 6.3,
+        "under_1500": 10
+      },
+      "action": {
+        "n": 10,
+        "min": 26.3,
+        "median": 26.8,
+        "p95": 30.6,
+        "max": 30.6,
+        "under_1500": 10
+      },
+      "screenshot_time": {
+        "n": 10,
+        "min": 23.9,
+        "median": 25,
+        "p95": 28.9,
+        "max": 28.9,
+        "under_1500": 10
+      },
+      "memory_rss_kb": {
+        "n": 10,
+        "min": 441760,
+        "median": 446316,
+        "p95": 449788,
+        "max": 449788,
+        "under_1500": 0
+      },
+      "memory_pss_kb": {
+        "n": 0
+      },
+      "form_pass": 10,
+      "form_fail": 0,
+      "screenshot_pass": 10,
+      "screenshot_fail": 0,
+      "launch_errors": 0
+    }
+  },
+  "decision": {
+    "contest": "skipped",
+    "reason": "The Shell versus Lightpanda decision needs both cli-shell and cli-lightpanda in the same run."
+  },
+  "records": [
+    {
+      "name": "direct-kitesurf",
+      "trial": 1,
+      "cold_start": true,
+      "engine_start_ms": 596.4,
+      "session": "c-8987891b0819-k-1",
+      "ready_ms": 786.0242939999999,
+      "memory": {
+        "processes": 2,
+        "rss_kb": 427344,
+        "pss_kb": null,
+        "pss_coverage": 0,
+        "names": {
+          "containerd-shim": 1,
+          "workerd": 1
+        }
+      },
+      "warm_mode": "accessibility-tree",
+      "warm_snapshot_ms": [
+        1.8471099999999296,
+        1.0881839999999556,
+        1.3233430000000226,
+        0.953710000000001,
+        0.8225270000000364
+      ],
+      "warm_median_ms": 1.1,
+      "form": true,
+      "action_ms": 14.671439000000078,
+      "action_kind": "dom-evaluate",
+      "screenshot_ms": 23.159032000000025,
+      "screenshot": {
+        "bytes": 40009,
+        "width": 1280,
+        "height": 900,
+        "pixels": 1152000,
+        "mean_rgb": [
+          20,
+          37,
+          54
+        ],
+        "navy": 1130913,
+        "red": 996,
+        "black": 2506,
+        "white": 12408,
+        "pass": true
+      }
+    },
+    {
+      "name": "direct-kitesurf",
+      "trial": 2,
+      "cold_start": true,
+      "engine_start_ms": 560.3,
+      "session": "c-8987891b0819-k-2",
+      "ready_ms": 726.4094660000001,
+      "memory": {
+        "processes": 2,
+        "rss_kb": 431668,
+        "pss_kb": null,
+        "pss_coverage": 0,
+        "names": {
+          "containerd-shim": 1,
+          "workerd": 1
+        }
+      },
+      "warm_mode": "accessibility-tree",
+      "warm_snapshot_ms": [
+        1.855293999999958,
+        1.140525000000025,
+        1.284799000000021,
+        1.2446980000001986,
+        0.9598860000000968
+      ],
+      "warm_median_ms": 1.2,
+      "form": true,
+      "action_ms": 11.409689000000071,
+      "action_kind": "dom-evaluate",
+      "screenshot_ms": 21.89044100000001,
+      "screenshot": {
+        "bytes": 40009,
+        "width": 1280,
+        "height": 900,
+        "pixels": 1152000,
+        "mean_rgb": [
+          20,
+          37,
+          54
+        ],
+        "navy": 1130913,
+        "red": 996,
+        "black": 2506,
+        "white": 12408,
+        "pass": true
+      }
+    },
+    {
+      "name": "direct-kitesurf",
+      "trial": 3,
+      "cold_start": true,
+      "engine_start_ms": 564.7,
+      "session": "c-8987891b0819-k-3",
+      "ready_ms": 729.7079599999997,
+      "memory": {
+        "processes": 2,
+        "rss_kb": 434100,
+        "pss_kb": null,
+        "pss_coverage": 0,
+        "names": {
+          "containerd-shim": 1,
+          "workerd": 1
+        }
+      },
+      "warm_mode": "accessibility-tree",
+      "warm_snapshot_ms": [
+        1.9133489999999256,
+        1.1362100000001192,
+        1.4667790000003151,
+        1.1803439999998773,
+        1.238538999999946
+      ],
+      "warm_median_ms": 1.2,
+      "form": true,
+      "action_ms": 11.268468000000212,
+      "action_kind": "dom-evaluate",
+      "screenshot_ms": 21.49158000000034,
+      "screenshot": {
+        "bytes": 40009,
+        "width": 1280,
+        "height": 900,
+        "pixels": 1152000,
+        "mean_rgb": [
+          20,
+          37,
+          54
+        ],
+        "navy": 1130913,
+        "red": 996,
+        "black": 2506,
+        "white": 12408,
+        "pass": true
+      }
+    },
+    {
+      "name": "direct-kitesurf",
+      "trial": 4,
+      "cold_start": true,
+      "engine_start_ms": 563.9,
+      "session": "c-8987891b0819-k-4",
+      "ready_ms": 734.6981219999998,
+      "memory": {
+        "processes": 2,
+        "rss_kb": 434240,
+        "pss_kb": null,
+        "pss_coverage": 0,
+        "names": {
+          "containerd-shim": 1,
+          "workerd": 1
+        }
+      },
+      "warm_mode": "accessibility-tree",
+      "warm_snapshot_ms": [
+        1.9419050000001334,
+        1.3171449999999822,
+        1.7814799999996467,
+        1.121458999999959,
+        1.2025900000003276
+      ],
+      "warm_median_ms": 1.3,
+      "form": true,
+      "action_ms": 11.500030000000152,
+      "action_kind": "dom-evaluate",
+      "screenshot_ms": 22.23588299999983,
+      "screenshot": {
+        "bytes": 40009,
+        "width": 1280,
+        "height": 900,
+        "pixels": 1152000,
+        "mean_rgb": [
+          20,
+          37,
+          54
+        ],
+        "navy": 1130913,
+        "red": 996,
+        "black": 2506,
+        "white": 12408,
+        "pass": true
+      }
+    },
+    {
+      "name": "direct-kitesurf",
+      "trial": 5,
+      "cold_start": true,
+      "engine_start_ms": 565.3,
+      "session": "c-8987891b0819-k-5",
+      "ready_ms": 732.1151030000001,
+      "memory": {
+        "processes": 2,
+        "rss_kb": 433468,
+        "pss_kb": null,
+        "pss_coverage": 0,
+        "names": {
+          "containerd-shim": 1,
+          "workerd": 1
+        }
+      },
+      "warm_mode": "accessibility-tree",
+      "warm_snapshot_ms": [
+        1.743703000000096,
+        1.248651000000791,
+        1.075644999999895,
+        1.0214459999997416,
+        1.2982499999998254
+      ],
+      "warm_median_ms": 1.2,
+      "form": true,
+      "action_ms": 12.058804999999666,
+      "action_kind": "dom-evaluate",
+      "screenshot_ms": 21.452001999999993,
+      "screenshot": {
+        "bytes": 40009,
+        "width": 1280,
+        "height": 900,
+        "pixels": 1152000,
+        "mean_rgb": [
+          20,
+          37,
+          54
+        ],
+        "navy": 1130913,
+        "red": 996,
+        "black": 2506,
+        "white": 12408,
+        "pass": true
+      }
+    },
+    {
+      "name": "direct-kitesurf",
+      "trial": 6,
+      "cold_start": true,
+      "engine_start_ms": 573.8,
+      "session": "c-8987891b0819-k-6",
+      "ready_ms": 739.7392389999995,
+      "memory": {
+        "processes": 2,
+        "rss_kb": 433680,
+        "pss_kb": null,
+        "pss_coverage": 0,
+        "names": {
+          "containerd-shim": 1,
+          "workerd": 1
+        }
+      },
+      "warm_mode": "accessibility-tree",
+      "warm_snapshot_ms": [
+        1.9064809999999852,
+        1.1335410000001502,
+        1.2688250000001062,
+        1.1006390000002284,
+        1.1180600000006962
+      ],
+      "warm_median_ms": 1.1,
+      "form": true,
+      "action_ms": 12.41514400000051,
+      "action_kind": "dom-evaluate",
+      "screenshot_ms": 21.830923999999868,
+      "screenshot": {
+        "bytes": 40009,
+        "width": 1280,
+        "height": 900,
+        "pixels": 1152000,
+        "mean_rgb": [
+          20,
+          37,
+          54
+        ],
+        "navy": 1130913,
+        "red": 996,
+        "black": 2506,
+        "white": 12408,
+        "pass": true
+      }
+    },
+    {
+      "name": "direct-kitesurf",
+      "trial": 7,
+      "cold_start": true,
+      "engine_start_ms": 556,
+      "session": "c-8987891b0819-k-7",
+      "ready_ms": 721.9882479999997,
+      "memory": {
+        "processes": 2,
+        "rss_kb": 436880,
+        "pss_kb": null,
+        "pss_coverage": 0,
+        "names": {
+          "containerd-shim": 1,
+          "workerd": 1
+        }
+      },
+      "warm_mode": "accessibility-tree",
+      "warm_snapshot_ms": [
+        3.968334000000141,
+        1.1709029999992708,
+        1.318771000000197,
+        1.2793499999997948,
+        1.08161199999995
+      ],
+      "warm_median_ms": 1.3,
+      "form": true,
+      "action_ms": 11.051557000000685,
+      "action_kind": "dom-evaluate",
+      "screenshot_ms": 22.15728500000023,
+      "screenshot": {
+        "bytes": 40009,
+        "width": 1280,
+        "height": 900,
+        "pixels": 1152000,
+        "mean_rgb": [
+          20,
+          37,
+          54
+        ],
+        "navy": 1130913,
+        "red": 996,
+        "black": 2506,
+        "white": 12408,
+        "pass": true
+      }
+    },
+    {
+      "name": "direct-kitesurf",
+      "trial": 8,
+      "cold_start": true,
+      "engine_start_ms": 572.6,
+      "session": "c-8987891b0819-k-8",
+      "ready_ms": 743.8103259999998,
+      "memory": {
+        "processes": 2,
+        "rss_kb": 431284,
+        "pss_kb": null,
+        "pss_coverage": 0,
+        "names": {
+          "containerd-shim": 1,
+          "workerd": 1
+        }
+      },
+      "warm_mode": "accessibility-tree",
+      "warm_snapshot_ms": [
+        1.9774020000004384,
+        1.0617569999994885,
+        1.06311100000039,
+        1.0984500000004118,
+        0.886145999999826
+      ],
+      "warm_median_ms": 1.1,
+      "form": true,
+      "action_ms": 10.742293000000245,
+      "action_kind": "dom-evaluate",
+      "screenshot_ms": 22.274044000000686,
+      "screenshot": {
+        "bytes": 40009,
+        "width": 1280,
+        "height": 900,
+        "pixels": 1152000,
+        "mean_rgb": [
+          20,
+          37,
+          54
+        ],
+        "navy": 1130913,
+        "red": 996,
+        "black": 2506,
+        "white": 12408,
+        "pass": true
+      }
+    },
+    {
+      "name": "direct-kitesurf",
+      "trial": 9,
+      "cold_start": true,
+      "engine_start_ms": 565.4,
+      "session": "c-8987891b0819-k-9",
+      "ready_ms": 732.1989709999998,
+      "memory": {
+        "processes": 2,
+        "rss_kb": 431108,
+        "pss_kb": null,
+        "pss_coverage": 0,
+        "names": {
+          "containerd-shim": 1,
+          "workerd": 1
+        }
+      },
+      "warm_mode": "accessibility-tree",
+      "warm_snapshot_ms": [
+        1.688481999999567,
+        1.1127450000003591,
+        1.3017370000015944,
+        1.1115370000006806,
+        1.2466009999989183
+      ],
+      "warm_median_ms": 1.2,
+      "form": true,
+      "action_ms": 12.866127999999662,
+      "action_kind": "dom-evaluate",
+      "screenshot_ms": 24.763363000000027,
+      "screenshot": {
+        "bytes": 40009,
+        "width": 1280,
+        "height": 900,
+        "pixels": 1152000,
+        "mean_rgb": [
+          20,
+          37,
+          54
+        ],
+        "navy": 1130913,
+        "red": 996,
+        "black": 2506,
+        "white": 12408,
+        "pass": true
+      }
+    },
+    {
+      "name": "direct-kitesurf",
+      "trial": 10,
+      "cold_start": true,
+      "engine_start_ms": 558.6,
+      "session": "c-8987891b0819-k-10",
+      "ready_ms": 731.3547510000008,
+      "memory": {
+        "processes": 2,
+        "rss_kb": 431512,
+        "pss_kb": null,
+        "pss_coverage": 0,
+        "names": {
+          "containerd-shim": 1,
+          "workerd": 1
+        }
+      },
+      "warm_mode": "accessibility-tree",
+      "warm_snapshot_ms": [
+        2.0854249999993044,
+        1.12875300000087,
+        1.2022839999990538,
+        1.1377830000001268,
+        1.1408590000010008
+      ],
+      "warm_median_ms": 1.1,
+      "form": true,
+      "action_ms": 13.864535000000615,
+      "action_kind": "dom-evaluate",
+      "screenshot_ms": 24.072084999999788,
+      "screenshot": {
+        "bytes": 40009,
+        "width": 1280,
+        "height": 900,
+        "pixels": 1152000,
+        "mean_rgb": [
+          20,
+          37,
+          54
+        ],
+        "navy": 1130913,
+        "red": 996,
+        "black": 2506,
+        "white": 12408,
+        "pass": true
+      }
+    },
+    {
+      "name": "cli-kitesurf",
+      "trial": 1,
+      "cold_start": true,
+      "engine_start_ms": 566.3,
+      "session": "c-8987891b0819-k-1",
+      "ready_ms": 873.2853039999991,
+      "memory": {
+        "processes": 3,
+        "rss_kb": 446364,
+        "pss_kb": null,
+        "pss_coverage": 0.3333333333333333,
+        "names": {
+          "containerd-shim": 1,
+          "workerd": 1,
+          "agent-browser-l": 1
+        }
+      },
+      "warm_snapshot_ms": [
+        10.116581000000224,
+        7.178619000000253,
+        5.813668000000689,
+        6.343547000000399,
+        5.555834999999206
+      ],
+      "warm_median_ms": 6.3,
+      "form": true,
+      "action_ms": 30.132141000000047,
+      "action_kind": "snapshot-ref",
+      "screenshot_ms": 27.479769999999917,
+      "screenshot": {
+        "bytes": 35127,
+        "width": 1280,
+        "height": 720,
+        "pixels": 921600,
+        "mean_rgb": [
+          21,
+          38,
+          54
+        ],
+        "navy": 900513,
+        "red": 996,
+        "black": 2506,
+        "white": 12408,
+        "pass": true
+      },
+      "closed": true
+    },
+    {
+      "name": "cli-kitesurf",
+      "trial": 2,
+      "cold_start": true,
+      "engine_start_ms": 558.3,
+      "session": "c-8987891b0819-k-2",
+      "ready_ms": 840.7491040000004,
+      "memory": {
+        "processes": 3,
+        "rss_kb": 445348,
+        "pss_kb": null,
+        "pss_coverage": 0.3333333333333333,
+        "names": {
+          "containerd-shim": 1,
+          "workerd": 1,
+          "agent-browser-l": 1
+        }
+      },
+      "warm_snapshot_ms": [
+        7.463418000001184,
+        6.641680999999153,
+        6.046867999999449,
+        5.383401999999478,
+        5.511716000000888
+      ],
+      "warm_median_ms": 6,
+      "form": true,
+      "action_ms": 26.526566999998977,
+      "action_kind": "snapshot-ref",
+      "screenshot_ms": 23.925638999999137,
+      "screenshot": {
+        "bytes": 35127,
+        "width": 1280,
+        "height": 720,
+        "pixels": 921600,
+        "mean_rgb": [
+          21,
+          38,
+          54
+        ],
+        "navy": 900513,
+        "red": 996,
+        "black": 2506,
+        "white": 12408,
+        "pass": true
+      },
+      "closed": true
+    },
+    {
+      "name": "cli-kitesurf",
+      "trial": 3,
+      "cold_start": true,
+      "engine_start_ms": 557.3,
+      "session": "c-8987891b0819-k-3",
+      "ready_ms": 845.8308029999989,
+      "memory": {
+        "processes": 3,
+        "rss_kb": 446268,
+        "pss_kb": null,
+        "pss_coverage": 0.3333333333333333,
+        "names": {
+          "containerd-shim": 1,
+          "workerd": 1,
+          "agent-browser-l": 1
+        }
+      },
+      "warm_snapshot_ms": [
+        8.007157999998526,
+        6.395865000000413,
+        6.08700300000055,
+        5.552063000000999,
+        5.484844000000521
+      ],
+      "warm_median_ms": 6.1,
+      "form": true,
+      "action_ms": 26.312058000001343,
+      "action_kind": "snapshot-ref",
+      "screenshot_ms": 25.44774200000029,
+      "screenshot": {
+        "bytes": 35127,
+        "width": 1280,
+        "height": 720,
+        "pixels": 921600,
+        "mean_rgb": [
+          21,
+          38,
+          54
+        ],
+        "navy": 900513,
+        "red": 996,
+        "black": 2506,
+        "white": 12408,
+        "pass": true
+      },
+      "closed": true
+    },
+    {
+      "name": "cli-kitesurf",
+      "trial": 4,
+      "cold_start": true,
+      "engine_start_ms": 614.6,
+      "session": "c-8987891b0819-k-4",
+      "ready_ms": 901.177764,
+      "memory": {
+        "processes": 3,
+        "rss_kb": 441760,
+        "pss_kb": null,
+        "pss_coverage": 0.3333333333333333,
+        "names": {
+          "containerd-shim": 1,
+          "workerd": 1,
+          "agent-browser-l": 1
+        }
+      },
+      "warm_snapshot_ms": [
+        6.889651999999842,
+        6.626725000000079,
+        6.075085999998919,
+        5.8030910000015865,
+        5.280622000000221
+      ],
+      "warm_median_ms": 6.1,
+      "form": true,
+      "action_ms": 30.589837999999872,
+      "action_kind": "snapshot-ref",
+      "screenshot_ms": 26.350122000001647,
+      "screenshot": {
+        "bytes": 35127,
+        "width": 1280,
+        "height": 720,
+        "pixels": 921600,
+        "mean_rgb": [
+          21,
+          38,
+          54
+        ],
+        "navy": 900513,
+        "red": 996,
+        "black": 2506,
+        "white": 12408,
+        "pass": true
+      },
+      "closed": true
+    },
+    {
+      "name": "cli-kitesurf",
+      "trial": 5,
+      "cold_start": true,
+      "engine_start_ms": 553.2,
+      "session": "c-8987891b0819-k-5",
+      "ready_ms": 835.4203219999999,
+      "memory": {
+        "processes": 3,
+        "rss_kb": 449084,
+        "pss_kb": null,
+        "pss_coverage": 0.3333333333333333,
+        "names": {
+          "containerd-shim": 1,
+          "workerd": 1,
+          "agent-browser-l": 1
+        }
+      },
+      "warm_snapshot_ms": [
+        7.920931000000564,
+        6.694808000000194,
+        5.94224899999972,
+        5.795264999998835,
+        5.513657000001331
+      ],
+      "warm_median_ms": 5.9,
+      "form": true,
+      "action_ms": 26.975280999999086,
+      "action_kind": "snapshot-ref",
+      "screenshot_ms": 24.225687000000107,
+      "screenshot": {
+        "bytes": 35127,
+        "width": 1280,
+        "height": 720,
+        "pixels": 921600,
+        "mean_rgb": [
+          21,
+          38,
+          54
+        ],
+        "navy": 900513,
+        "red": 996,
+        "black": 2506,
+        "white": 12408,
+        "pass": true
+      },
+      "closed": true
+    },
+    {
+      "name": "cli-kitesurf",
+      "trial": 6,
+      "cold_start": true,
+      "engine_start_ms": 565.4,
+      "session": "c-8987891b0819-k-6",
+      "ready_ms": 845.0533410000007,
+      "memory": {
+        "processes": 3,
+        "rss_kb": 446940,
+        "pss_kb": null,
+        "pss_coverage": 0.3333333333333333,
+        "names": {
+          "containerd-shim": 1,
+          "workerd": 1,
+          "agent-browser-l": 1
+        }
+      },
+      "warm_snapshot_ms": [
+        7.91734600000018,
+        6.085482000000411,
+        5.614851000000272,
+        5.517777999999453,
+        5.144825999999739
+      ],
+      "warm_median_ms": 5.6,
+      "form": true,
+      "action_ms": 26.553336000000854,
+      "action_kind": "snapshot-ref",
+      "screenshot_ms": 28.948040999999648,
+      "screenshot": {
+        "bytes": 35127,
+        "width": 1280,
+        "height": 720,
+        "pixels": 921600,
+        "mean_rgb": [
+          21,
+          38,
+          54
+        ],
+        "navy": 900513,
+        "red": 996,
+        "black": 2506,
+        "white": 12408,
+        "pass": true
+      },
+      "closed": true
+    },
+    {
+      "name": "cli-kitesurf",
+      "trial": 7,
+      "cold_start": true,
+      "engine_start_ms": 564.3,
+      "session": "c-8987891b0819-k-7",
+      "ready_ms": 846.3211669999982,
+      "memory": {
+        "processes": 3,
+        "rss_kb": 443480,
+        "pss_kb": null,
+        "pss_coverage": 0.3333333333333333,
+        "names": {
+          "containerd-shim": 1,
+          "workerd": 1,
+          "agent-browser-l": 1
+        }
+      },
+      "warm_snapshot_ms": [
+        7.324249999997846,
+        6.792443999998795,
+        5.36500199999864,
+        5.604159000002255,
+        5.13932399999976
+      ],
+      "warm_median_ms": 5.6,
+      "form": true,
+      "action_ms": 26.913590000000113,
+      "action_kind": "snapshot-ref",
+      "screenshot_ms": 25.051171999999497,
+      "screenshot": {
+        "bytes": 35127,
+        "width": 1280,
+        "height": 720,
+        "pixels": 921600,
+        "mean_rgb": [
+          21,
+          38,
+          54
+        ],
+        "navy": 900513,
+        "red": 996,
+        "black": 2506,
+        "white": 12408,
+        "pass": true
+      },
+      "closed": true
+    },
+    {
+      "name": "cli-kitesurf",
+      "trial": 8,
+      "cold_start": true,
+      "engine_start_ms": 562,
+      "session": "c-8987891b0819-k-8",
+      "ready_ms": 843.2274839999991,
+      "memory": {
+        "processes": 3,
+        "rss_kb": 445552,
+        "pss_kb": null,
+        "pss_coverage": 0.3333333333333333,
+        "names": {
+          "containerd-shim": 1,
+          "workerd": 1,
+          "agent-browser-l": 1
+        }
+      },
+      "warm_snapshot_ms": [
+        9.377185000001191,
+        5.78638299999875,
+        5.413674999999785,
+        5.272633000000496,
+        5.351572999999917
+      ],
+      "warm_median_ms": 5.4,
+      "form": true,
+      "action_ms": 26.69616799999858,
+      "action_kind": "snapshot-ref",
+      "screenshot_ms": 24.514984000001277,
+      "screenshot": {
+        "bytes": 35127,
+        "width": 1280,
+        "height": 720,
+        "pixels": 921600,
+        "mean_rgb": [
+          21,
+          38,
+          54
+        ],
+        "navy": 900513,
+        "red": 996,
+        "black": 2506,
+        "white": 12408,
+        "pass": true
+      },
+      "closed": true
+    },
+    {
+      "name": "cli-kitesurf",
+      "trial": 9,
+      "cold_start": true,
+      "engine_start_ms": 556.8,
+      "session": "c-8987891b0819-k-9",
+      "ready_ms": 838.5869210000019,
+      "memory": {
+        "processes": 3,
+        "rss_kb": 448764,
+        "pss_kb": null,
+        "pss_coverage": 0.3333333333333333,
+        "names": {
+          "containerd-shim": 1,
+          "workerd": 1,
+          "agent-browser-l": 1
+        }
+      },
+      "warm_snapshot_ms": [
+        7.901631000000634,
+        5.942589999998745,
+        6.030075999999099,
+        5.572764999997162,
+        5.103628000000754
+      ],
+      "warm_median_ms": 5.9,
+      "form": true,
+      "action_ms": 26.86452199999985,
+      "action_kind": "snapshot-ref",
+      "screenshot_ms": 24.622906000000512,
+      "screenshot": {
+        "bytes": 35127,
+        "width": 1280,
+        "height": 720,
+        "pixels": 921600,
+        "mean_rgb": [
+          21,
+          38,
+          54
+        ],
+        "navy": 900513,
+        "red": 996,
+        "black": 2506,
+        "white": 12408,
+        "pass": true
+      },
+      "closed": true
+    },
+    {
+      "name": "cli-kitesurf",
+      "trial": 10,
+      "cold_start": true,
+      "engine_start_ms": 556,
+      "session": "c-8987891b0819-k-10",
+      "ready_ms": 836.412980000001,
+      "memory": {
+        "processes": 3,
+        "rss_kb": 449788,
+        "pss_kb": null,
+        "pss_coverage": 0.3333333333333333,
+        "names": {
+          "containerd-shim": 1,
+          "workerd": 1,
+          "agent-browser-l": 1
+        }
+      },
+      "warm_snapshot_ms": [
+        7.379799999998795,
+        6.2044650000025285,
+        6.142922999999428,
+        5.502164000001358,
+        5.118098999999347
+      ],
+      "warm_median_ms": 6.1,
+      "form": true,
+      "action_ms": 26.632595999999467,
+      "action_kind": "snapshot-ref",
+      "screenshot_ms": 24.875252999998338,
+      "screenshot": {
+        "bytes": 35127,
+        "width": 1280,
+        "height": 720,
+        "pixels": 921600,
+        "mean_rgb": [
+          21,
+          38,
+          54
+        ],
+        "navy": 900513,
+        "red": 996,
+        "black": 2506,
+        "white": 12408,
+        "pass": true
+      },
+      "closed": true
+    }
+  ]
+}

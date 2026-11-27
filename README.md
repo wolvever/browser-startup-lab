@@ -220,6 +220,7 @@ All values are rounded to milliseconds; the Windows direct path had 9/10 samples
 - `fixture/residency-application.html`: the 13-section form.
 - `agent.mjs`: isolated interactive CLI wrapper.
 - `results/`: original evidence and selected portable-harness validations.
+- [Benchmark prompt](docs/benchmark-prompt.md): agent instructions for the contest, the five-loop hillclimb, and the long-form fill.
 - [Original research report](docs/original-report.md): detailed first-session findings and alternative-engine research.
 
 Headless Shell is a separate Chromium implementation and does not offer every full Chrome feature; see [Puppeteer's headless-mode guidance](https://pptr.dev/guides/headless-modes). [Chrome for Testing](https://developer.chrome.com/docs/automation-and-testing/chrome-for-testing) provides the full-browser fallback. Obscura was researched but not benchmarked; its [experimental adapter documents fidelity gaps](https://agent-browser.dev/engines/obscura).
